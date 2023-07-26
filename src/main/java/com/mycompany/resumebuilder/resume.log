@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.11.20)  26 JUL 2023 23:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.11.20)  27 JUL 2023 00:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -351,7 +351,7 @@ Package rerunfilecheck Info: File `resume.out' has not changed.
 Here is how much of TeX's memory you used:
  6217 strings out of 480608
  95077 string characters out of 5903629
- 371487 words of memory out of 5000000
+ 371352 words of memory out of 5000000
  22032 multiletter control sequences out of 15000+600000
  533933 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -364,10 +364,10 @@ sr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
 r/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr
 /local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
 Output written on /Users/EdenChung/Desktop/Eden/Home/Coding/Java/ResumeBuilder/
-src/main/java/com/mycompany/resumebuilder//resume.pdf (1 page, 89421 bytes).
+src/main/java/com/mycompany/resumebuilder//resume.pdf (1 page, 88450 bytes).
 PDF statistics:
- 48 PDF objects out of 1000 (max. 8388607)
- 32 compressed objects within 1 object stream
+ 47 PDF objects out of 1000 (max. 8388607)
+ 31 compressed objects within 1 object stream
  2 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -66,28 +66,30 @@ public class CompileLatex {
         }
     }
     
-    public void addName(String name) {
+    public void addPersonalInfo(String name, String school, String location, String phone, String email, String linkedin, String github) {
         try {
             // Read the .tex template file
             String templateContent = new String(Files.readAllBytes(Paths.get(RESUME_PATH)));
 
             // Replace placeholders with user input
             String resumeContent = templateContent.replace("{name}", name);
+            resumeContent = resumeContent.replace("{school}", school);
+            resumeContent = resumeContent.replace("{location}", location);
+            resumeContent = resumeContent.replace("{phone}", phone);
+            resumeContent = resumeContent.replace("{email}", email);
+            resumeContent = resumeContent.replace("{linkedin}", linkedin);
+            
+            System.out.println("github is" + github + "end");
+            
+            if (!github.equals("")) {
+                System.out.println("test");
+                String fullGithub = "$\\vert$ \\href{" + github + "}{\\underline{" + github + "}}";
+                resumeContent = resumeContent.replace("%{github}", fullGithub);
+            }
+           
+            
+            
 
-            // Save the modified content back to the .tex file
-            Files.write(Paths.get(RESUME_PATH), resumeContent.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public void addSchool(String school) {
-        try {
-            // Read the .tex template file
-            String templateContent = new String(Files.readAllBytes(Paths.get(RESUME_PATH)));
-
-            // Replace placeholders with user input
-            String resumeContent = templateContent.replace("{school}", school);
 
             // Save the modified content back to the .tex file
             Files.write(Paths.get(RESUME_PATH), resumeContent.getBytes());

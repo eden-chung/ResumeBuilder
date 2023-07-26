@@ -21,14 +21,13 @@ public class ResumeBuilder implements NewJFrame.InputListener {
     
     private CompileLatex latex = new CompileLatex();
     
-    public void onInputSubmitted(String name, String school) {
+    public void onInputSubmitted(String name, String school, String location, String phone, String email, String linkedin, String github) {
         System.out.println("Name: " + name);
         System.out.println("School: " + school);
 
         // Once you have the input data, you can proceed with compiling LaTeX or any other tasks
         latex.resetTemplate();
-        latex.addName(name);
-        latex.addSchool(school);
+        latex.addPersonalInfo(name, school, location, phone, email, linkedin, github);
         latex.compileFile();
     }
 
