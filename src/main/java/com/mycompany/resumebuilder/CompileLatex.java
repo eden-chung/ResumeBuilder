@@ -15,11 +15,13 @@ import java.nio.file.StandardCopyOption;
  */
 public class CompileLatex {
     
-    private static final String RESUME_PATH = "/Users/EdenChung/Desktop/Eden/Home/Coding/Java/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/resume.tex";
+    private static final String RESUME_PATH = "/Users/EdenChung/Desktop/Eden/Home/Coding/Java/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/latex_files/resume.tex";
+    private static final String RESUME_BACKUP_PATH = "/Users/EdenChung/Desktop/Eden/Home/Coding/Java/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/latex_files/resume_orig.tex";
+
     
     public void resetTemplate() {
-        String pathToBackupFile = "/Users/EdenChung/Desktop/Eden/Home/Coding/Java/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/resume_orig.tex";
-        String pathToTexFile = "/Users/EdenChung/Desktop/Eden/Home/Coding/Java/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/resume.tex";
+        String pathToBackupFile = RESUME_BACKUP_PATH;
+        String pathToTexFile = RESUME_PATH;
 
         try {
             Path backupPath = Paths.get(pathToBackupFile);
@@ -37,15 +39,13 @@ public class CompileLatex {
     
     public static void compileFile() {
         try {
-            String pathToFile = "/Users/EdenChung/Desktop/Eden/Home/Coding/Java/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/resume.tex"; // Replace with the path to your .tex file
+            String pathToFile = RESUME_PATH;
             String pdflatexPath = "/Library/TeX/texbin/pdflatex";
             
-            String outputDirectory = "/Users/EdenChung/Desktop/Eden/Home/Coding/Java/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/";
+            String outputDirectory = "/Users/EdenChung/Desktop/Eden/Home/Coding/Java/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/latex_files/";
                     
             String[] command = {pdflatexPath, "-interaction=nonstopmode", "-output-directory=" + outputDirectory, pathToFile};
             
-            String currentDir = System.getProperty("user.dir");
-            System.out.println("Current Working Directory: " + currentDir);
             
             ProcessBuilder processBuilder = new ProcessBuilder(command);
             processBuilder.redirectErrorStream(true);
@@ -78,11 +78,8 @@ public class CompileLatex {
             resumeContent = resumeContent.replace("{phone}", phone);
             resumeContent = resumeContent.replace("{email}", email);
             resumeContent = resumeContent.replace("{linkedin}", linkedin);
-            
-            System.out.println("github is" + github + "end");
-            
+                        
             if (!github.equals("")) {
-                System.out.println("test");
                 String fullGithub = "$\\vert$ \\href{" + github + "}{\\underline{" + github + "}}";
                 resumeContent = resumeContent.replace("%{github}", fullGithub);
             }
