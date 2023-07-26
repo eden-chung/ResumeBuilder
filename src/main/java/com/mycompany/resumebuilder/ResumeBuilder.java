@@ -30,6 +30,7 @@ public class ResumeBuilder implements NewJFrame.InputListener {
         latex.addName(name);
         latex.addSchool(school);
         latex.compileFile();
+        
     }
 
     public static void main(String[] args) {
