@@ -66,14 +66,13 @@ public class CompileLatex {
         }
     }
     
-    public void addPersonalInfo(String name, String school, String location, String phone, String email, String linkedin, String github) {
+    public void addPersonalInfo(String name, String location, String phone, String email, String linkedin, String github) {
         try {
             // Read the .tex template file
             String templateContent = new String(Files.readAllBytes(Paths.get(RESUME_PATH)));
 
             // Replace placeholders with user input
             String resumeContent = templateContent.replace("{name}", name);
-            resumeContent = resumeContent.replace("{school}", school);
             resumeContent = resumeContent.replace("{location}", location);
             resumeContent = resumeContent.replace("{phone}", phone);
             resumeContent = resumeContent.replace("{email}", email);

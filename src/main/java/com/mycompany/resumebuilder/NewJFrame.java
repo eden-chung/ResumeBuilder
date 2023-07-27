@@ -5,6 +5,7 @@
 package com.mycompany.resumebuilder;
 
 import java.util.EventListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,94 +31,56 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldName = new javax.swing.JTextField();
         submitButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jTextFieldLocation = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextFieldSchool = new javax.swing.JTextField();
-        jTextFieldPhone = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextFieldEmail = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextFieldLinkedin = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextFieldGithub = new javax.swing.JTextField();
+        jTextFieldPlaceHolderName = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jTextFieldPlaceHolderLocation = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jTextFieldPlaceHolderLinkedin = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jTextFieldPlaceHolderEmail = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jTextFieldPlaceHolderPhone = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jTextFieldPlaceHolderGithub = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Enter your name");
+        jLabel1.setText("Enter your name*");
 
         jLabel2.setText("Welcome to Resume Builder");
 
-        jTextFieldName.setText("Name");
-        jTextFieldName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNameActionPerformed(evt);
-            }
-        });
-
-        submitButton.setText("Submit");
+        submitButton.setText("Next");
         submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitButtonActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Enter your school");
+        jLabel4.setText("Enter your location*");
 
-        jTextFieldLocation.setText("Location");
-        jTextFieldLocation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldLocationActionPerformed(evt);
-            }
-        });
+        jLabel5.setText("Enter your phone number*");
 
-        jLabel4.setText("Enter your location");
+        jLabel6.setText("Enter your email*");
 
-        jLabel5.setText("Enter your phone number");
-
-        jTextFieldSchool.setText("School");
-        jTextFieldSchool.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldSchoolActionPerformed(evt);
-            }
-        });
-
-        jTextFieldPhone.setText("Phone number");
-        jTextFieldPhone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPhoneActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setText("Enter your email");
-
-        jTextFieldEmail.setText("Email");
-        jTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldEmailActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setText("Enter your LinkedIn");
-
-        jTextFieldLinkedin.setText("Linkedin");
-        jTextFieldLinkedin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldLinkedinActionPerformed(evt);
-            }
-        });
+        jLabel7.setText("Enter your LinkedIn*");
 
         jLabel8.setText("Enter your GitHub");
 
-        jTextFieldGithub.setText("GitHub");
-        jTextFieldGithub.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldGithubActionPerformed(evt);
-            }
-        });
+        jTextFieldPlaceHolderName.setPlaceHolder("Name");
+
+        jTextFieldPlaceHolderLocation.setPlaceHolder("Location");
+
+        jTextFieldPlaceHolderLinkedin.setPlaceHolder("LinkedIn");
+
+        jTextFieldPlaceHolderEmail.setPlaceHolder("Email");
+
+        jTextFieldPlaceHolderPhone.setPlaceHolder("Phone number");
+
+        jTextFieldPlaceHolderGithub.setPlaceHolder("GitHub");
+
+        jLabel3.setText("Personal Information Section");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,82 +88,76 @@ public class NewJFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(182, 182, 182)
-                            .addComponent(jLabel2))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel1)
-                                                .addComponent(jLabel4))
-                                            .addGap(116, 116, 116))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(jLabel5)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(123, 123, 123)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel7))
-                                    .addGap(130, 130, 130)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldLinkedin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldSchool, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldGithub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(submitButton)
-                            .addGap(40, 40, 40)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel8)))
-                .addContainerGap(195, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addGap(63, 63, 63)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldPlaceHolderLinkedin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldPlaceHolderGithub, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(submitButton)
+                                            .addComponent(jTextFieldPlaceHolderEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jTextFieldPlaceHolderName, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                                .addComponent(jTextFieldPlaceHolderLocation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jTextFieldPlaceHolderPhone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGap(0, 32, Short.MAX_VALUE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel8)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(76, 76, 76))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel2)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextFieldSchool, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                    .addComponent(jTextFieldPlaceHolderName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextFieldLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                    .addComponent(jTextFieldPlaceHolderLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextFieldPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldPlaceHolderPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
+                    .addComponent(jTextFieldPlaceHolderEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextFieldLinkedin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jTextFieldPlaceHolderLinkedin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextFieldGithub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                    .addComponent(jTextFieldPlaceHolderGithub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addComponent(submitButton)
                 .addGap(21, 21, 21))
         );
@@ -211,34 +168,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         submitInput();
     }//GEN-LAST:event_submitButtonActionPerformed
-
-    private void jTextFieldLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLocationActionPerformed
-        
-    }//GEN-LAST:event_jTextFieldLocationActionPerformed
-
-    private void jTextFieldSchoolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSchoolActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSchoolActionPerformed
-
-    private void jTextFieldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNameActionPerformed
-
-    private void jTextFieldPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPhoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPhoneActionPerformed
-
-    private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldEmailActionPerformed
-
-    private void jTextFieldLinkedinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLinkedinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldLinkedinActionPerformed
-
-    private void jTextFieldGithubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldGithubActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldGithubActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,7 +205,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     public interface InputListener extends EventListener {
-        void onInputSubmitted(String name, String school, String location, String phone, String email, String linkedin, String github);
+        void onInputSubmitted(String name, String location, String phone, String email, String linkedin, String github);
     }
     
     public void setInputListener(InputListener listener) {
@@ -285,18 +214,26 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Method to be called when the input is ready to be submitted
     private void submitInput() {
-        String name = jTextFieldName.getText();
-        String school = jTextFieldSchool.getText();
-        String location = jTextFieldLocation.getText();
-        String phone = jTextFieldPhone.getText();
-        String email = jTextFieldEmail.getText();
-        String linkedin = jTextFieldLinkedin.getText();
-        String github = jTextFieldGithub.getText();
-
-        // Notify the listener with the input data
-        if (inputListener != null) {
-            inputListener.onInputSubmitted(name, school, location, phone, email, linkedin, github);
+        String github = jTextFieldPlaceHolderGithub.getText();
+            
+        boolean allValidInput = jTextFieldPlaceHolderName.hasValidInput() && jTextFieldPlaceHolderLocation.hasValidInput() && jTextFieldPlaceHolderPhone.hasValidInput() && jTextFieldPlaceHolderEmail.hasValidInput() && jTextFieldPlaceHolderLinkedin.hasValidInput();
+        if (allValidInput) {
+            String name = jTextFieldPlaceHolderName.getText();
+            String location = jTextFieldPlaceHolderLocation.getText();
+            String phone = jTextFieldPlaceHolderPhone.getText();
+            String email = jTextFieldPlaceHolderEmail.getText();
+            String linkedin = jTextFieldPlaceHolderLinkedin.getText();
+            
+            // Notify the listener with the input data
+            if (inputListener != null) {
+                inputListener.onInputSubmitted(name, location, phone, email, linkedin, github);
+            }
+        } else {
+        // Show an error message or handle the case where some fields are empty
+            JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        
+                       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -308,13 +245,12 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jTextFieldEmail;
-    private javax.swing.JTextField jTextFieldGithub;
-    private javax.swing.JTextField jTextFieldLinkedin;
-    private javax.swing.JTextField jTextFieldLocation;
-    private javax.swing.JTextField jTextFieldName;
-    private javax.swing.JTextField jTextFieldPhone;
-    private javax.swing.JTextField jTextFieldSchool;
+    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderEmail;
+    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderGithub;
+    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderLinkedin;
+    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderLocation;
+    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderName;
+    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderPhone;
     private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
     
