@@ -17,7 +17,7 @@ import java.io.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class ResumeBuilder implements NewJFrame.InputListener {
+public class ResumeBuilder implements MainJFrame.InputListener {
     
     private CompileLatex latex = new CompileLatex();
     
@@ -34,7 +34,7 @@ public class ResumeBuilder implements NewJFrame.InputListener {
         
         //builder.latex.resetTemplate();
         
-        NewJFrame frame1 = new NewJFrame();
+        MainJFrame frame1 = new MainJFrame();
         frame1.setInputListener(new ResumeBuilder());
         SwingUtilities.invokeLater(() -> frame1.setVisible(true));
         
