@@ -21,22 +21,31 @@ public class ResumeBuilder implements MainJFrame.InputListener {
     
     private CompileLatex latex = new CompileLatex();
     
-    public void onInputSubmitted(String name, String location, String phone, String email, String linkedin, String github) {
-        latex.resetTemplate();
+    public void onInputSubmittedPersonal(String name, String location, String phone, String email, String linkedin, String github) {
+        latex.resetPersonal();
         latex.addPersonalInfo(name, location, phone, email, linkedin, github);
         latex.compileFile();
     }
-
+    
+    public void onInputSubmittedEducation(String university, String unidate, String degree, String fieldStudy, String fieldStudy2, String minor, String gpa, String coursework) {
+        latex.resetEducation();
+        latex.addEducationInfo(university, unidate, degree, fieldStudy, fieldStudy2, minor, gpa, coursework);
+        latex.compileFile();
+    }
+    
+    public void onInputSubmitButton() {
+        
+    }
+    
     public static void main(String[] args) {
-        System.out.println("Hello World!");
         
-        //ResumeBuilder builder = new ResumeBuilder();
+        ResumeBuilder builder = new ResumeBuilder();
+        builder.latex.resetTemplate();
         
-        //builder.latex.resetTemplate();
-        
-        MainJFrame frame1 = new MainJFrame();
-        frame1.setInputListener(new ResumeBuilder());
-        SwingUtilities.invokeLater(() -> frame1.setVisible(true));
+        MainJFrame mainFrame = new MainJFrame();
+        mainFrame.setInputListener(new ResumeBuilder());
+        mainFrame.pack();
+        SwingUtilities.invokeLater(() -> mainFrame.setVisible(true));
         
 
     }
