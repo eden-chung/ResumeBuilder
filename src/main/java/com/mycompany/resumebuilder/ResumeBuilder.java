@@ -33,8 +33,11 @@ public class ResumeBuilder implements MainJFrame.InputListener {
         latex.compileFile();
     }
     
-    public void onInputSubmitButton() {
-        
+    public void onInputSubmittedSkills(String languages, String programming, String softwares, String certifications) {
+        latex.resetSkills();
+        latex.addSkillsInfo(languages, programming, softwares, certifications);
+        latex.compileFile();
+
     }
     
     public static void main(String[] args) {

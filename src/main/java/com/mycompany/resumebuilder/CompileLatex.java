@@ -8,7 +8,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-import java.util.regex.*;
 
 /**
  *
@@ -106,35 +105,43 @@ public class CompileLatex {
             e.printStackTrace();
         }
     }
-
     
-    public static void compileFile() {
+    public void resetSkills() {
         try {
-            String pathToFile = RESUME_PATH;
-            String pdflatexPath = "/Library/TeX/texbin/pdflatex";
-            
-            String outputDirectory = "/Users/EdenChung/Desktop/Eden/Home/Coding/Java/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/latex_files/";
-                    
-            String[] command = {pdflatexPath, "-interaction=nonstopmode", "-output-directory=" + outputDirectory, pathToFile};
-            
-            
-            ProcessBuilder processBuilder = new ProcessBuilder(command);
-            processBuilder.redirectErrorStream(true);
+            String content = new String(Files.readAllBytes(Paths.get(RESUME_PATH)));
 
-            Process process = processBuilder.start();
+            String startSymbol = "%StartSkills**";
+            String endSymbol = "%EndSkills**";
             
+            String skillsTemplate = "%StartSkills**\n" +
+                "{\\textbf{Languages: }%{languages}\n" +
+                "}\n" +
+                "%{programming}\n" +
+                "%{softwares}\n" +
+                "%{certifications}\n" +
+                "%EndSkills**";
 
-            // Wait for the process to finish
-            int exitCode = process.waitFor();
-            if (exitCode == 0) {
-                System.out.println("Compilation successful.");
+            int startIndex = content.indexOf(startSymbol);
+            int endIndex = content.indexOf(endSymbol);
+
+            if (startIndex != -1 && endIndex != -1) {
+                String template = content.substring(0, startIndex) + skillsTemplate + content.substring(endIndex + endSymbol.length());
+
+                try {
+                    Files.write(Paths.get(RESUME_PATH), template.getBytes());
+                    System.out.println("Education info reset successfully.");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             } else {
-                System.out.println("Compilation failed.");
+                System.out.println("Start or End symbol not found. Education info not reset.");
             }
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
     
     public void addPersonalInfo(String name, String location, String phone, String email, String linkedin, String github) {
         try {
@@ -196,7 +203,62 @@ public class CompileLatex {
         }
     }
     
+    public void addSkillsInfo(String languages, String programming, String softwares, String certifications) {
+        try {
+            String templateContent = new String(Files.readAllBytes(Paths.get(RESUME_PATH)));
 
+            String resumeContent = templateContent.replace("%{languages}", languages);
+                        
+            if (!programming.equals("")) {
+                String fullProgramming = "\\\\{\\textbf{Programming languages: }" + programming + "}%";
+                resumeContent = resumeContent.replace("%{programming}", fullProgramming);
+            }
+            
+            if (!softwares.equals("")) {
+                String fullSoftwares = "\\\\{\\textbf{Softwares: }" + softwares + "}%";
+                resumeContent = resumeContent.replace("%{softwares}", fullSoftwares);
+            }
+            
+            if (!certifications.equals("")) {
+                String fullCertifications = "\\\\{\\textbf{Certifications: }" + certifications + "}%";
+                resumeContent = resumeContent.replace("%{certifications}", fullCertifications);
+            }
+          
+
+            // Save the modified content back to the .tex file
+            Files.write(Paths.get(RESUME_PATH), resumeContent.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
+    public static void compileFile() {
+        try {
+            String pathToFile = RESUME_PATH;
+            String pdflatexPath = "/Library/TeX/texbin/pdflatex";
+            
+            String outputDirectory = "/Users/EdenChung/Desktop/Eden/Home/Coding/Java/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/latex_files/";
+                    
+            String[] command = {pdflatexPath, "-interaction=nonstopmode", "-output-directory=" + outputDirectory, pathToFile};
+            
+            
+            ProcessBuilder processBuilder = new ProcessBuilder(command);
+            processBuilder.redirectErrorStream(true);
+
+            Process process = processBuilder.start();
+            
+
+            // Wait for the process to finish
+            int exitCode = process.waitFor();
+            if (exitCode == 0) {
+                System.out.println("Compilation successful.");
+            } else {
+                System.out.println("Compilation failed.");
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+ 
 }
 
