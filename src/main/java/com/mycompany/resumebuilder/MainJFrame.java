@@ -4,6 +4,7 @@
  */
 package com.mycompany.resumebuilder;
 
+import java.util.ArrayList;
 import java.util.EventListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
@@ -78,6 +79,8 @@ public class MainJFrame extends javax.swing.JFrame {
         jTextFieldPlaceHolderCertifications = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
         jTextFieldPlaceHolderSoftwares = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
         WorkPanel = new javax.swing.JPanel();
+        AchievementsPanel = new javax.swing.JPanel();
+        addAchievementButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -353,7 +356,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(jTextFieldPlaceHolderCoursework, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(nextButtonEducation)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Education", EducationPanel);
@@ -453,7 +456,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(jTextFieldPlaceHolderCertifications, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(122, 122, 122)
                 .addComponent(nextButtonSkills)
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Skills", SkillsPanel);
@@ -462,14 +465,40 @@ public class MainJFrame extends javax.swing.JFrame {
         WorkPanel.setLayout(WorkPanelLayout);
         WorkPanelLayout.setHorizontalGroup(
             WorkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 594, Short.MAX_VALUE)
+            .addGap(0, 542, Short.MAX_VALUE)
         );
         WorkPanelLayout.setVerticalGroup(
             WorkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 472, Short.MAX_VALUE)
+            .addGap(0, 549, Short.MAX_VALUE)
         );
 
         jTabbedPane.addTab("Work Experience", WorkPanel);
+
+        addAchievementButton.setText("Add new achievement");
+        addAchievementButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addAchievementButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout AchievementsPanelLayout = new javax.swing.GroupLayout(AchievementsPanel);
+        AchievementsPanel.setLayout(AchievementsPanelLayout);
+        AchievementsPanelLayout.setHorizontalGroup(
+            AchievementsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AchievementsPanelLayout.createSequentialGroup()
+                .addContainerGap(367, Short.MAX_VALUE)
+                .addComponent(addAchievementButton)
+                .addGap(15, 15, 15))
+        );
+        AchievementsPanelLayout.setVerticalGroup(
+            AchievementsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AchievementsPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(addAchievementButton)
+                .addContainerGap(506, Short.MAX_VALUE))
+        );
+
+        jTabbedPane.addTab("Achievements", AchievementsPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -477,15 +506,15 @@ public class MainJFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addComponent(jTabbedPane)
+                .addContainerGap())
         );
 
         pack();
@@ -517,6 +546,20 @@ public class MainJFrame extends javax.swing.JFrame {
     private void jTextFieldPlaceHolderCertificationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPlaceHolderCertificationsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPlaceHolderCertificationsActionPerformed
+
+    private void addAchievementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAchievementButtonActionPerformed
+        AchievementEntryPanel indivAchievementPanel = new AchievementEntryPanel();
+        achievementPanelsList.add(indivAchievementPanel);
+        
+        System.out.println("test");
+        System.out.println(achievementPanelsList);
+
+        AchievementsPanel.add(indivAchievementPanel);
+        AchievementsPanel.revalidate();
+        AchievementsPanel.repaint();
+        this.revalidate();
+        this.repaint();
+    }//GEN-LAST:event_addAchievementButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -637,13 +680,17 @@ public class MainJFrame extends javax.swing.JFrame {
                        
     }
     
-
+    public javax.swing.JPanel getAchievementsPanel() {
+        return AchievementsPanel;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel AchievementsPanel;
     private javax.swing.JPanel EducationPanel;
     private javax.swing.JPanel PersonalInformationPanel;
     private javax.swing.JPanel SkillsPanel;
     private javax.swing.JPanel WorkPanel;
+    private javax.swing.JButton addAchievementButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -691,5 +738,6 @@ public class MainJFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     private InputListener inputListener;
+    private ArrayList<AchievementEntryPanel> achievementPanelsList = new ArrayList<>();
     
 }
