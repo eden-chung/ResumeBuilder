@@ -33,21 +33,23 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jTabbedPane = new javax.swing.JTabbedPane();
         PersonalInformationPanel = new javax.swing.JPanel();
-        nextButtonPersonal = new javax.swing.JButton();
+        TitleContainer = new javax.swing.JPanel();
+        personalInfoLabel = new javax.swing.JLabel();
+        GridContainer = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jTextFieldPlaceHolderName = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jLabel4 = new javax.swing.JLabel();
         jTextFieldPlaceHolderLocation = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
-        jTextFieldPlaceHolderLinkedin = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
-        jTextFieldPlaceHolderEmail = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jLabel5 = new javax.swing.JLabel();
         jTextFieldPlaceHolderPhone = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jLabel6 = new javax.swing.JLabel();
+        jTextFieldPlaceHolderEmail = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jLabel7 = new javax.swing.JLabel();
+        jTextFieldPlaceHolderLinkedin = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jLabel8 = new javax.swing.JLabel();
         jTextFieldPlaceHolderGithub = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        ButtonContainer = new javax.swing.JPanel();
+        nextButtonPersonal = new javax.swing.JButton();
         EducationPanel = new javax.swing.JPanel();
         nextButtonEducation = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
@@ -84,6 +86,70 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        PersonalInformationPanel.setMaximumSize(new java.awt.Dimension(563, 32767));
+        PersonalInformationPanel.setLayout(new javax.swing.BoxLayout(PersonalInformationPanel, javax.swing.BoxLayout.Y_AXIS));
+
+        personalInfoLabel.setText("Personal Information Section");
+
+        javax.swing.GroupLayout TitleContainerLayout = new javax.swing.GroupLayout(TitleContainer);
+        TitleContainer.setLayout(TitleContainerLayout);
+        TitleContainerLayout.setHorizontalGroup(
+            TitleContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TitleContainerLayout.createSequentialGroup()
+                .addContainerGap(208, Short.MAX_VALUE)
+                .addComponent(personalInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(205, 205, 205))
+        );
+        TitleContainerLayout.setVerticalGroup(
+            TitleContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TitleContainerLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(personalInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
+        PersonalInformationPanel.add(TitleContainer);
+
+        GridContainer.setLayout(new java.awt.GridLayout(7, 2, 10, 15));
+
+        jLabel1.setText("Enter your name*");
+        GridContainer.add(jLabel1);
+
+        jTextFieldPlaceHolderName.setPlaceHolder("Name");
+        GridContainer.add(jTextFieldPlaceHolderName);
+
+        jLabel4.setText("Enter your location*");
+        GridContainer.add(jLabel4);
+
+        jTextFieldPlaceHolderLocation.setPlaceHolder("Location");
+        GridContainer.add(jTextFieldPlaceHolderLocation);
+
+        jLabel5.setText("Enter your phone number*");
+        GridContainer.add(jLabel5);
+
+        jTextFieldPlaceHolderPhone.setPlaceHolder("Phone number");
+        GridContainer.add(jTextFieldPlaceHolderPhone);
+
+        jLabel6.setText("Enter your email*");
+        GridContainer.add(jLabel6);
+
+        jTextFieldPlaceHolderEmail.setPlaceHolder("Email");
+        GridContainer.add(jTextFieldPlaceHolderEmail);
+
+        jLabel7.setText("Enter your LinkedIn*");
+        GridContainer.add(jLabel7);
+
+        jTextFieldPlaceHolderLinkedin.setPlaceHolder("LinkedIn");
+        GridContainer.add(jTextFieldPlaceHolderLinkedin);
+
+        jLabel8.setText("Enter your GitHub");
+        GridContainer.add(jLabel8);
+
+        jTextFieldPlaceHolderGithub.setPlaceHolder("GitHub");
+        GridContainer.add(jTextFieldPlaceHolderGithub);
+
+        PersonalInformationPanel.add(GridContainer);
+
         nextButtonPersonal.setText("Next");
         nextButtonPersonal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,122 +157,24 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Enter your name*");
-
-        jLabel2.setText("Welcome to Resume Builder");
-
-        jLabel3.setText("Personal Information Section");
-
-        jLabel4.setText("Enter your location*");
-
-        jLabel5.setText("Enter your phone number*");
-
-        jLabel6.setText("Enter your email*");
-
-        jLabel7.setText("Enter your LinkedIn*");
-
-        jLabel8.setText("Enter your GitHub");
-
-        jTextFieldPlaceHolderName.setPlaceHolder("Name");
-
-        jTextFieldPlaceHolderLocation.setPlaceHolder("Location");
-
-        jTextFieldPlaceHolderLinkedin.setPlaceHolder("LinkedIn");
-
-        jTextFieldPlaceHolderEmail.setPlaceHolder("Email");
-
-        jTextFieldPlaceHolderPhone.setPlaceHolder("Phone number");
-
-        jTextFieldPlaceHolderGithub.setPlaceHolder("GitHub");
-
-        javax.swing.GroupLayout PersonalInformationPanelLayout = new javax.swing.GroupLayout(PersonalInformationPanel);
-        PersonalInformationPanel.setLayout(PersonalInformationPanelLayout);
-        PersonalInformationPanelLayout.setHorizontalGroup(
-            PersonalInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PersonalInformationPanelLayout.createSequentialGroup()
-                .addGap(205, 205, 205)
-                .addComponent(jLabel2))
-            .addGroup(PersonalInformationPanelLayout.createSequentialGroup()
-                .addGap(205, 205, 205)
-                .addComponent(jLabel3))
-            .addGroup(PersonalInformationPanelLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel1)
-                .addGap(107, 107, 107)
-                .addComponent(jTextFieldPlaceHolderName, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PersonalInformationPanelLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel4)
-                .addGap(94, 94, 94)
-                .addComponent(jTextFieldPlaceHolderLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PersonalInformationPanelLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jTextFieldPlaceHolderPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PersonalInformationPanelLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel6)
-                .addGap(108, 108, 108)
-                .addComponent(jTextFieldPlaceHolderEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PersonalInformationPanelLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel7)
-                .addGap(90, 90, 90)
-                .addComponent(jTextFieldPlaceHolderLinkedin, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PersonalInformationPanelLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel8)
-                .addGap(103, 103, 103)
-                .addComponent(jTextFieldPlaceHolderGithub, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PersonalInformationPanelLayout.createSequentialGroup()
-                .addGap(213, 213, 213)
-                .addComponent(nextButtonPersonal))
+        javax.swing.GroupLayout ButtonContainerLayout = new javax.swing.GroupLayout(ButtonContainer);
+        ButtonContainer.setLayout(ButtonContainerLayout);
+        ButtonContainerLayout.setHorizontalGroup(
+            ButtonContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ButtonContainerLayout.createSequentialGroup()
+                .addGap(223, 223, 223)
+                .addComponent(nextButtonPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(254, Short.MAX_VALUE))
         );
-        PersonalInformationPanelLayout.setVerticalGroup(
-            PersonalInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PersonalInformationPanelLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(38, 38, 38)
-                .addGroup(PersonalInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PersonalInformationPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel1))
-                    .addComponent(jTextFieldPlaceHolderName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(PersonalInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PersonalInformationPanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel4))
-                    .addComponent(jTextFieldPlaceHolderLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(PersonalInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PersonalInformationPanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel5))
-                    .addComponent(jTextFieldPlaceHolderPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(PersonalInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PersonalInformationPanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel6))
-                    .addComponent(jTextFieldPlaceHolderEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(PersonalInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PersonalInformationPanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel7))
-                    .addComponent(jTextFieldPlaceHolderLinkedin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(PersonalInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextFieldPlaceHolderGithub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
-                .addComponent(nextButtonPersonal))
+        ButtonContainerLayout.setVerticalGroup(
+            ButtonContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ButtonContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(nextButtonPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        PersonalInformationPanel.add(ButtonContainer);
 
         jTabbedPane.addTab("Personal Information", PersonalInformationPanel);
 
@@ -356,7 +324,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(jTextFieldPlaceHolderCoursework, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(nextButtonEducation)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Education", EducationPanel);
@@ -456,7 +424,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(jTextFieldPlaceHolderCertifications, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(122, 122, 122)
                 .addComponent(nextButtonSkills)
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Skills", SkillsPanel);
@@ -465,11 +433,11 @@ public class MainJFrame extends javax.swing.JFrame {
         WorkPanel.setLayout(WorkPanelLayout);
         WorkPanelLayout.setHorizontalGroup(
             WorkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
+            .addGap(0, 606, Short.MAX_VALUE)
         );
         WorkPanelLayout.setVerticalGroup(
             WorkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 549, Short.MAX_VALUE)
+            .addGap(0, 419, Short.MAX_VALUE)
         );
 
         jTabbedPane.addTab("Work Experience", WorkPanel);
@@ -486,7 +454,7 @@ public class MainJFrame extends javax.swing.JFrame {
         AchievementsPanelLayout.setHorizontalGroup(
             AchievementsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AchievementsPanelLayout.createSequentialGroup()
-                .addContainerGap(367, Short.MAX_VALUE)
+                .addContainerGap(431, Short.MAX_VALUE)
                 .addComponent(addAchievementButton)
                 .addGap(15, 15, 15))
         );
@@ -495,7 +463,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(AchievementsPanelLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(addAchievementButton)
-                .addContainerGap(506, Short.MAX_VALUE))
+                .addContainerGap(376, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Achievements", AchievementsPanel);
@@ -507,7 +475,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -686,16 +654,18 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AchievementsPanel;
+    private javax.swing.JPanel ButtonContainer;
     private javax.swing.JPanel EducationPanel;
+    private javax.swing.JPanel GridContainer;
     private javax.swing.JPanel PersonalInformationPanel;
     private javax.swing.JPanel SkillsPanel;
+    private javax.swing.JPanel TitleContainer;
     private javax.swing.JPanel WorkPanel;
     private javax.swing.JButton addAchievementButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -706,7 +676,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -735,6 +704,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton nextButtonEducation;
     private javax.swing.JButton nextButtonPersonal;
     private javax.swing.JButton nextButtonSkills;
+    private javax.swing.JLabel personalInfoLabel;
     // End of variables declaration//GEN-END:variables
     
     private InputListener inputListener;
