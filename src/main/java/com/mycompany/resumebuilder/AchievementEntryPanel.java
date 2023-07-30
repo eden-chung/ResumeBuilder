@@ -4,6 +4,9 @@
  */
 package com.mycompany.resumebuilder;
 
+import java.awt.Container;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author EdenChung
@@ -14,6 +17,7 @@ public class AchievementEntryPanel extends javax.swing.JPanel {
      * Creates new form AchievementEntryPanel
      */
     public AchievementEntryPanel() {
+        numAchievements++;
         initComponents();
     }
 
@@ -26,17 +30,22 @@ public class AchievementEntryPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldPlaceHolderAchievement = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
         jLabel2 = new javax.swing.JLabel();
         jTextFieldPlaceHolderAffiliation = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldPlaceHolderDate = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        emptyPlaceholder = new javax.swing.JLabel();
+        deleteAchievement = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setMinimumSize(new java.awt.Dimension(400, 143));
-        setLayout(new java.awt.GridLayout(4, 2));
+        setLayout(new java.awt.GridLayout(4, 2, 0, 10));
 
-        jLabel1.setText("Name of achievement");
+        jLabel1.setText("Name of achievement*");
         add(jLabel1);
 
         jTextFieldPlaceHolderAchievement.setPlaceHolder("Achievement");
@@ -68,6 +77,15 @@ public class AchievementEntryPanel extends javax.swing.JPanel {
             }
         });
         add(jTextFieldPlaceHolderDate);
+        add(emptyPlaceholder);
+
+        deleteAchievement.setText("Delete achievement");
+        deleteAchievement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteAchievementActionPerformed(evt);
+            }
+        });
+        add(deleteAchievement);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldPlaceHolderAchievementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPlaceHolderAchievementActionPerformed
@@ -82,8 +100,43 @@ public class AchievementEntryPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPlaceHolderDateActionPerformed
 
+    private void deleteAchievementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAchievementActionPerformed
 
+        if (numAchievements > 1) {
+            // Decrement the number of achievements when a panel is deleted
+            numAchievements--;
+
+            // Code to perform when the "Delete" button is clicked
+            Container parent = getParent();
+            parent.remove(this);
+            parent.revalidate();
+            parent.repaint();
+        } else {
+            // Show a message that deletion is not allowed if there is only one achievement
+            JOptionPane.showMessageDialog(this, "You cannot delete the last achievement.");
+        }
+    }//GEN-LAST:event_deleteAchievementActionPerformed
+
+    public String getAchievement() {
+        return jTextFieldPlaceHolderAchievement.getText();
+    }
+    
+    public String getAffiliation() {
+        return jTextFieldPlaceHolderAffiliation.getText();
+    }
+    
+    public String getDate() {
+        return jTextFieldPlaceHolderDate.getText();
+    }
+    
+    public int getNumAchievements() {
+        return numAchievements;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton deleteAchievement;
+    private javax.swing.JLabel emptyPlaceholder;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -91,4 +144,6 @@ public class AchievementEntryPanel extends javax.swing.JPanel {
     private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderAffiliation;
     private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderDate;
     // End of variables declaration//GEN-END:variables
+
+    private static int numAchievements = 0;
 }

@@ -81,8 +81,10 @@ public class MainJFrame extends javax.swing.JFrame {
         jTextFieldPlaceHolderCertifications = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
         jTextFieldPlaceHolderSoftwares = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
         WorkPanel = new javax.swing.JPanel();
+        AchievementsScrollPane = new javax.swing.JScrollPane();
         AchievementsPanel = new javax.swing.JPanel();
         addAchievementButton = new javax.swing.JButton();
+        submitButtonAchievements = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,7 +98,7 @@ public class MainJFrame extends javax.swing.JFrame {
         TitleContainerLayout.setHorizontalGroup(
             TitleContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TitleContainerLayout.createSequentialGroup()
-                .addContainerGap(208, Short.MAX_VALUE)
+                .addContainerGap(144, Short.MAX_VALUE)
                 .addComponent(personalInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(205, 205, 205))
         );
@@ -105,7 +107,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(TitleContainerLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(personalInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         PersonalInformationPanel.add(TitleContainer);
@@ -164,7 +166,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(ButtonContainerLayout.createSequentialGroup()
                 .addGap(223, 223, 223)
                 .addComponent(nextButtonPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
         ButtonContainerLayout.setVerticalGroup(
             ButtonContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,7 +435,7 @@ public class MainJFrame extends javax.swing.JFrame {
         WorkPanel.setLayout(WorkPanelLayout);
         WorkPanelLayout.setHorizontalGroup(
             WorkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 606, Short.MAX_VALUE)
+            .addGap(0, 542, Short.MAX_VALUE)
         );
         WorkPanelLayout.setVerticalGroup(
             WorkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -442,31 +444,27 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jTabbedPane.addTab("Work Experience", WorkPanel);
 
+        AchievementsPanel.setLayout(new javax.swing.BoxLayout(AchievementsPanel, javax.swing.BoxLayout.Y_AXIS));
+
         addAchievementButton.setText("Add new achievement");
         addAchievementButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addAchievementButtonActionPerformed(evt);
             }
         });
+        AchievementsPanel.add(addAchievementButton);
 
-        javax.swing.GroupLayout AchievementsPanelLayout = new javax.swing.GroupLayout(AchievementsPanel);
-        AchievementsPanel.setLayout(AchievementsPanelLayout);
-        AchievementsPanelLayout.setHorizontalGroup(
-            AchievementsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AchievementsPanelLayout.createSequentialGroup()
-                .addContainerGap(431, Short.MAX_VALUE)
-                .addComponent(addAchievementButton)
-                .addGap(15, 15, 15))
-        );
-        AchievementsPanelLayout.setVerticalGroup(
-            AchievementsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AchievementsPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(addAchievementButton)
-                .addContainerGap(376, Short.MAX_VALUE))
-        );
+        submitButtonAchievements.setText("Submit");
+        submitButtonAchievements.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitButtonAchievementsActionPerformed(evt);
+            }
+        });
+        AchievementsPanel.add(submitButtonAchievements);
 
-        jTabbedPane.addTab("Achievements", AchievementsPanel);
+        AchievementsScrollPane.setViewportView(AchievementsPanel);
+
+        jTabbedPane.addTab("Achievements", AchievementsScrollPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -516,18 +514,22 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldPlaceHolderCertificationsActionPerformed
 
     private void addAchievementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAchievementButtonActionPerformed
+        
         AchievementEntryPanel indivAchievementPanel = new AchievementEntryPanel();
         achievementPanelsList.add(indivAchievementPanel);
-        
-        System.out.println("test");
-        System.out.println(achievementPanelsList);
 
         AchievementsPanel.add(indivAchievementPanel);
         AchievementsPanel.revalidate();
         AchievementsPanel.repaint();
         this.revalidate();
         this.repaint();
+        
+        
     }//GEN-LAST:event_addAchievementButtonActionPerformed
+
+    private void submitButtonAchievementsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonAchievementsActionPerformed
+        submitAchievements();
+    }//GEN-LAST:event_submitButtonAchievementsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -569,6 +571,7 @@ public class MainJFrame extends javax.swing.JFrame {
         void onInputSubmittedPersonal(String name, String location, String phone, String email, String linkedin, String github);
         void onInputSubmittedEducation(String university, String unidate, String degree, String fieldStudy, String fieldStudy2, String minor, String gpa, String coursework);
         void onInputSubmittedSkills(String languages, String programming, String softwares, String certifications);
+        void onInputSubmittedAchievements(String[][] achievementInfoArray);
     }
     
     public void setInputListener(InputListener listener) {
@@ -648,12 +651,39 @@ public class MainJFrame extends javax.swing.JFrame {
                        
     }
     
+    private void submitAchievements() {
+        String[][] achievementInfoArray = new String[achievementPanelsList.size()][3];
+                
+        for (int i = 0; i < achievementPanelsList.size(); i++) {
+            AchievementEntryPanel panel = achievementPanelsList.get(i);
+            
+            String achievement = panel.getAchievement();
+            String affiliation = panel.getAffiliation();
+            String date = panel.getDate();
+            
+            if (achievement.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please fill in all required fields for Achievement " + (i+1), "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            achievementInfoArray[i][0] = achievement;
+            achievementInfoArray[i][1] = affiliation;
+            achievementInfoArray[i][2] = date;
+            
+            
+            if (inputListener != null) {
+                inputListener.onInputSubmittedAchievements(achievementInfoArray);
+            }
+         }
+    }
+    
     public javax.swing.JPanel getAchievementsPanel() {
         return AchievementsPanel;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AchievementsPanel;
+    private javax.swing.JScrollPane AchievementsScrollPane;
     private javax.swing.JPanel ButtonContainer;
     private javax.swing.JPanel EducationPanel;
     private javax.swing.JPanel GridContainer;
@@ -705,6 +735,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton nextButtonPersonal;
     private javax.swing.JButton nextButtonSkills;
     private javax.swing.JLabel personalInfoLabel;
+    private javax.swing.JButton submitButtonAchievements;
     // End of variables declaration//GEN-END:variables
     
     private InputListener inputListener;

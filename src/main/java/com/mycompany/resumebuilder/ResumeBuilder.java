@@ -40,6 +40,12 @@ public class ResumeBuilder implements MainJFrame.InputListener {
 
     }
     
+    public void onInputSubmittedAchievements(String[][] achievementInfoArray) {
+        latex.resetAchievements();
+        latex.addAchievementInfo(achievementInfoArray);
+        latex.compileFile();
+    }
+    
     public static void main(String[] args) {
         
         ResumeBuilder builder = new ResumeBuilder();
@@ -47,24 +53,9 @@ public class ResumeBuilder implements MainJFrame.InputListener {
         
         MainJFrame mainFrame = new MainJFrame();
         mainFrame.setInputListener(new ResumeBuilder());
-        
-        // start
-        JPanel achievementsPanel = mainFrame.getAchievementsPanel();
-        
-        AchievementEntryPanel test = new AchievementEntryPanel();
-        test.setVisible(true);
-
-        // Add the AchievementEntryPanel to the AchievementsPanel
-        achievementsPanel.add(test);
-        //end
-        
-        
         mainFrame.pack();
         SwingUtilities.invokeLater(() -> mainFrame.setVisible(true));
         
-        TestJFrame testFrame = new TestJFrame();
-        testFrame.pack();
-        testFrame.setVisible(true);
 
     }
     

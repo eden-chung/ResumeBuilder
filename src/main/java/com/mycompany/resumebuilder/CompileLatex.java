@@ -140,6 +140,39 @@ public class CompileLatex {
             e.printStackTrace();
         }
     }
+    
+    public void resetAchievements() {
+        try {
+            String content = new String(Files.readAllBytes(Paths.get(RESUME_PATH)));
+
+            String startSymbol = "%StartAchievements**";
+            String endSymbol = "%EndAchievements**";
+            
+            String achievementsTemplate = "%StartAchievements**\n" +
+                "%{achievements}\n" +
+                "%EndAchievements**";
+
+            int startIndex = content.indexOf(startSymbol);
+            int endIndex = content.indexOf(endSymbol);
+
+            if (startIndex != -1 && endIndex != -1) {
+                String template = content.substring(0, startIndex) + achievementsTemplate + content.substring(endIndex + endSymbol.length());
+
+                try {
+                    Files.write(Paths.get(RESUME_PATH), template.getBytes());
+                    System.out.println("Personal info reset successfully.");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("Start or End symbol not found. Personal info not reset.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
 
 
     
@@ -225,6 +258,43 @@ public class CompileLatex {
             }
           
 
+            // Save the modified content back to the .tex file
+            Files.write(Paths.get(RESUME_PATH), resumeContent.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void addAchievementInfo(String[][] achievementInfoArray) {
+        try {
+            String templateContent = new String(Files.readAllBytes(Paths.get(RESUME_PATH)));
+            
+            String fullAchievementString = "\\begin{rSection}{Achievements}\n";
+            
+            for (int i = 0; i < achievementInfoArray.length; i++) {
+                String achievementName = achievementInfoArray[i][0];
+                String affiliation = achievementInfoArray[i][1];
+                String date = achievementInfoArray[i][2];
+                
+                fullAchievementString += "{" + achievementName;
+                
+                
+                if (affiliation != null && !affiliation.equals("")) {
+                    fullAchievementString += ", " + affiliation;
+                }
+                
+                if (date != null && !date.equals("")) {
+                    fullAchievementString += "}\\hfill " + date + "\\\\ \n";
+                } else {
+                    fullAchievementString += "}\\\\ \n";
+                }
+            }
+            
+            fullAchievementString += "\\end{rSection}";
+            
+            String resumeContent = templateContent.replace("%{achievements}", fullAchievementString);
+
+                     
             // Save the modified content back to the .tex file
             Files.write(Paths.get(RESUME_PATH), resumeContent.getBytes());
         } catch (IOException e) {
