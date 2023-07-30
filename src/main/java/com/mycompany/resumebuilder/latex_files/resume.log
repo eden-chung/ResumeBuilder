@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.11.20)  31 JUL 2023 00:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.11.20)  31 JUL 2023 00:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -230,22 +230,22 @@ File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
 /mycompany/resumebuilder/latex_files//resume.aux)
 \openout1 = `resume.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -282,7 +282,7 @@ LaTeX Font Info:    ... okay on input line 27.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box48
-Package hyperref Info: Link coloring ON on input line 27.
+Package hyperref Info: Link coloring ON on input line 26.
 (/usr/local/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -295,9 +295,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count190
 )
-LaTeX Info: Redefining \ref on input line 27.
-LaTeX Info: Redefining \pageref on input line 27.
-LaTeX Info: Redefining \nameref on input line 27.
+LaTeX Info: Redefining \ref on input line 26.
+LaTeX Info: Redefining \pageref on input line 26.
+LaTeX Info: Redefining \nameref on input line 26.
 
 (/Users/EdenChung/Desktop/Eden/Home/Coding/Java/ResumeBuilder/src/main/java/com
 /mycompany/resumebuilder/latex_files//resume.out)
@@ -322,36 +322,41 @@ LaTeX Info: Redefining \nameref on input line 27.
 \everyMPtoPDFconversion=\toks19
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 28.
+(Font)              <7> on input line 27.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 28.
+(Font)              <5> on input line 27.
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 27--28
+Overfull \hbox (30.0pt too wide) in paragraph at lines 26--27
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--44
+Underfull \hbox (badness 10000) in paragraph at lines 36--44
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 141.
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
+
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 135.
 [1
 
 {/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 141.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 135.
 
 (/Users/EdenChung/Desktop/Eden/Home/Coding/Java/ResumeBuilder/src/main/java/com
 /mycompany/resumebuilder/latex_files//resume.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 141.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 141.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 135.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 135.
 Package rerunfilecheck Info: File `resume.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
  6217 strings out of 480608
  95269 string characters out of 5903629
- 368357 words of memory out of 5000000
+ 368313 words of memory out of 5000000
  22032 multiletter control sequences out of 15000+600000
  533933 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -364,8 +369,8 @@ sr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
 r/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr
 /local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
 Output written on /Users/EdenChung/Desktop/Eden/Home/Coding/Java/ResumeBuilder/
-src/main/java/com/mycompany/resumebuilder/latex_files//resume.pdf (1 page, 8150
-3 bytes).
+src/main/java/com/mycompany/resumebuilder/latex_files//resume.pdf (1 page, 8087
+0 bytes).
 PDF statistics:
  46 PDF objects out of 1000 (max. 8388607)
  30 compressed objects within 1 object stream

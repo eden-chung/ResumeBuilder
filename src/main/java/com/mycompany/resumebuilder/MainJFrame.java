@@ -4,10 +4,13 @@
  */
 package com.mycompany.resumebuilder;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.EventListener;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 /**
  *
@@ -20,6 +23,21 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     public MainJFrame() {
         initComponents();
+        
+        for (int i = 1; i < jTabbedPane.getTabCount(); i++) {
+            jTabbedPane.setEnabledAt(i, false);
+            updateTabTitle(i);
+        }
+        
+        jTabbedPane.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                // When the selected tab changes, update the appearance of all tabs
+                for (int i = 0; i < jTabbedPane.getTabCount(); i++) {
+                    updateTabTitle(i);
+                }
+            }
+        });
+        
     }
 
     /**
@@ -445,6 +463,20 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void updateTabTitle(int tabIndex) {
+        String title = jTabbedPane.getTitleAt(tabIndex);
+        if (!jTabbedPane.isEnabledAt(tabIndex)) {
+            // Use HTML formatting to make the disabled tabs grayed out
+            //jTabbedPane.setTitleAt(tabIndex, "<html><font color='gray'>" + title + "</font></html>");
+            JLabel disabledTabLabel = new JLabel("<html><font color='gray'>" + title + "</font></html>");
+            jTabbedPane.setTabComponentAt(tabIndex, disabledTabLabel);
+        } else {
+            // Reset the title to the default appearance for enabled tabs
+            jTabbedPane.setTabComponentAt(tabIndex, null);
+            jTabbedPane.setTitleAt(tabIndex, title);
+        }
+    }
+    
     private void nextButtonPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonPersonalActionPerformed
         boolean validInput = submitInputPersonalInfo();
         
@@ -452,6 +484,7 @@ public class MainJFrame extends javax.swing.JFrame {
             jTabbedPane.setSelectedIndex(1);
         } 
         
+        jTabbedPane.setEnabledAt(1, true);
     }//GEN-LAST:event_nextButtonPersonalActionPerformed
 
     private void nextButtonEducationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonEducationActionPerformed
@@ -460,6 +493,9 @@ public class MainJFrame extends javax.swing.JFrame {
         if (validInput) {
             jTabbedPane.setSelectedIndex(2);
         }
+        
+        jTabbedPane.setEnabledAt(2, true);
+
         
     }//GEN-LAST:event_nextButtonEducationActionPerformed
 
@@ -473,6 +509,8 @@ public class MainJFrame extends javax.swing.JFrame {
         if (validInput) {
            jTabbedPane.setSelectedIndex(3); 
         }
+        
+        jTabbedPane.setEnabledAt(3, true);
         
     }//GEN-LAST:event_nextButtonSkillsActionPerformed
 
@@ -515,6 +553,8 @@ public class MainJFrame extends javax.swing.JFrame {
         if (validInput) {
            jTabbedPane.setSelectedIndex(4); 
         }
+        
+        jTabbedPane.setEnabledAt(4, true);
 
     }//GEN-LAST:event_nextButtonWorkActionPerformed
 
