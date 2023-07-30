@@ -92,14 +92,27 @@
         <Property name="text" type="java.lang.String" value="Description (write ** between each bullet point)"/>
       </Properties>
     </Component>
-    <Component class="com.mycompany.resumebuilder.JTextFieldPlaceHolder" name="jTextFieldPlaceHolderDescription">
-      <Properties>
-        <Property name="placeHolder" type="java.lang.String" value="Description"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPlaceHolderDescriptionActionPerformed"/>
-      </Events>
-    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPaneDescription">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JScrollPane(javax.swing.JScrollPane.VERTICAL_SCROLLBAR_NEVER, javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED))"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jScrollPaneDescription.setMaximumSize(new java.awt.Dimension(400, 200));&#xa;jScrollPaneDescription.setPreferredSize(new java.awt.Dimension(100, 50));"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="com.mycompany.resumebuilder.JTextFieldPlaceHolder" name="jTextFieldPlaceHolderDescription">
+          <Properties>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[100, 50]"/>
+            </Property>
+            <Property name="placeHolder" type="java.lang.String" value="Description"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPlaceHolderDescriptionActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
     <Component class="javax.swing.JLabel" name="emptyPlaceholder">
     </Component>
     <Component class="javax.swing.JButton" name="deleteProject">

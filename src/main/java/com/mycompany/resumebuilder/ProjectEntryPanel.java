@@ -41,79 +41,86 @@ public class ProjectEntryPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jTextFieldPlaceHolderURL = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
         jLabel4 = new javax.swing.JLabel();
-        jTextFieldPlaceHolderDescription = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
-        emptyPlaceholder = new javax.swing.JLabel();
-        deleteProject = new javax.swing.JButton();
+        jScrollPaneDescription = new javax.swing.JScrollPane(javax.swing.JScrollPane.VERTICAL_SCROLLBAR_NEVER, javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
+    jTextFieldPlaceHolderDescription = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+    emptyPlaceholder = new javax.swing.JLabel();
+    deleteProject = new javax.swing.JButton();
 
-        jButton1.setText("jButton1");
+    jButton1.setText("jButton1");
 
-        setMinimumSize(new java.awt.Dimension(400, 143));
-        setLayout(new java.awt.GridLayout(7, 2, 0, 10));
+    setMinimumSize(new java.awt.Dimension(400, 143));
+    setLayout(new java.awt.GridLayout(7, 2, 0, 10));
 
-        jLabel1.setText("Name of project*");
-        add(jLabel1);
+    jLabel1.setText("Name of project*");
+    add(jLabel1);
 
-        jTextFieldPlaceHolderProjectName.setPlaceHolder("Project name");
-        jTextFieldPlaceHolderProjectName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPlaceHolderProjectNameActionPerformed(evt);
-            }
-        });
-        add(jTextFieldPlaceHolderProjectName);
+    jTextFieldPlaceHolderProjectName.setPlaceHolder("Project name");
+    jTextFieldPlaceHolderProjectName.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jTextFieldPlaceHolderProjectNameActionPerformed(evt);
+        }
+    });
+    add(jTextFieldPlaceHolderProjectName);
 
-        jLabel2.setText("Programming languages/frameworks*");
-        add(jLabel2);
+    jLabel2.setText("Programming languages/frameworks*");
+    add(jLabel2);
 
-        jTextFieldPlaceHolderProgrammingLanguages.setPlaceHolder("Programming languages");
-        jTextFieldPlaceHolderProgrammingLanguages.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPlaceHolderProgrammingLanguagesActionPerformed(evt);
-            }
-        });
-        add(jTextFieldPlaceHolderProgrammingLanguages);
+    jTextFieldPlaceHolderProgrammingLanguages.setPlaceHolder("Programming languages");
+    jTextFieldPlaceHolderProgrammingLanguages.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jTextFieldPlaceHolderProgrammingLanguagesActionPerformed(evt);
+        }
+    });
+    add(jTextFieldPlaceHolderProgrammingLanguages);
 
-        jLabel3.setText("Date*");
-        add(jLabel3);
+    jLabel3.setText("Date*");
+    add(jLabel3);
 
-        jTextFieldPlaceHolderDate.setPlaceHolder("Date");
-        jTextFieldPlaceHolderDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPlaceHolderDateActionPerformed(evt);
-            }
-        });
-        add(jTextFieldPlaceHolderDate);
+    jTextFieldPlaceHolderDate.setPlaceHolder("Date");
+    jTextFieldPlaceHolderDate.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jTextFieldPlaceHolderDateActionPerformed(evt);
+        }
+    });
+    add(jTextFieldPlaceHolderDate);
 
-        jLabel6.setText("URL");
-        add(jLabel6);
+    jLabel6.setText("URL");
+    add(jLabel6);
 
-        jTextFieldPlaceHolderURL.setPlaceHolder("URL");
-        jTextFieldPlaceHolderURL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPlaceHolderURLActionPerformed(evt);
-            }
-        });
-        add(jTextFieldPlaceHolderURL);
+    jTextFieldPlaceHolderURL.setPlaceHolder("URL");
+    jTextFieldPlaceHolderURL.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jTextFieldPlaceHolderURLActionPerformed(evt);
+        }
+    });
+    add(jTextFieldPlaceHolderURL);
 
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
-        jLabel4.setText("Description (write ** between each bullet point)");
-        add(jLabel4);
+    jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
+    jLabel4.setText("Description (write ** between each bullet point)");
+    add(jLabel4);
 
-        jTextFieldPlaceHolderDescription.setPlaceHolder("Description");
-        jTextFieldPlaceHolderDescription.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPlaceHolderDescriptionActionPerformed(evt);
-            }
-        });
-        add(jTextFieldPlaceHolderDescription);
-        add(emptyPlaceholder);
+    jScrollPaneDescription.setMaximumSize(new java.awt.Dimension(400, 200));
+    jScrollPaneDescription.setPreferredSize(new java.awt.Dimension(100, 50));
 
-        deleteProject.setText("Delete project");
-        deleteProject.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteProjectActionPerformed(evt);
-            }
-        });
-        add(deleteProject);
+    jTextFieldPlaceHolderDescription.setMaximumSize(new java.awt.Dimension(100, 50));
+    jTextFieldPlaceHolderDescription.setPlaceHolder("Description");
+    jTextFieldPlaceHolderDescription.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jTextFieldPlaceHolderDescriptionActionPerformed(evt);
+        }
+    });
+    jScrollPaneDescription.setViewportView(jTextFieldPlaceHolderDescription);
+
+    add(jScrollPaneDescription);
+    add(emptyPlaceholder);
+
+    deleteProject.setText("Delete project");
+    deleteProject.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            deleteProjectActionPerformed(evt);
+        }
+    });
+    add(deleteProject);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldPlaceHolderProjectNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPlaceHolderProjectNameActionPerformed
@@ -185,6 +192,7 @@ public class ProjectEntryPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPaneDescription;
     private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderDate;
     private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderDescription;
     private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderProgrammingLanguages;

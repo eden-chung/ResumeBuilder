@@ -43,6 +43,7 @@ public class WorkEntryPanel extends javax.swing.JPanel {
         emptyPlaceholder1 = new javax.swing.JLabel();
         jobCheckBox = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
+        jScrollPaneDescription = new javax.swing.JScrollPane(javax.swing.JScrollPane.VERTICAL_SCROLLBAR_NEVER, javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         jTextFieldPlaceHolderDescription = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
         emptyPlaceholder = new javax.swing.JLabel();
         deleteAchievement = new javax.swing.JButton();
@@ -50,7 +51,7 @@ public class WorkEntryPanel extends javax.swing.JPanel {
         jButton1.setText("jButton1");
 
         setMinimumSize(new java.awt.Dimension(400, 143));
-        setLayout(new java.awt.GridLayout(7, 2, 0, 10));
+        setLayout(new java.awt.GridLayout(8, 2, 0, 10));
 
         jLabel1.setText("Name of employer*");
         add(jLabel1);
@@ -109,13 +110,19 @@ public class WorkEntryPanel extends javax.swing.JPanel {
         jLabel4.setText("Description (write ** between each bullet point)");
         add(jLabel4);
 
+        jScrollPaneDescription.setMaximumSize(new java.awt.Dimension(400, 200));
+        jScrollPaneDescription.setPreferredSize(new java.awt.Dimension(100, 50));
+
+        jTextFieldPlaceHolderDescription.setMaximumSize(new java.awt.Dimension(100, 50));
         jTextFieldPlaceHolderDescription.setPlaceHolder("Description");
         jTextFieldPlaceHolderDescription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPlaceHolderDescriptionActionPerformed(evt);
             }
         });
-        add(jTextFieldPlaceHolderDescription);
+        jScrollPaneDescription.setViewportView(jTextFieldPlaceHolderDescription);
+
+        add(jScrollPaneDescription);
         add(emptyPlaceholder);
 
         deleteAchievement.setText("Delete experience");
@@ -212,6 +219,7 @@ public class WorkEntryPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPaneDescription;
     private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderDescription;
     private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderEmployer;
     private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderEndDate;

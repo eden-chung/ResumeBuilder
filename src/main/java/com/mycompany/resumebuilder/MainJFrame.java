@@ -38,6 +38,11 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
         
+        int unitIncrement = 20; // Set the unit increment to 20 pixels
+        int blockIncrement = 100; // Set the block increment to 100 pixels
+        WorkScrollPane.getVerticalScrollBar().setUnitIncrement(unitIncrement);
+        WorkScrollPane.getVerticalScrollBar().setBlockIncrement(blockIncrement);
+        
     }
 
     /**
