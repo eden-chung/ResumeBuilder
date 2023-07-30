@@ -203,6 +203,37 @@ public class CompileLatex {
         }
     }
     
+    public void resetProjects() {
+        try {
+            String content = new String(Files.readAllBytes(Paths.get(RESUME_PATH)));
+
+            String startSymbol = "%StartProjects**";
+            String endSymbol = "%EndProjects**";
+            
+            String achievementsTemplate = "%StartProjects**\n" +
+                "%{projects}\n" +
+                "%EndProjects**";
+
+            int startIndex = content.indexOf(startSymbol);
+            int endIndex = content.indexOf(endSymbol);
+
+            if (startIndex != -1 && endIndex != -1) {
+                String template = content.substring(0, startIndex) + achievementsTemplate + content.substring(endIndex + endSymbol.length());
+
+                try {
+                    Files.write(Paths.get(RESUME_PATH), template.getBytes());
+                    System.out.println("Projects reset successfully.");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("Start or End symbol not found. Projects not reset.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     
 
 
@@ -310,7 +341,7 @@ public class CompileLatex {
                 String description = workArray[i][4];
                 
                 
-                fullWorkString += "{\\textbf{" + employer + "}" + "$\\vert$ " + role + "} \\hfill " + startDate + " - " + endDate + " \\\\";
+                fullWorkString += "{\\textbf{" + employer + "} " + "$\\vert$ " + role + "} \\hfill " + startDate + " - " + endDate + " \\\\";
                 
                 
                 if (description != null && !description.equals("")) {
@@ -320,8 +351,7 @@ public class CompileLatex {
                     String[] bulletPoints = description.split("\\*\\*");
                     
                     for (String bullet : bulletPoints) {
-                        System.out.println(bullet);
-                        fullWorkString += "\\item " + bullet + "\n";
+                        fullWorkString += "\\item " + bullet + "\n" + "\\vspace{-0.4em}\n";
                     }
                     
                     fullWorkString += "\\end{itemize}\n";
@@ -341,7 +371,54 @@ public class CompileLatex {
             e.printStackTrace();
         }
     }
+    
+    public void addProjectInfo(String[][] projectArray) {
+        try {
+            String templateContent = new String(Files.readAllBytes(Paths.get(RESUME_PATH)));
+            
+            String fullProjectString = "\\begin{rSection}{Projects}\n";
+            
+            for (int i = 0; i < projectArray.length; i++) {
+                String name = projectArray[i][0];
+                String programmingLanguages = projectArray[i][1];
+                String date = projectArray[i][2];
+                String url = projectArray[i][3];
+                String description = projectArray[i][4];
+                
+                if (url != null && !url.equals("")) {
+                   fullProjectString += "{\\textbf{\\href{" + url + "}{\\underline{" + name + "}} $\\vert$ " + programmingLanguages + "}} \\hfill " + date + " \\\\ \n";
+                } else {
+                    fullProjectString +="{\\textbf{" + name + "} $\\vert$ " + programmingLanguages + "} \\hfill " + date + " \\\\ \n";
+                }
+                                    
+                
+                if (description != null && !description.equals("")) {
+                    fullProjectString += "\\vspace{-1.5em}\n" +
+                    "\\begin{itemize}\n";
 
+                    String[] bulletPoints = description.split("\\*\\*");
+                    
+                    for (String bullet : bulletPoints) {
+                        fullProjectString += "\\item " + bullet + "\n" + "\\vspace{-0.4em}\n";
+                    }
+                    
+                    fullProjectString += "\\end{itemize}\n";
+                    
+                }
+                
+            }
+            
+            fullProjectString += "\\end{rSection}";
+            
+            String resumeContent = templateContent.replace("%{projects}", fullProjectString);
+
+                     
+            // Save the modified content back to the .tex file
+            Files.write(Paths.get(RESUME_PATH), resumeContent.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     public void addAchievementInfo(String[][] achievementInfoArray) {
         try {

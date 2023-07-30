@@ -106,7 +106,7 @@ public class WorkEntryPanel extends javax.swing.JPanel {
         add(jobCheckBox);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
-        jLabel4.setText("Description (write \\n between each bullet point)");
+        jLabel4.setText("Description (write ** between each bullet point)");
         add(jLabel4);
 
         jTextFieldPlaceHolderDescription.setPlaceHolder("Description");

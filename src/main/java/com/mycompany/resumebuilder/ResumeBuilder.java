@@ -37,7 +37,6 @@ public class ResumeBuilder implements MainJFrame.InputListener {
         latex.resetSkills();
         latex.addSkillsInfo(languages, programming, softwares, certifications);
         latex.compileFile();
-
     }
     
     public void onInputSubmittedAchievements(String[][] achievementInfoArray) {
@@ -49,6 +48,12 @@ public class ResumeBuilder implements MainJFrame.InputListener {
     public void onInputSubmittedWork(String[][] workArray) {
         latex.resetWork();
         latex.addWorkInfo(workArray);
+        latex.compileFile();
+    }
+    
+    public void onInputSubmittedProjects(String[][] projectArray) {
+        latex.resetProjects();
+        latex.addProjectInfo(projectArray);
         latex.compileFile();
     }
     

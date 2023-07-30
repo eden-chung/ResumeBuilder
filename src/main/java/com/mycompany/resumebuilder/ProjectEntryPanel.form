@@ -34,64 +34,54 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Name of employer*"/>
+        <Property name="text" type="java.lang.String" value="Name of project*"/>
       </Properties>
     </Component>
-    <Component class="com.mycompany.resumebuilder.JTextFieldPlaceHolder" name="jTextFieldPlaceHolderEmployer">
+    <Component class="com.mycompany.resumebuilder.JTextFieldPlaceHolder" name="jTextFieldPlaceHolderProjectName">
       <Properties>
-        <Property name="placeHolder" type="java.lang.String" value="Employer"/>
+        <Property name="placeHolder" type="java.lang.String" value="Project name"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPlaceHolderEmployerActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPlaceHolderProjectNameActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Role*"/>
+        <Property name="text" type="java.lang.String" value="Programming languages/frameworks*"/>
       </Properties>
     </Component>
-    <Component class="com.mycompany.resumebuilder.JTextFieldPlaceHolder" name="jTextFieldPlaceHolderRole">
+    <Component class="com.mycompany.resumebuilder.JTextFieldPlaceHolder" name="jTextFieldPlaceHolderProgrammingLanguages">
       <Properties>
-        <Property name="placeHolder" type="java.lang.String" value="Role"/>
+        <Property name="placeHolder" type="java.lang.String" value="Programming languages"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPlaceHolderRoleActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPlaceHolderProgrammingLanguagesActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Start date*"/>
+        <Property name="text" type="java.lang.String" value="Date*"/>
       </Properties>
     </Component>
-    <Component class="com.mycompany.resumebuilder.JTextFieldPlaceHolder" name="jTextFieldPlaceHolderStartDate">
+    <Component class="com.mycompany.resumebuilder.JTextFieldPlaceHolder" name="jTextFieldPlaceHolderDate">
       <Properties>
-        <Property name="placeHolder" type="java.lang.String" value="Start date"/>
+        <Property name="placeHolder" type="java.lang.String" value="Date"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPlaceHolderStartDateActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPlaceHolderDateActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="End date"/>
+        <Property name="text" type="java.lang.String" value="URL"/>
       </Properties>
     </Component>
-    <Component class="com.mycompany.resumebuilder.JTextFieldPlaceHolder" name="jTextFieldPlaceHolderEndDate">
+    <Component class="com.mycompany.resumebuilder.JTextFieldPlaceHolder" name="jTextFieldPlaceHolderURL">
       <Properties>
-        <Property name="placeHolder" type="java.lang.String" value="End date"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPlaceHolderEndDateActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="emptyPlaceholder1">
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jobCheckBox">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Current job"/>
+        <Property name="placeHolder" type="java.lang.String" value="URL"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jobCheckBoxActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPlaceHolderURLActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -112,12 +102,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="emptyPlaceholder">
     </Component>
-    <Component class="javax.swing.JButton" name="deleteAchievement">
+    <Component class="javax.swing.JButton" name="deleteProject">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Delete experience"/>
+        <Property name="text" type="java.lang.String" value="Delete project"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteAchievementActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteProjectActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
