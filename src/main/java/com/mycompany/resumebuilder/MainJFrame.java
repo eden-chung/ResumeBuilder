@@ -33,9 +33,9 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jTabbedPane = new javax.swing.JTabbedPane();
         PersonalInformationPanel = new javax.swing.JPanel();
-        TitleContainer = new javax.swing.JPanel();
+        TitleContainerPersonal = new javax.swing.JPanel();
         personalInfoLabel = new javax.swing.JLabel();
-        GridContainer = new javax.swing.JPanel();
+        GridContainerPersonal = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldPlaceHolderName = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
         jLabel4 = new javax.swing.JLabel();
@@ -48,39 +48,48 @@ public class MainJFrame extends javax.swing.JFrame {
         jTextFieldPlaceHolderLinkedin = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
         jLabel8 = new javax.swing.JLabel();
         jTextFieldPlaceHolderGithub = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
-        ButtonContainer = new javax.swing.JPanel();
+        ButtonContainerPersonal = new javax.swing.JPanel();
         nextButtonPersonal = new javax.swing.JButton();
         EducationPanel = new javax.swing.JPanel();
-        nextButtonEducation = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
+        TitleContainerEducation = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
+        GridContainerEducation = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
         jTextFieldPlaceHolderUniversity = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jLabel19 = new javax.swing.JLabel();
         jTextFieldPlaceHolderUnidate = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
-        jTextFieldPlaceHolderGPA = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
-        jTextFieldPlaceHolderFieldStudy = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jLabel20 = new javax.swing.JLabel();
         jTextFieldPlaceHolderDegree = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
-        jTextFieldPlaceHolderCoursework = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jLabel21 = new javax.swing.JLabel();
+        jTextFieldPlaceHolderFieldStudy = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jLabel25 = new javax.swing.JLabel();
         jTextFieldPlaceHolderFieldStudy2 = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jLabel26 = new javax.swing.JLabel();
         jTextFieldPlaceHolderMinor = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jLabel22 = new javax.swing.JLabel();
+        jTextFieldPlaceHolderGPA = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jLabel23 = new javax.swing.JLabel();
+        jTextFieldPlaceHolderCoursework = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        ButtonContainerEducation = new javax.swing.JPanel();
+        nextButtonEducation = new javax.swing.JButton();
         SkillsPanel = new javax.swing.JPanel();
-        nextButtonSkills = new javax.swing.JButton();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
+        TitleContainerSkills = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
+        GridContainerSkills = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
         jTextFieldPlaceHolderLanguages = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jLabel27 = new javax.swing.JLabel();
         jTextFieldPlaceHolderProgramming = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
-        jTextFieldPlaceHolderCertifications = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jLabel28 = new javax.swing.JLabel();
         jTextFieldPlaceHolderSoftwares = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jLabel29 = new javax.swing.JLabel();
+        jTextFieldPlaceHolderCertifications = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        ButtonContainerSkills = new javax.swing.JPanel();
+        nextButtonSkills = new javax.swing.JButton();
+        WorkScrollPane = new javax.swing.JScrollPane();
         WorkPanel = new javax.swing.JPanel();
+        addWorkButton = new javax.swing.JButton();
+        nextButtonWork = new javax.swing.JButton();
         AchievementsScrollPane = new javax.swing.JScrollPane();
         AchievementsPanel = new javax.swing.JPanel();
         addAchievementButton = new javax.swing.JButton();
@@ -93,64 +102,64 @@ public class MainJFrame extends javax.swing.JFrame {
 
         personalInfoLabel.setText("Personal Information Section");
 
-        javax.swing.GroupLayout TitleContainerLayout = new javax.swing.GroupLayout(TitleContainer);
-        TitleContainer.setLayout(TitleContainerLayout);
-        TitleContainerLayout.setHorizontalGroup(
-            TitleContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TitleContainerLayout.createSequentialGroup()
-                .addContainerGap(144, Short.MAX_VALUE)
+        javax.swing.GroupLayout TitleContainerPersonalLayout = new javax.swing.GroupLayout(TitleContainerPersonal);
+        TitleContainerPersonal.setLayout(TitleContainerPersonalLayout);
+        TitleContainerPersonalLayout.setHorizontalGroup(
+            TitleContainerPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TitleContainerPersonalLayout.createSequentialGroup()
+                .addContainerGap(153, Short.MAX_VALUE)
                 .addComponent(personalInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(205, 205, 205))
+                .addGap(196, 196, 196))
         );
-        TitleContainerLayout.setVerticalGroup(
-            TitleContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TitleContainerLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(personalInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+        TitleContainerPersonalLayout.setVerticalGroup(
+            TitleContainerPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TitleContainerPersonalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(personalInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        PersonalInformationPanel.add(TitleContainer);
+        PersonalInformationPanel.add(TitleContainerPersonal);
 
-        GridContainer.setLayout(new java.awt.GridLayout(7, 2, 10, 15));
+        GridContainerPersonal.setLayout(new java.awt.GridLayout(7, 2, 10, 15));
 
         jLabel1.setText("Enter your name*");
-        GridContainer.add(jLabel1);
+        GridContainerPersonal.add(jLabel1);
 
         jTextFieldPlaceHolderName.setPlaceHolder("Name");
-        GridContainer.add(jTextFieldPlaceHolderName);
+        GridContainerPersonal.add(jTextFieldPlaceHolderName);
 
         jLabel4.setText("Enter your location*");
-        GridContainer.add(jLabel4);
+        GridContainerPersonal.add(jLabel4);
 
         jTextFieldPlaceHolderLocation.setPlaceHolder("Location");
-        GridContainer.add(jTextFieldPlaceHolderLocation);
+        GridContainerPersonal.add(jTextFieldPlaceHolderLocation);
 
         jLabel5.setText("Enter your phone number*");
-        GridContainer.add(jLabel5);
+        GridContainerPersonal.add(jLabel5);
 
         jTextFieldPlaceHolderPhone.setPlaceHolder("Phone number");
-        GridContainer.add(jTextFieldPlaceHolderPhone);
+        GridContainerPersonal.add(jTextFieldPlaceHolderPhone);
 
         jLabel6.setText("Enter your email*");
-        GridContainer.add(jLabel6);
+        GridContainerPersonal.add(jLabel6);
 
         jTextFieldPlaceHolderEmail.setPlaceHolder("Email");
-        GridContainer.add(jTextFieldPlaceHolderEmail);
+        GridContainerPersonal.add(jTextFieldPlaceHolderEmail);
 
         jLabel7.setText("Enter your LinkedIn*");
-        GridContainer.add(jLabel7);
+        GridContainerPersonal.add(jLabel7);
 
         jTextFieldPlaceHolderLinkedin.setPlaceHolder("LinkedIn");
-        GridContainer.add(jTextFieldPlaceHolderLinkedin);
+        GridContainerPersonal.add(jTextFieldPlaceHolderLinkedin);
 
         jLabel8.setText("Enter your GitHub");
-        GridContainer.add(jLabel8);
+        GridContainerPersonal.add(jLabel8);
 
         jTextFieldPlaceHolderGithub.setPlaceHolder("GitHub");
-        GridContainer.add(jTextFieldPlaceHolderGithub);
+        GridContainerPersonal.add(jTextFieldPlaceHolderGithub);
 
-        PersonalInformationPanel.add(GridContainer);
+        PersonalInformationPanel.add(GridContainerPersonal);
 
         nextButtonPersonal.setText("Next");
         nextButtonPersonal.addActionListener(new java.awt.event.ActionListener() {
@@ -159,26 +168,101 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout ButtonContainerLayout = new javax.swing.GroupLayout(ButtonContainer);
-        ButtonContainer.setLayout(ButtonContainerLayout);
-        ButtonContainerLayout.setHorizontalGroup(
-            ButtonContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ButtonContainerLayout.createSequentialGroup()
-                .addGap(223, 223, 223)
-                .addComponent(nextButtonPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE))
+        javax.swing.GroupLayout ButtonContainerPersonalLayout = new javax.swing.GroupLayout(ButtonContainerPersonal);
+        ButtonContainerPersonal.setLayout(ButtonContainerPersonalLayout);
+        ButtonContainerPersonalLayout.setHorizontalGroup(
+            ButtonContainerPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonContainerPersonalLayout.createSequentialGroup()
+                .addContainerGap(204, Short.MAX_VALUE)
+                .addComponent(nextButtonPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(253, 253, 253))
         );
-        ButtonContainerLayout.setVerticalGroup(
-            ButtonContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ButtonContainerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(nextButtonPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        ButtonContainerPersonalLayout.setVerticalGroup(
+            ButtonContainerPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ButtonContainerPersonalLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(nextButtonPersonal)
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        PersonalInformationPanel.add(ButtonContainer);
+        PersonalInformationPanel.add(ButtonContainerPersonal);
 
         jTabbedPane.addTab("Personal Information", PersonalInformationPanel);
+
+        EducationPanel.setLayout(new javax.swing.BoxLayout(EducationPanel, javax.swing.BoxLayout.Y_AXIS));
+
+        jLabel24.setText("Education Section");
+
+        javax.swing.GroupLayout TitleContainerEducationLayout = new javax.swing.GroupLayout(TitleContainerEducation);
+        TitleContainerEducation.setLayout(TitleContainerEducationLayout);
+        TitleContainerEducationLayout.setHorizontalGroup(
+            TitleContainerEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TitleContainerEducationLayout.createSequentialGroup()
+                .addGap(238, 238, 238)
+                .addComponent(jLabel24)
+                .addContainerGap(199, Short.MAX_VALUE))
+        );
+        TitleContainerEducationLayout.setVerticalGroup(
+            TitleContainerEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TitleContainerEducationLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel24)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+
+        EducationPanel.add(TitleContainerEducation);
+
+        GridContainerEducation.setLayout(new java.awt.GridLayout(8, 2, 10, 15));
+
+        jLabel17.setText("University name*");
+        GridContainerEducation.add(jLabel17);
+
+        jTextFieldPlaceHolderUniversity.setPlaceHolder("University");
+        GridContainerEducation.add(jTextFieldPlaceHolderUniversity);
+
+        jLabel19.setText("Date of graduation*");
+        GridContainerEducation.add(jLabel19);
+
+        jTextFieldPlaceHolderUnidate.setPlaceHolder("Date");
+        GridContainerEducation.add(jTextFieldPlaceHolderUnidate);
+
+        jLabel20.setText("Type of degree*");
+        GridContainerEducation.add(jLabel20);
+
+        jTextFieldPlaceHolderDegree.setPlaceHolder("Degree");
+        GridContainerEducation.add(jTextFieldPlaceHolderDegree);
+
+        jLabel21.setText("Field of study*");
+        GridContainerEducation.add(jLabel21);
+
+        jTextFieldPlaceHolderFieldStudy.setPlaceHolder("Field of study");
+        GridContainerEducation.add(jTextFieldPlaceHolderFieldStudy);
+
+        jLabel25.setText("Secondary field of study");
+        GridContainerEducation.add(jLabel25);
+
+        jTextFieldPlaceHolderFieldStudy2.setPlaceHolder("Secondary field of study");
+        GridContainerEducation.add(jTextFieldPlaceHolderFieldStudy2);
+
+        jLabel26.setText("Minor");
+        GridContainerEducation.add(jLabel26);
+
+        jTextFieldPlaceHolderMinor.setPlaceHolder("Minor");
+        GridContainerEducation.add(jTextFieldPlaceHolderMinor);
+
+        jLabel22.setText("GPA*");
+        GridContainerEducation.add(jLabel22);
+
+        jTextFieldPlaceHolderGPA.setPlaceHolder("GPA");
+        GridContainerEducation.add(jTextFieldPlaceHolderGPA);
+
+        jLabel23.setText("Relevant coursework");
+        GridContainerEducation.add(jLabel23);
+
+        jTextFieldPlaceHolderCoursework.setPlaceHolder("Relevant coursework");
+        GridContainerEducation.add(jTextFieldPlaceHolderCoursework);
+
+        EducationPanel.add(GridContainerEducation);
 
         nextButtonEducation.setText("Next");
         nextButtonEducation.addActionListener(new java.awt.event.ActionListener() {
@@ -187,149 +271,87 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel17.setText("University name*");
-
-        jLabel19.setText("Date of graduation*");
-
-        jLabel20.setText("Type of degree*");
-
-        jLabel21.setText("Field of study*");
-
-        jLabel22.setText("GPA*");
-
-        jLabel23.setText("Relevant coursework");
-
-        jLabel24.setText("Education Section");
-
-        jLabel25.setText("Secondary field of study");
-
-        jLabel26.setText("Minor");
-
-        jTextFieldPlaceHolderUniversity.setPlaceHolder("University");
-
-        jTextFieldPlaceHolderUnidate.setPlaceHolder("Date");
-
-        jTextFieldPlaceHolderGPA.setPlaceHolder("GPA");
-
-        jTextFieldPlaceHolderFieldStudy.setPlaceHolder("Field of study");
-
-        jTextFieldPlaceHolderDegree.setPlaceHolder("Degree");
-
-        jTextFieldPlaceHolderCoursework.setPlaceHolder("Relevant coursework");
-
-        jTextFieldPlaceHolderFieldStudy2.setPlaceHolder("Secondary field of study");
-
-        jTextFieldPlaceHolderMinor.setPlaceHolder("Minor");
-
-        javax.swing.GroupLayout EducationPanelLayout = new javax.swing.GroupLayout(EducationPanel);
-        EducationPanel.setLayout(EducationPanelLayout);
-        EducationPanelLayout.setHorizontalGroup(
-            EducationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EducationPanelLayout.createSequentialGroup()
-                .addGroup(EducationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(EducationPanelLayout.createSequentialGroup()
-                        .addGap(205, 205, 205)
-                        .addComponent(jLabel24))
-                    .addGroup(EducationPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel17)
-                        .addGap(108, 108, 108)
-                        .addComponent(jTextFieldPlaceHolderUniversity, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(EducationPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel19)
-                        .addGap(95, 95, 95)
-                        .addComponent(jTextFieldPlaceHolderUnidate, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(EducationPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(jTextFieldPlaceHolderDegree, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(EducationPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel21)
-                        .addGap(122, 122, 122)
-                        .addComponent(jTextFieldPlaceHolderFieldStudy, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(EducationPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(jTextFieldPlaceHolderFieldStudy2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(EducationPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(jTextFieldPlaceHolderMinor, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(EducationPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel22)
-                        .addGap(176, 176, 176)
-                        .addComponent(jTextFieldPlaceHolderGPA, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(EducationPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel23)
-                        .addGap(85, 85, 85)
-                        .addComponent(jTextFieldPlaceHolderCoursework, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(187, 187, 187))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EducationPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout ButtonContainerEducationLayout = new javax.swing.GroupLayout(ButtonContainerEducation);
+        ButtonContainerEducation.setLayout(ButtonContainerEducationLayout);
+        ButtonContainerEducationLayout.setHorizontalGroup(
+            ButtonContainerEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ButtonContainerEducationLayout.createSequentialGroup()
+                .addGap(253, 253, 253)
                 .addComponent(nextButtonEducation)
-                .addGap(239, 239, 239))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
-        EducationPanelLayout.setVerticalGroup(
-            EducationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EducationPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel24)
-                .addGap(26, 26, 26)
-                .addGroup(EducationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(EducationPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel17))
-                    .addComponent(jTextFieldPlaceHolderUniversity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(EducationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(EducationPanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel19))
-                    .addComponent(jTextFieldPlaceHolderUnidate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(EducationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(EducationPanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel20))
-                    .addComponent(jTextFieldPlaceHolderDegree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(EducationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(EducationPanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel21))
-                    .addComponent(jTextFieldPlaceHolderFieldStudy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(EducationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(EducationPanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel25))
-                    .addComponent(jTextFieldPlaceHolderFieldStudy2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(EducationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(EducationPanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel26))
-                    .addComponent(jTextFieldPlaceHolderMinor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(EducationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel22)
-                    .addComponent(jTextFieldPlaceHolderGPA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(EducationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel23)
-                    .addComponent(jTextFieldPlaceHolderCoursework, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+        ButtonContainerEducationLayout.setVerticalGroup(
+            ButtonContainerEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonContainerEducationLayout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addComponent(nextButtonEducation)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
+
+        EducationPanel.add(ButtonContainerEducation);
 
         jTabbedPane.addTab("Education", EducationPanel);
+
+        SkillsPanel.setLayout(new javax.swing.BoxLayout(SkillsPanel, javax.swing.BoxLayout.Y_AXIS));
+
+        jLabel32.setText("Skills Section");
+
+        javax.swing.GroupLayout TitleContainerSkillsLayout = new javax.swing.GroupLayout(TitleContainerSkills);
+        TitleContainerSkills.setLayout(TitleContainerSkillsLayout);
+        TitleContainerSkillsLayout.setHorizontalGroup(
+            TitleContainerSkillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TitleContainerSkillsLayout.createSequentialGroup()
+                .addGap(258, 258, 258)
+                .addComponent(jLabel32)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        TitleContainerSkillsLayout.setVerticalGroup(
+            TitleContainerSkillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TitleContainerSkillsLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel32)
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+
+        SkillsPanel.add(TitleContainerSkills);
+
+        GridContainerSkills.setLayout(new java.awt.GridLayout(4, 2, 10, 15));
+
+        jLabel18.setText("Languages*");
+        GridContainerSkills.add(jLabel18);
+
+        jTextFieldPlaceHolderLanguages.setPlaceHolder("Languages");
+        jTextFieldPlaceHolderLanguages.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPlaceHolderLanguagesActionPerformed(evt);
+            }
+        });
+        GridContainerSkills.add(jTextFieldPlaceHolderLanguages);
+
+        jLabel27.setText("Programming languages");
+        GridContainerSkills.add(jLabel27);
+
+        jTextFieldPlaceHolderProgramming.setPlaceHolder("Programming languages");
+        GridContainerSkills.add(jTextFieldPlaceHolderProgramming);
+
+        jLabel28.setText("Softwares");
+        GridContainerSkills.add(jLabel28);
+
+        jTextFieldPlaceHolderSoftwares.setPlaceHolder("Softwares");
+        GridContainerSkills.add(jTextFieldPlaceHolderSoftwares);
+
+        jLabel29.setText("Certifications");
+        GridContainerSkills.add(jLabel29);
+
+        jTextFieldPlaceHolderCertifications.setPlaceHolder("Certifications");
+        jTextFieldPlaceHolderCertifications.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPlaceHolderCertificationsActionPerformed(evt);
+            }
+        });
+        GridContainerSkills.add(jTextFieldPlaceHolderCertifications);
+
+        SkillsPanel.add(GridContainerSkills);
 
         nextButtonSkills.setText("Next");
         nextButtonSkills.addActionListener(new java.awt.event.ActionListener() {
@@ -338,111 +360,48 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel18.setText("Languages*");
-
-        jLabel27.setText("Programming languages");
-
-        jLabel28.setText("Softwares");
-
-        jLabel29.setText("Certifications");
-
-        jLabel32.setText("Skills Section");
-
-        jTextFieldPlaceHolderLanguages.setPlaceHolder("Languages");
-        jTextFieldPlaceHolderLanguages.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPlaceHolderLanguagesActionPerformed(evt);
-            }
-        });
-
-        jTextFieldPlaceHolderProgramming.setPlaceHolder("Programming languages");
-
-        jTextFieldPlaceHolderCertifications.setPlaceHolder("Certifications");
-        jTextFieldPlaceHolderCertifications.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPlaceHolderCertificationsActionPerformed(evt);
-            }
-        });
-
-        jTextFieldPlaceHolderSoftwares.setPlaceHolder("Softwares");
-
-        javax.swing.GroupLayout SkillsPanelLayout = new javax.swing.GroupLayout(SkillsPanel);
-        SkillsPanel.setLayout(SkillsPanelLayout);
-        SkillsPanelLayout.setHorizontalGroup(
-            SkillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SkillsPanelLayout.createSequentialGroup()
-                .addGroup(SkillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(SkillsPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(jTextFieldPlaceHolderSoftwares, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(SkillsPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(SkillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel27)
-                            .addComponent(jLabel18))
-                        .addGap(68, 68, 68)
-                        .addGroup(SkillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldPlaceHolderLanguages, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldPlaceHolderProgramming, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(SkillsPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel29)
-                        .addGap(131, 131, 131)
-                        .addComponent(jTextFieldPlaceHolderCertifications, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(SkillsPanelLayout.createSequentialGroup()
-                        .addGap(245, 245, 245)
-                        .addComponent(nextButtonSkills))
-                    .addGroup(SkillsPanelLayout.createSequentialGroup()
-                        .addGap(257, 257, 257)
-                        .addComponent(jLabel32)))
-                .addGap(214, 214, 214))
-        );
-        SkillsPanelLayout.setVerticalGroup(
-            SkillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SkillsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel32)
-                .addGap(29, 29, 29)
-                .addGroup(SkillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(jTextFieldPlaceHolderLanguages, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(SkillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel27)
-                    .addComponent(jTextFieldPlaceHolderProgramming, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(SkillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(SkillsPanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel28))
-                    .addComponent(jTextFieldPlaceHolderSoftwares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(SkillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(SkillsPanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel29))
-                    .addComponent(jTextFieldPlaceHolderCertifications, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(122, 122, 122)
+        javax.swing.GroupLayout ButtonContainerSkillsLayout = new javax.swing.GroupLayout(ButtonContainerSkills);
+        ButtonContainerSkills.setLayout(ButtonContainerSkillsLayout);
+        ButtonContainerSkillsLayout.setHorizontalGroup(
+            ButtonContainerSkillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ButtonContainerSkillsLayout.createSequentialGroup()
+                .addGap(261, 261, 261)
                 .addComponent(nextButtonSkills)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+        ButtonContainerSkillsLayout.setVerticalGroup(
+            ButtonContainerSkillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ButtonContainerSkillsLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(nextButtonSkills)
+                .addContainerGap(127, Short.MAX_VALUE))
+        );
+
+        SkillsPanel.add(ButtonContainerSkills);
 
         jTabbedPane.addTab("Skills", SkillsPanel);
 
-        javax.swing.GroupLayout WorkPanelLayout = new javax.swing.GroupLayout(WorkPanel);
-        WorkPanel.setLayout(WorkPanelLayout);
-        WorkPanelLayout.setHorizontalGroup(
-            WorkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
-        );
-        WorkPanelLayout.setVerticalGroup(
-            WorkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 419, Short.MAX_VALUE)
-        );
+        WorkPanel.setLayout(new javax.swing.BoxLayout(WorkPanel, javax.swing.BoxLayout.Y_AXIS));
 
-        jTabbedPane.addTab("Work Experience", WorkPanel);
+        addWorkButton.setText("Add new work experience");
+        addWorkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addWorkButtonActionPerformed(evt);
+            }
+        });
+        WorkPanel.add(addWorkButton);
+
+        nextButtonWork.setText("Submit");
+        nextButtonWork.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextButtonWorkActionPerformed(evt);
+            }
+        });
+        WorkPanel.add(nextButtonWork);
+
+        WorkScrollPane.setViewportView(WorkPanel);
+
+        jTabbedPane.addTab("Work Experience", WorkScrollPane);
 
         AchievementsPanel.setLayout(new javax.swing.BoxLayout(AchievementsPanel, javax.swing.BoxLayout.Y_AXIS));
 
@@ -530,6 +489,21 @@ public class MainJFrame extends javax.swing.JFrame {
     private void submitButtonAchievementsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonAchievementsActionPerformed
         submitAchievements();
     }//GEN-LAST:event_submitButtonAchievementsActionPerformed
+
+    private void addWorkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addWorkButtonActionPerformed
+        WorkEntryPanel indivWorkPanel = new WorkEntryPanel();
+        workPanelsList.add(indivWorkPanel);
+
+        WorkPanel.add(indivWorkPanel);
+        WorkPanel.revalidate();
+        WorkPanel.repaint();
+        this.revalidate();
+        this.repaint();
+    }//GEN-LAST:event_addWorkButtonActionPerformed
+
+    private void nextButtonWorkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonWorkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nextButtonWorkActionPerformed
 
     /**
      * @param args the command line arguments
@@ -684,14 +658,22 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AchievementsPanel;
     private javax.swing.JScrollPane AchievementsScrollPane;
-    private javax.swing.JPanel ButtonContainer;
+    private javax.swing.JPanel ButtonContainerEducation;
+    private javax.swing.JPanel ButtonContainerPersonal;
+    private javax.swing.JPanel ButtonContainerSkills;
     private javax.swing.JPanel EducationPanel;
-    private javax.swing.JPanel GridContainer;
+    private javax.swing.JPanel GridContainerEducation;
+    private javax.swing.JPanel GridContainerPersonal;
+    private javax.swing.JPanel GridContainerSkills;
     private javax.swing.JPanel PersonalInformationPanel;
     private javax.swing.JPanel SkillsPanel;
-    private javax.swing.JPanel TitleContainer;
+    private javax.swing.JPanel TitleContainerEducation;
+    private javax.swing.JPanel TitleContainerPersonal;
+    private javax.swing.JPanel TitleContainerSkills;
     private javax.swing.JPanel WorkPanel;
+    private javax.swing.JScrollPane WorkScrollPane;
     private javax.swing.JButton addAchievementButton;
+    private javax.swing.JButton addWorkButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -734,11 +716,14 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton nextButtonEducation;
     private javax.swing.JButton nextButtonPersonal;
     private javax.swing.JButton nextButtonSkills;
+    private javax.swing.JButton nextButtonWork;
     private javax.swing.JLabel personalInfoLabel;
     private javax.swing.JButton submitButtonAchievements;
     // End of variables declaration//GEN-END:variables
     
     private InputListener inputListener;
     private ArrayList<AchievementEntryPanel> achievementPanelsList = new ArrayList<>();
+    private ArrayList<WorkEntryPanel> workPanelsList = new ArrayList<>();
+
     
 }
