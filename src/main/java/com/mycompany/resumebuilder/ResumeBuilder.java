@@ -46,6 +46,12 @@ public class ResumeBuilder implements MainJFrame.InputListener {
         latex.compileFile();
     }
     
+    public void onInputSubmittedWork(String[][] workArray) {
+        latex.resetWork();
+        latex.addWorkInfo(workArray);
+        latex.compileFile();
+    }
+    
     public static void main(String[] args) {
         
         ResumeBuilder builder = new ResumeBuilder();

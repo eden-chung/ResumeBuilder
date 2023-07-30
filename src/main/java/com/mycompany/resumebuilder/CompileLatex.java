@@ -94,12 +94,12 @@ public class CompileLatex {
 
                 try {
                     Files.write(Paths.get(RESUME_PATH), template.getBytes());
-                    System.out.println("Education info reset successfully.");
+                    System.out.println("Education reset successfully.");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             } else {
-                System.out.println("Start or End symbol not found. Education info not reset.");
+                System.out.println("Start or End symbol not found. Education not reset.");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -129,12 +129,12 @@ public class CompileLatex {
 
                 try {
                     Files.write(Paths.get(RESUME_PATH), template.getBytes());
-                    System.out.println("Education info reset successfully.");
+                    System.out.println("Skills reset successfully.");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             } else {
-                System.out.println("Start or End symbol not found. Education info not reset.");
+                System.out.println("Start or End symbol not found. Skills not reset.");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -160,12 +160,43 @@ public class CompileLatex {
 
                 try {
                     Files.write(Paths.get(RESUME_PATH), template.getBytes());
-                    System.out.println("Personal info reset successfully.");
+                    System.out.println("Achievements reset successfully.");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             } else {
-                System.out.println("Start or End symbol not found. Personal info not reset.");
+                System.out.println("Start or End symbol not found. Achievements not reset.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void resetWork() {
+        try {
+            String content = new String(Files.readAllBytes(Paths.get(RESUME_PATH)));
+
+            String startSymbol = "%StartWork**";
+            String endSymbol = "%EndWork**";
+            
+            String achievementsTemplate = "%StartWork**\n" +
+                "%{work}\n" +
+                "%EndWork**";
+
+            int startIndex = content.indexOf(startSymbol);
+            int endIndex = content.indexOf(endSymbol);
+
+            if (startIndex != -1 && endIndex != -1) {
+                String template = content.substring(0, startIndex) + achievementsTemplate + content.substring(endIndex + endSymbol.length());
+
+                try {
+                    Files.write(Paths.get(RESUME_PATH), template.getBytes());
+                    System.out.println("Work experience reset successfully.");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("Start or End symbol not found. Work experience not reset.");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -264,6 +295,53 @@ public class CompileLatex {
             e.printStackTrace();
         }
     }
+    
+    public void addWorkInfo(String[][] workArray) {
+        try {
+            String templateContent = new String(Files.readAllBytes(Paths.get(RESUME_PATH)));
+            
+            String fullWorkString = "\\begin{rSection}{Work Experience}\n";
+            
+            for (int i = 0; i < workArray.length; i++) {
+                String employer = workArray[i][0];
+                String role = workArray[i][1];
+                String startDate = workArray[i][2];
+                String endDate = workArray[i][3];
+                String description = workArray[i][4];
+                
+                
+                fullWorkString += "{\\textbf{" + employer + "}" + "$\\vert$ " + role + "} \\hfill " + startDate + " - " + endDate + " \\\\";
+                
+                
+                if (description != null && !description.equals("")) {
+                    fullWorkString += "\\vspace{-1.5em}\n" +
+                    "\\begin{itemize}\n";
+
+                    String[] bulletPoints = description.split("\\*\\*");
+                    
+                    for (String bullet : bulletPoints) {
+                        System.out.println(bullet);
+                        fullWorkString += "\\item " + bullet + "\n";
+                    }
+                    
+                    fullWorkString += "\\end{itemize}\n";
+                    
+                }
+                
+            }
+            
+            fullWorkString += "\\end{rSection}";
+            
+            String resumeContent = templateContent.replace("%{work}", fullWorkString);
+
+                     
+            // Save the modified content back to the .tex file
+            Files.write(Paths.get(RESUME_PATH), resumeContent.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     
     public void addAchievementInfo(String[][] achievementInfoArray) {
         try {

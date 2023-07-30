@@ -4,6 +4,7 @@
  */
 package com.mycompany.resumebuilder;
 
+import java.awt.Color;
 import java.awt.Container;
 import javax.swing.JOptionPane;
 
@@ -17,7 +18,7 @@ public class WorkEntryPanel extends javax.swing.JPanel {
      * Creates new form AchievementEntryPanel
      */
     public WorkEntryPanel() {
-        numAchievements++;
+        numExperiences++;
         initComponents();
     }
 
@@ -34,11 +35,13 @@ public class WorkEntryPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jTextFieldPlaceHolderEmployer = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldPlaceHolderAffiliation = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jTextFieldPlaceHolderRole = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldPlaceHolderDate = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jTextFieldPlaceHolderStartDate = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        jLabel5 = new javax.swing.JLabel();
+        jTextFieldPlaceHolderEndDate = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
         emptyPlaceholder1 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        jobCheckBox = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
         jTextFieldPlaceHolderDescription = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
         emptyPlaceholder = new javax.swing.JLabel();
@@ -47,7 +50,7 @@ public class WorkEntryPanel extends javax.swing.JPanel {
         jButton1.setText("jButton1");
 
         setMinimumSize(new java.awt.Dimension(400, 143));
-        setLayout(new java.awt.GridLayout(6, 2, 0, 10));
+        setLayout(new java.awt.GridLayout(7, 2, 0, 10));
 
         jLabel1.setText("Name of employer*");
         add(jLabel1);
@@ -60,34 +63,50 @@ public class WorkEntryPanel extends javax.swing.JPanel {
         });
         add(jTextFieldPlaceHolderEmployer);
 
-        jLabel2.setText("Role");
+        jLabel2.setText("Role*");
         add(jLabel2);
 
-        jTextFieldPlaceHolderAffiliation.setPlaceHolder("Role");
-        jTextFieldPlaceHolderAffiliation.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldPlaceHolderRole.setPlaceHolder("Role");
+        jTextFieldPlaceHolderRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPlaceHolderAffiliationActionPerformed(evt);
+                jTextFieldPlaceHolderRoleActionPerformed(evt);
             }
         });
-        add(jTextFieldPlaceHolderAffiliation);
+        add(jTextFieldPlaceHolderRole);
 
-        jLabel3.setText("Start date");
+        jLabel3.setText("Start date*");
         add(jLabel3);
 
-        jTextFieldPlaceHolderDate.setPlaceHolder("Start date");
-        jTextFieldPlaceHolderDate.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldPlaceHolderStartDate.setPlaceHolder("Start date");
+        jTextFieldPlaceHolderStartDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPlaceHolderDateActionPerformed(evt);
+                jTextFieldPlaceHolderStartDateActionPerformed(evt);
             }
         });
-        add(jTextFieldPlaceHolderDate);
+        add(jTextFieldPlaceHolderStartDate);
+
+        jLabel5.setText("End date");
+        add(jLabel5);
+
+        jTextFieldPlaceHolderEndDate.setPlaceHolder("End date");
+        jTextFieldPlaceHolderEndDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPlaceHolderEndDateActionPerformed(evt);
+            }
+        });
+        add(jTextFieldPlaceHolderEndDate);
         add(emptyPlaceholder1);
 
-        jCheckBox1.setText("Current job");
-        add(jCheckBox1);
+        jobCheckBox.setText("Current job");
+        jobCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jobCheckBoxActionPerformed(evt);
+            }
+        });
+        add(jobCheckBox);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
-        jLabel4.setText("Description (leave an empty line in between each bullet point)");
+        jLabel4.setText("Description (write \\n between each bullet point)");
         add(jLabel4);
 
         jTextFieldPlaceHolderDescription.setPlaceHolder("Description");
@@ -112,19 +131,19 @@ public class WorkEntryPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPlaceHolderEmployerActionPerformed
 
-    private void jTextFieldPlaceHolderAffiliationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPlaceHolderAffiliationActionPerformed
+    private void jTextFieldPlaceHolderRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPlaceHolderRoleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPlaceHolderAffiliationActionPerformed
+    }//GEN-LAST:event_jTextFieldPlaceHolderRoleActionPerformed
 
-    private void jTextFieldPlaceHolderDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPlaceHolderDateActionPerformed
+    private void jTextFieldPlaceHolderStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPlaceHolderStartDateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPlaceHolderDateActionPerformed
+    }//GEN-LAST:event_jTextFieldPlaceHolderStartDateActionPerformed
 
     private void deleteAchievementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAchievementActionPerformed
 
-        if (numAchievements > 1) {
+        if (numExperiences > 1) {
             // Decrement the number of achievements when a panel is deleted
-            numAchievements--;
+            numExperiences--;
 
             // Code to perform when the "Delete" button is clicked
             Container parent = getParent();
@@ -133,7 +152,7 @@ public class WorkEntryPanel extends javax.swing.JPanel {
             parent.repaint();
         } else {
             // Show a message that deletion is not allowed if there is only one achievement
-            JOptionPane.showMessageDialog(this, "You cannot delete the last achievement.");
+            JOptionPane.showMessageDialog(this, "You cannot delete the last experience.");
         }
     }//GEN-LAST:event_deleteAchievementActionPerformed
 
@@ -141,20 +160,46 @@ public class WorkEntryPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPlaceHolderDescriptionActionPerformed
 
-    public String getAchievement() {
+    private void jTextFieldPlaceHolderEndDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPlaceHolderEndDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPlaceHolderEndDateActionPerformed
+
+    private void jobCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobCheckBoxActionPerformed
+        boolean isCurrentJob = jobCheckBox.isSelected();
+        
+        if (isCurrentJob) {
+            jTextFieldPlaceHolderEndDate.setBackground(new Color(240, 240, 240)); // Set a grayed-out color
+        } else {
+            jTextFieldPlaceHolderEndDate.setBackground(Color.WHITE); // Set the original color
+        }
+        jTextFieldPlaceHolderEndDate.setEnabled(!isCurrentJob);
+    }//GEN-LAST:event_jobCheckBoxActionPerformed
+    public String getEmployer() {
         return jTextFieldPlaceHolderEmployer.getText();
     }
     
-    public String getAffiliation() {
-        return jTextFieldPlaceHolderAffiliation.getText();
+    public String getRole() {
+        return jTextFieldPlaceHolderRole.getText();
     }
     
-    public String getDate() {
-        return jTextFieldPlaceHolderDate.getText();
+    public String getStartDate() {
+        return jTextFieldPlaceHolderStartDate.getText();
     }
     
-    public int getNumAchievements() {
-        return numAchievements;
+    public String getEndDate() {
+        return jTextFieldPlaceHolderEndDate.getText();
+    }
+    
+    public boolean isCurrentJob() {
+        return jobCheckBox.isSelected();
+    }
+    
+    public String getDescription() {
+        return jTextFieldPlaceHolderDescription.getText();
+    }
+    
+    public int getNumExperiences() {
+        return numExperiences;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -162,16 +207,18 @@ public class WorkEntryPanel extends javax.swing.JPanel {
     private javax.swing.JLabel emptyPlaceholder;
     private javax.swing.JLabel emptyPlaceholder1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderAffiliation;
-    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderDate;
+    private javax.swing.JLabel jLabel5;
     private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderDescription;
     private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderEmployer;
+    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderEndDate;
+    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderRole;
+    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderStartDate;
+    private javax.swing.JCheckBox jobCheckBox;
     // End of variables declaration//GEN-END:variables
 
-    private static int numAchievements = 0;
+    private static int numExperiences = 0;
 }

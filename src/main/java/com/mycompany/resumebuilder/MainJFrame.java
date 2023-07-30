@@ -182,7 +182,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(ButtonContainerPersonalLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(nextButtonPersonal)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         PersonalInformationPanel.add(ButtonContainerPersonal);
@@ -207,7 +207,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(TitleContainerEducationLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel24)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         EducationPanel.add(TitleContainerEducation);
@@ -283,7 +283,7 @@ public class MainJFrame extends javax.swing.JFrame {
         ButtonContainerEducationLayout.setVerticalGroup(
             ButtonContainerEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonContainerEducationLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addComponent(nextButtonEducation)
                 .addContainerGap())
         );
@@ -310,7 +310,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(TitleContainerSkillsLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel32)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         SkillsPanel.add(TitleContainerSkills);
@@ -391,7 +391,7 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         WorkPanel.add(addWorkButton);
 
-        nextButtonWork.setText("Submit");
+        nextButtonWork.setText("Next");
         nextButtonWork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextButtonWorkActionPerformed(evt);
@@ -446,16 +446,21 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nextButtonPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonPersonalActionPerformed
-        submitInputPersonalInfo();
+        boolean validInput = submitInputPersonalInfo();
         
-        jTabbedPane.setSelectedIndex(1);
+        if (validInput) {
+            jTabbedPane.setSelectedIndex(1);
+        } 
         
     }//GEN-LAST:event_nextButtonPersonalActionPerformed
 
     private void nextButtonEducationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonEducationActionPerformed
-        submitInputEducation();
+        boolean validInput = submitInputEducation();
         
-        jTabbedPane.setSelectedIndex(2);
+        if (validInput) {
+            jTabbedPane.setSelectedIndex(2);
+        }
+        
     }//GEN-LAST:event_nextButtonEducationActionPerformed
 
     private void jTextFieldPlaceHolderLanguagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPlaceHolderLanguagesActionPerformed
@@ -463,9 +468,12 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldPlaceHolderLanguagesActionPerformed
 
     private void nextButtonSkillsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonSkillsActionPerformed
-        submitInputSkills();
+        boolean validInput = submitInputSkills();
         
-        jTabbedPane.setSelectedIndex(3);
+        if (validInput) {
+           jTabbedPane.setSelectedIndex(3); 
+        }
+        
     }//GEN-LAST:event_nextButtonSkillsActionPerformed
 
     private void jTextFieldPlaceHolderCertificationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPlaceHolderCertificationsActionPerformed
@@ -487,7 +495,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_addAchievementButtonActionPerformed
 
     private void submitButtonAchievementsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonAchievementsActionPerformed
-        submitAchievements();
+         submitAchievements();
     }//GEN-LAST:event_submitButtonAchievementsActionPerformed
 
     private void addWorkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addWorkButtonActionPerformed
@@ -502,7 +510,12 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_addWorkButtonActionPerformed
 
     private void nextButtonWorkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonWorkActionPerformed
-        // TODO add your handling code here:
+        boolean validInput = submitWorkExperiences();
+        
+        if (validInput) {
+           jTabbedPane.setSelectedIndex(4); 
+        }
+
     }//GEN-LAST:event_nextButtonWorkActionPerformed
 
     /**
@@ -546,6 +559,7 @@ public class MainJFrame extends javax.swing.JFrame {
         void onInputSubmittedEducation(String university, String unidate, String degree, String fieldStudy, String fieldStudy2, String minor, String gpa, String coursework);
         void onInputSubmittedSkills(String languages, String programming, String softwares, String certifications);
         void onInputSubmittedAchievements(String[][] achievementInfoArray);
+        void onInputSubmittedWork(String[][] workArray);
     }
     
     public void setInputListener(InputListener listener) {
@@ -553,8 +567,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }
     
 
-    // Method to be called when the input is ready to be submitted
-    private void submitInputPersonalInfo() {
+    private boolean submitInputPersonalInfo() {
         String github = jTextFieldPlaceHolderGithub.getText();
             
         boolean allValidInput = jTextFieldPlaceHolderName.hasValidInput() && jTextFieldPlaceHolderLocation.hasValidInput() && jTextFieldPlaceHolderPhone.hasValidInput() && jTextFieldPlaceHolderEmail.hasValidInput() && jTextFieldPlaceHolderLinkedin.hasValidInput();
@@ -569,15 +582,15 @@ public class MainJFrame extends javax.swing.JFrame {
             if (inputListener != null) {
                 inputListener.onInputSubmittedPersonal(name, location, phone, email, linkedin, github);
             }
+            return true;
         } else {
         // Show an error message or handle the case where some fields are empty
             JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
-                       
+        return false;              
     }
     
-    private void submitInputEducation() {
+    private boolean submitInputEducation() {
         String fieldStudy2 = jTextFieldPlaceHolderFieldStudy2.getText();
         String minor = jTextFieldPlaceHolderMinor.getText();
         String coursework = jTextFieldPlaceHolderCoursework.getText();
@@ -594,15 +607,17 @@ public class MainJFrame extends javax.swing.JFrame {
             if (inputListener != null) {
                 inputListener.onInputSubmittedEducation(university, unidate, degree, fieldStudy, fieldStudy2, minor, gpa, coursework);
             }
+            return true;
         } else {
         // Show an error message or handle the case where some fields are empty
             JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
-                       
+        return false;
+                        
     }
     
-    private void submitInputSkills() {
+    private boolean submitInputSkills() {
         String programming = jTextFieldPlaceHolderProgramming.getText();
         String softwares = jTextFieldPlaceHolderSoftwares.getText();
         String certifications = jTextFieldPlaceHolderCertifications.getText();
@@ -617,15 +632,17 @@ public class MainJFrame extends javax.swing.JFrame {
             if (inputListener != null) {
                 inputListener.onInputSubmittedSkills(languages, programming, softwares, certifications);
             }
+            return true;
         } else {
         // Show an error message or handle the case where some fields are empty
             JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
+        return false;
                        
     }
     
-    private void submitAchievements() {
+    private boolean submitAchievements() {
         String[][] achievementInfoArray = new String[achievementPanelsList.size()][3];
                 
         for (int i = 0; i < achievementPanelsList.size(); i++) {
@@ -636,8 +653,8 @@ public class MainJFrame extends javax.swing.JFrame {
             String date = panel.getDate();
             
             if (achievement.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Please fill in all required fields for Achievement " + (i+1), "Error", JOptionPane.ERROR_MESSAGE);
-                return;
+                JOptionPane.showMessageDialog(this, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
             }
             
             achievementInfoArray[i][0] = achievement;
@@ -648,11 +665,56 @@ public class MainJFrame extends javax.swing.JFrame {
             if (inputListener != null) {
                 inputListener.onInputSubmittedAchievements(achievementInfoArray);
             }
-         }
+            
+        }
+        return true;
     }
+    
+    private boolean submitWorkExperiences() {
+        String[][] workArray = new String[workPanelsList.size()][5];
+                
+        for (int i = 0; i < workPanelsList.size(); i++) {
+            WorkEntryPanel panel = workPanelsList.get(i);
+            
+            String employer = panel.getEmployer();
+            String role = panel.getRole();
+            String startDate = panel.getStartDate();
+            String description = panel.getDescription();
+            String endDate;
+            
+            if (panel.isCurrentJob()) {
+                endDate = "Present";
+            } else {
+                endDate = panel.getEndDate();
+            }
+            
+            if (employer.isEmpty() || role.isEmpty() || startDate.isEmpty()) {
+                System.out.println("test");
+                JOptionPane.showMessageDialog(this, "Please fill in all required fields", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+            
+            workArray[i][0] = employer;
+            workArray[i][1] = role;
+            workArray[i][2] = startDate;
+            workArray[i][3] = endDate;
+            workArray[i][4] = description;
+
+            
+            if (inputListener != null) {
+                inputListener.onInputSubmittedWork(workArray);
+            }
+        }
+        return true;
+    }
+    
     
     public javax.swing.JPanel getAchievementsPanel() {
         return AchievementsPanel;
+    }
+    
+    public javax.swing.JPanel getWorkPanel() {
+        return WorkPanel;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
