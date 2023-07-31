@@ -19,6 +19,7 @@ public class AchievementEntryPanel extends javax.swing.JPanel {
     public AchievementEntryPanel() {
         numAchievements++;
         initComponents();
+        isEnabled = true;
     }
 
     /**
@@ -101,20 +102,14 @@ public class AchievementEntryPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextFieldPlaceHolderDateActionPerformed
 
     private void deleteAchievementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAchievementActionPerformed
+        numAchievements--;
 
-        if (numAchievements > 1) {
-            // Decrement the number of achievements when a panel is deleted
-            numAchievements--;
-
-            // Code to perform when the "Delete" button is clicked
-            Container parent = getParent();
-            parent.remove(this);
-            parent.revalidate();
-            parent.repaint();
-        } else {
-            // Show a message that deletion is not allowed if there is only one achievement
-            JOptionPane.showMessageDialog(this, "You cannot delete the last achievement.");
-        }
+        Container parent = getParent();
+        parent.remove(this);
+        parent.revalidate();
+        parent.repaint();
+            
+        isEnabled = false;
     }//GEN-LAST:event_deleteAchievementActionPerformed
 
     public String getAchievement() {
@@ -133,6 +128,10 @@ public class AchievementEntryPanel extends javax.swing.JPanel {
         return numAchievements;
     }
     
+    public boolean getIsEnabled() {
+        return isEnabled;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteAchievement;
     private javax.swing.JLabel emptyPlaceholder;
@@ -146,4 +145,5 @@ public class AchievementEntryPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private static int numAchievements = 0;
+    private boolean isEnabled;
 }

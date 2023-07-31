@@ -94,7 +94,7 @@
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPaneDescription">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JScrollPane(javax.swing.JScrollPane.VERTICAL_SCROLLBAR_NEVER, javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED))"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JScrollPane(javax.swing.JScrollPane.VERTICAL_SCROLLBAR_NEVER, javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED)"/>
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jScrollPaneDescription.setMaximumSize(new java.awt.Dimension(400, 200));&#xa;jScrollPaneDescription.setPreferredSize(new java.awt.Dimension(100, 50));"/>
       </AuxValues>
 

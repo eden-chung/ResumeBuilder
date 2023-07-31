@@ -25,23 +25,24 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         
         for (int i = 1; i < jTabbedPane.getTabCount(); i++) {
-            jTabbedPane.setEnabledAt(i, false);
+            //jTabbedPane.setEnabledAt(i, false);
             updateTabTitle(i);
         }
         
         jTabbedPane.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                // When the selected tab changes, update the appearance of all tabs
                 for (int i = 0; i < jTabbedPane.getTabCount(); i++) {
                     updateTabTitle(i);
                 }
             }
         });
         
-        int unitIncrement = 20; // Set the unit increment to 20 pixels
-        int blockIncrement = 100; // Set the block increment to 100 pixels
+        int unitIncrement = 20;
+        int blockIncrement = 100;
         WorkScrollPane.getVerticalScrollBar().setUnitIncrement(unitIncrement);
         WorkScrollPane.getVerticalScrollBar().setBlockIncrement(blockIncrement);
+        ProjectsScrollPane.getVerticalScrollBar().setUnitIncrement(unitIncrement);
+        ProjectsScrollPane.getVerticalScrollBar().setBlockIncrement(blockIncrement);
         
     }
 
@@ -497,12 +498,9 @@ public class MainJFrame extends javax.swing.JFrame {
     private void updateTabTitle(int tabIndex) {
         String title = jTabbedPane.getTitleAt(tabIndex);
         if (!jTabbedPane.isEnabledAt(tabIndex)) {
-            // Use HTML formatting to make the disabled tabs grayed out
-            //jTabbedPane.setTitleAt(tabIndex, "<html><font color='gray'>" + title + "</font></html>");
             JLabel disabledTabLabel = new JLabel("<html><font color='gray'>" + title + "</font></html>");
             jTabbedPane.setTabComponentAt(tabIndex, disabledTabLabel);
         } else {
-            // Reset the title to the default appearance for enabled tabs
             jTabbedPane.setTabComponentAt(tabIndex, null);
             jTabbedPane.setTitleAt(tabIndex, title);
         }
@@ -564,7 +562,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_addAchievementButtonActionPerformed
 
     private void submitButtonAchievementsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonAchievementsActionPerformed
-         submitAchievements();
+        submitAchievements();
     }//GEN-LAST:event_submitButtonAchievementsActionPerformed
 
     private void addWorkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addWorkButtonActionPerformed
@@ -579,7 +577,6 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_addWorkButtonActionPerformed
 
     private void nextButtonWorkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonWorkActionPerformed
-        System.out.println("this is work");
         boolean validInput = submitWorkExperiences();
         
         if (validInput) {
@@ -591,7 +588,6 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_nextButtonWorkActionPerformed
 
     private void addProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProjectButtonActionPerformed
-        System.out.println("test");
         ProjectEntryPanel indivProjectPanel = new ProjectEntryPanel();
         projectPanelsList.add(indivProjectPanel);
 
@@ -675,13 +671,11 @@ public class MainJFrame extends javax.swing.JFrame {
             String email = jTextFieldPlaceHolderEmail.getText();
             String linkedin = jTextFieldPlaceHolderLinkedin.getText();
             
-            // Notify the listener with the input data
             if (inputListener != null) {
                 inputListener.onInputSubmittedPersonal(name, location, phone, email, linkedin, github);
             }
             return true;
         } else {
-        // Show an error message or handle the case where some fields are empty
             JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         return false;              
@@ -700,13 +694,11 @@ public class MainJFrame extends javax.swing.JFrame {
             String fieldStudy = jTextFieldPlaceHolderFieldStudy.getText();
             String gpa = jTextFieldPlaceHolderGPA.getText();
             
-            // Notify the listener with the input data
             if (inputListener != null) {
                 inputListener.onInputSubmittedEducation(university, unidate, degree, fieldStudy, fieldStudy2, minor, gpa, coursework);
             }
             return true;
         } else {
-        // Show an error message or handle the case where some fields are empty
             JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
@@ -739,105 +731,141 @@ public class MainJFrame extends javax.swing.JFrame {
                        
     }
         
-    private boolean submitWorkExperiences() {
-        String[][] workArray = new String[workPanelsList.size()][5];
+    private boolean submitWorkExperiences() {        
+        ArrayList<String[]> validWork = new ArrayList<>();
                 
         for (int i = 0; i < workPanelsList.size(); i++) {
             WorkEntryPanel panel = workPanelsList.get(i);
             
-            String employer = panel.getEmployer();
-            String role = panel.getRole();
-            String startDate = panel.getStartDate();
-            String description = panel.getDescription();
-            String endDate;
-            
-            if (panel.isCurrentJob()) {
-                endDate = "Present";
-            } else {
-                endDate = panel.getEndDate();
-            }
-            
-            if (employer.isEmpty() || role.isEmpty() || startDate.isEmpty()) {
-                System.out.println("test");
-                JOptionPane.showMessageDialog(this, "Please fill in all required fields", "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-            
-            workArray[i][0] = employer;
-            workArray[i][1] = role;
-            workArray[i][2] = startDate;
-            workArray[i][3] = endDate;
-            workArray[i][4] = description;
+            if (panel.getIsEnabled()) {
+                String employer = panel.getEmployer();
+                String role = panel.getRole();
+                String startDate = panel.getStartDate();
+                String description = panel.getDescription();
+                String endDate;
 
-            
-            if (inputListener != null) {
-                inputListener.onInputSubmittedWork(workArray);
+                if (panel.isCurrentJob()) {
+                    endDate = "Present";
+                } else {
+                    endDate = panel.getEndDate();
+                }
+
+                if (employer.isEmpty() || role.isEmpty() || startDate.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Please fill in all required fields", "Error", JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+                
+                String[] workInfo = new String[5];
+                
+                workInfo[0] = employer;
+                workInfo[1] = role;
+                workInfo[2] = startDate;
+                workInfo[3] = endDate;
+                workInfo[4] = description;
+                
+                validWork.add(workInfo);
             }
         }
+            
+        if (inputListener != null) {
+            String[][] workArray = new String[validWork.size()][5];
+            for (int i = 0; i < validWork.size(); i++) {
+               workArray[i] = validWork.get(i);
+            }
+                
+            inputListener.onInputSubmittedWork(workArray);
+        }
+        
         return true;
     }
     
-    private boolean submitProjects() {
-        String[][] projectArray = new String[projectPanelsList.size()][5];
-                
+    private boolean submitProjects() {        
+        ArrayList<String[]> validProjects = new ArrayList<>();
+
         for (int i = 0; i < projectPanelsList.size(); i++) {
             ProjectEntryPanel panel = projectPanelsList.get(i);
             
-            String name = panel.getName();
-            String programmingLanguages = panel.getProgrammingLanguages();
-            String date = panel.getDate();
-            String url = panel.getURL();
-            String description = panel.getDescription();
+            if (panel.getIsEnabled()) {
+                String name = panel.getName();
+                String programmingLanguages = panel.getProgrammingLanguages();
+                String date = panel.getDate();
+                String url = panel.getURL();
+                String description = panel.getDescription();
 
-            if (name.isEmpty() || programmingLanguages.isEmpty() || date.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Please fill in all required fields", "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-            
-            projectArray[i][0] = name;
-            projectArray[i][1] = programmingLanguages;
-            projectArray[i][2] = date;
-            projectArray[i][3] = url;
-            projectArray[i][4] = description;
+                if (name.isEmpty() || programmingLanguages.isEmpty() || date.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Please fill in all required fields", "Error", JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+                
+                String[] projectInfo = new String[5];
 
-            
-            if (inputListener != null) {
-                inputListener.onInputSubmittedProjects(projectArray);
+                projectInfo[0] = name;
+                projectInfo[1] = programmingLanguages;
+                projectInfo[2] = date;
+                projectInfo[3] = url;
+                projectInfo[4] = description;
+                
+                System.out.println(name + programmingLanguages + date);
+                
+                validProjects.add(projectInfo);
             }
         }
+
+            
+        if (inputListener != null) {
+            String[][] projectArray = new String[projectPanelsList.size()][5];
+            for (int i = 0; i < validProjects.size(); i++) {
+                projectArray[i] = validProjects.get(i);
+                System.out.println(projectArray[i][0]);
+            }
+            
+            
+            inputListener.onInputSubmittedProjects(projectArray);
+        }
+        
         return true;
     }
     
-    private boolean submitAchievements() {
-        String[][] achievementInfoArray = new String[achievementPanelsList.size()][3];
+    private boolean submitAchievements() {        
+        ArrayList<String[]> validAchievements = new ArrayList<>();
                 
         for (int i = 0; i < achievementPanelsList.size(); i++) {
             AchievementEntryPanel panel = achievementPanelsList.get(i);
             
-            String achievement = panel.getAchievement();
-            String affiliation = panel.getAffiliation();
-            String date = panel.getDate();
-            
-            if (achievement.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-            
-            achievementInfoArray[i][0] = achievement;
-            achievementInfoArray[i][1] = affiliation;
-            achievementInfoArray[i][2] = date;
-            
-            
-            if (inputListener != null) {
-                inputListener.onInputSubmittedAchievements(achievementInfoArray);
-            }
+            if (panel.getIsEnabled()) {
+                String achievement = panel.getAchievement();
+                String affiliation = panel.getAffiliation();
+                String date = panel.getDate();
+
+                if (achievement.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+
+                String[] achievementInfo = new String[3];
+                achievementInfo[0] = achievement;
+                achievementInfo[1] = affiliation;
+                achievementInfo[2] = date;
+
+                validAchievements.add(achievementInfo);
+            }           
             
         }
+        
+        if (inputListener != null) {
+            String[][] achievementInfoArray = new String[validAchievements.size()][3];
+            for (int i = 0; i < validAchievements.size(); i++) {
+                achievementInfoArray[i] = validAchievements.get(i);
+            }
+            
+            inputListener.onInputSubmittedAchievements(achievementInfoArray);
+        }
+        
         return true;
     }
 
     
-    
+  
     public javax.swing.JPanel getAchievementsPanel() {
         return AchievementsPanel;
     }

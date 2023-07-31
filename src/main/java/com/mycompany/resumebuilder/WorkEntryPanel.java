@@ -20,6 +20,7 @@ public class WorkEntryPanel extends javax.swing.JPanel {
     public WorkEntryPanel() {
         numExperiences++;
         initComponents();
+        isEnabled = true;
     }
 
     /**
@@ -46,7 +47,7 @@ public class WorkEntryPanel extends javax.swing.JPanel {
         jScrollPaneDescription = new javax.swing.JScrollPane(javax.swing.JScrollPane.VERTICAL_SCROLLBAR_NEVER, javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         jTextFieldPlaceHolderDescription = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
         emptyPlaceholder = new javax.swing.JLabel();
-        deleteAchievement = new javax.swing.JButton();
+        deleteWork = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -125,13 +126,13 @@ public class WorkEntryPanel extends javax.swing.JPanel {
         add(jScrollPaneDescription);
         add(emptyPlaceholder);
 
-        deleteAchievement.setText("Delete experience");
-        deleteAchievement.addActionListener(new java.awt.event.ActionListener() {
+        deleteWork.setText("Delete experience");
+        deleteWork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteAchievementActionPerformed(evt);
+                deleteWorkActionPerformed(evt);
             }
         });
-        add(deleteAchievement);
+        add(deleteWork);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldPlaceHolderEmployerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPlaceHolderEmployerActionPerformed
@@ -146,22 +147,16 @@ public class WorkEntryPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPlaceHolderStartDateActionPerformed
 
-    private void deleteAchievementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAchievementActionPerformed
+    private void deleteWorkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteWorkActionPerformed
+        numExperiences--;
 
-        if (numExperiences > 1) {
-            // Decrement the number of achievements when a panel is deleted
-            numExperiences--;
-
-            // Code to perform when the "Delete" button is clicked
-            Container parent = getParent();
-            parent.remove(this);
-            parent.revalidate();
-            parent.repaint();
-        } else {
-            // Show a message that deletion is not allowed if there is only one achievement
-            JOptionPane.showMessageDialog(this, "You cannot delete the last experience.");
-        }
-    }//GEN-LAST:event_deleteAchievementActionPerformed
+        Container parent = getParent();
+        parent.remove(this);
+        parent.revalidate();
+        parent.repaint();
+            
+        isEnabled = false;
+    }//GEN-LAST:event_deleteWorkActionPerformed
 
     private void jTextFieldPlaceHolderDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPlaceHolderDescriptionActionPerformed
         // TODO add your handling code here:
@@ -209,8 +204,12 @@ public class WorkEntryPanel extends javax.swing.JPanel {
         return numExperiences;
     }
     
+    public boolean getIsEnabled() {
+        return isEnabled;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton deleteAchievement;
+    private javax.swing.JButton deleteWork;
     private javax.swing.JLabel emptyPlaceholder;
     private javax.swing.JLabel emptyPlaceholder1;
     private javax.swing.JButton jButton1;
@@ -229,4 +228,5 @@ public class WorkEntryPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private static int numExperiences = 0;
+    boolean isEnabled;
 }

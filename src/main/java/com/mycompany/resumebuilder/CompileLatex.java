@@ -27,7 +27,6 @@ public class CompileLatex {
             Path backupPath = Paths.get(pathToBackupFile);
             Path texPath = Paths.get(pathToTexFile);
 
-            // Copy the contents of the backup file to the .tex file
             Files.copy(backupPath, texPath, StandardCopyOption.REPLACE_EXISTING);
 
             System.out.println("Template reset successful.");
@@ -36,6 +35,7 @@ public class CompileLatex {
             System.out.println("Template reset failed.");
         }
     }
+    
     
     public void resetPersonal() {
         try {
@@ -140,38 +140,7 @@ public class CompileLatex {
             e.printStackTrace();
         }
     }
-    
-    public void resetAchievements() {
-        try {
-            String content = new String(Files.readAllBytes(Paths.get(RESUME_PATH)));
-
-            String startSymbol = "%StartAchievements**";
-            String endSymbol = "%EndAchievements**";
-            
-            String achievementsTemplate = "%StartAchievements**\n" +
-                "%{achievements}\n" +
-                "%EndAchievements**";
-
-            int startIndex = content.indexOf(startSymbol);
-            int endIndex = content.indexOf(endSymbol);
-
-            if (startIndex != -1 && endIndex != -1) {
-                String template = content.substring(0, startIndex) + achievementsTemplate + content.substring(endIndex + endSymbol.length());
-
-                try {
-                    Files.write(Paths.get(RESUME_PATH), template.getBytes());
-                    System.out.println("Achievements reset successfully.");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                System.out.println("Start or End symbol not found. Achievements not reset.");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
+        
     public void resetWork() {
         try {
             String content = new String(Files.readAllBytes(Paths.get(RESUME_PATH)));
@@ -234,16 +203,42 @@ public class CompileLatex {
         }
     }
     
-    
+    public void resetAchievements() {
+        try {
+            String content = new String(Files.readAllBytes(Paths.get(RESUME_PATH)));
 
+            String startSymbol = "%StartAchievements**";
+            String endSymbol = "%EndAchievements**";
+            
+            String achievementsTemplate = "%StartAchievements**\n" +
+                "%{achievements}\n" +
+                "%EndAchievements**";
+
+            int startIndex = content.indexOf(startSymbol);
+            int endIndex = content.indexOf(endSymbol);
+
+            if (startIndex != -1 && endIndex != -1) {
+                String template = content.substring(0, startIndex) + achievementsTemplate + content.substring(endIndex + endSymbol.length());
+
+                try {
+                    Files.write(Paths.get(RESUME_PATH), template.getBytes());
+                    System.out.println("Achievements reset successfully.");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("Start or End symbol not found. Achievements not reset.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     
     public void addPersonalInfo(String name, String location, String phone, String email, String linkedin, String github) {
         try {
-            // Read the .tex template file
             String templateContent = new String(Files.readAllBytes(Paths.get(RESUME_PATH)));
 
-            // Replace placeholders with user input
             String resumeContent = templateContent.replace("{name}", name);
             resumeContent = resumeContent.replace("{location}", location);
             resumeContent = resumeContent.replace("{phone}", phone);
@@ -255,8 +250,6 @@ public class CompileLatex {
                 resumeContent = resumeContent.replace("%{github}", fullGithub);
             }
           
-
-            // Save the modified content back to the .tex file
             Files.write(Paths.get(RESUME_PATH), resumeContent.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
@@ -265,10 +258,8 @@ public class CompileLatex {
     
     public void addEducationInfo(String university, String unidate, String degree, String fieldStudy, String fieldStudy2, String minor, String gpa, String coursework) {
         try {
-            // Read the .tex template file
             String templateContent = new String(Files.readAllBytes(Paths.get(RESUME_PATH)));
 
-            // Replace placeholders with user input
             String resumeContent = templateContent.replace("{university}", university);
             resumeContent = resumeContent.replace("{unidate}", unidate);
             resumeContent = resumeContent.replace("{degree}", degree);
@@ -289,9 +280,7 @@ public class CompileLatex {
                 String fullCoursework = "Relevant coursework: " + coursework;
                 resumeContent = resumeContent.replace("%{relevantcoursework}", fullCoursework);
             }
-          
 
-            // Save the modified content back to the .tex file
             Files.write(Paths.get(RESUME_PATH), resumeContent.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
@@ -319,8 +308,6 @@ public class CompileLatex {
                 resumeContent = resumeContent.replace("%{certifications}", fullCertifications);
             }
           
-
-            // Save the modified content back to the .tex file
             Files.write(Paths.get(RESUME_PATH), resumeContent.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
@@ -364,8 +351,6 @@ public class CompileLatex {
             
             String resumeContent = templateContent.replace("%{work}", fullWorkString);
 
-                     
-            // Save the modified content back to the .tex file
             Files.write(Paths.get(RESUME_PATH), resumeContent.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
@@ -384,6 +369,10 @@ public class CompileLatex {
                 String date = projectArray[i][2];
                 String url = projectArray[i][3];
                 String description = projectArray[i][4];
+                
+                if (name == null || programmingLanguages == null || date == null) {
+                    break;
+                }
                 
                 if (url != null && !url.equals("")) {
                    fullProjectString += "{\\textbf{\\href{" + url + "}{\\underline{" + name + "}} $\\vert$ " + programmingLanguages + "}} \\hfill " + date + " \\\\ \n";
@@ -412,8 +401,6 @@ public class CompileLatex {
             
             String resumeContent = templateContent.replace("%{projects}", fullProjectString);
 
-                     
-            // Save the modified content back to the .tex file
             Files.write(Paths.get(RESUME_PATH), resumeContent.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
@@ -448,14 +435,13 @@ public class CompileLatex {
             fullAchievementString += "\\end{rSection}";
             
             String resumeContent = templateContent.replace("%{achievements}", fullAchievementString);
-
-                     
-            // Save the modified content back to the .tex file
+    
             Files.write(Paths.get(RESUME_PATH), resumeContent.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    
     
     public static void compileFile() {
         try {
@@ -473,7 +459,6 @@ public class CompileLatex {
             Process process = processBuilder.start();
             
 
-            // Wait for the process to finish
             int exitCode = process.waitFor();
             if (exitCode == 0) {
                 System.out.println("Compilation successful.");

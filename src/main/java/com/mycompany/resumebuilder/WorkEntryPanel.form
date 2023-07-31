@@ -130,12 +130,12 @@
     </Container>
     <Component class="javax.swing.JLabel" name="emptyPlaceholder">
     </Component>
-    <Component class="javax.swing.JButton" name="deleteAchievement">
+    <Component class="javax.swing.JButton" name="deleteWork">
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete experience"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteAchievementActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteWorkActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

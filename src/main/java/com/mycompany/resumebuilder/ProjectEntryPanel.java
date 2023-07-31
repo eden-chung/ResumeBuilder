@@ -20,6 +20,7 @@ public class ProjectEntryPanel extends javax.swing.JPanel {
     public ProjectEntryPanel() {
         numProject++;
         initComponents();
+        isEnabled = true;
     }
 
     /**
@@ -41,86 +42,86 @@ public class ProjectEntryPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jTextFieldPlaceHolderURL = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPaneDescription = new javax.swing.JScrollPane(javax.swing.JScrollPane.VERTICAL_SCROLLBAR_NEVER, javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
-    jTextFieldPlaceHolderDescription = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
-    emptyPlaceholder = new javax.swing.JLabel();
-    deleteProject = new javax.swing.JButton();
+        jScrollPaneDescription = new javax.swing.JScrollPane(javax.swing.JScrollPane.VERTICAL_SCROLLBAR_NEVER, javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        jTextFieldPlaceHolderDescription = new com.mycompany.resumebuilder.JTextFieldPlaceHolder();
+        emptyPlaceholder = new javax.swing.JLabel();
+        deleteProject = new javax.swing.JButton();
 
-    jButton1.setText("jButton1");
+        jButton1.setText("jButton1");
 
-    setMinimumSize(new java.awt.Dimension(400, 143));
-    setLayout(new java.awt.GridLayout(7, 2, 0, 10));
+        setMinimumSize(new java.awt.Dimension(400, 143));
+        setLayout(new java.awt.GridLayout(7, 2, 0, 10));
 
-    jLabel1.setText("Name of project*");
-    add(jLabel1);
+        jLabel1.setText("Name of project*");
+        add(jLabel1);
 
-    jTextFieldPlaceHolderProjectName.setPlaceHolder("Project name");
-    jTextFieldPlaceHolderProjectName.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jTextFieldPlaceHolderProjectNameActionPerformed(evt);
-        }
-    });
-    add(jTextFieldPlaceHolderProjectName);
+        jTextFieldPlaceHolderProjectName.setPlaceHolder("Project name");
+        jTextFieldPlaceHolderProjectName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPlaceHolderProjectNameActionPerformed(evt);
+            }
+        });
+        add(jTextFieldPlaceHolderProjectName);
 
-    jLabel2.setText("Programming languages/frameworks*");
-    add(jLabel2);
+        jLabel2.setText("Programming languages/frameworks*");
+        add(jLabel2);
 
-    jTextFieldPlaceHolderProgrammingLanguages.setPlaceHolder("Programming languages");
-    jTextFieldPlaceHolderProgrammingLanguages.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jTextFieldPlaceHolderProgrammingLanguagesActionPerformed(evt);
-        }
-    });
-    add(jTextFieldPlaceHolderProgrammingLanguages);
+        jTextFieldPlaceHolderProgrammingLanguages.setPlaceHolder("Programming languages");
+        jTextFieldPlaceHolderProgrammingLanguages.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPlaceHolderProgrammingLanguagesActionPerformed(evt);
+            }
+        });
+        add(jTextFieldPlaceHolderProgrammingLanguages);
 
-    jLabel3.setText("Date*");
-    add(jLabel3);
+        jLabel3.setText("Date*");
+        add(jLabel3);
 
-    jTextFieldPlaceHolderDate.setPlaceHolder("Date");
-    jTextFieldPlaceHolderDate.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jTextFieldPlaceHolderDateActionPerformed(evt);
-        }
-    });
-    add(jTextFieldPlaceHolderDate);
+        jTextFieldPlaceHolderDate.setPlaceHolder("Date");
+        jTextFieldPlaceHolderDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPlaceHolderDateActionPerformed(evt);
+            }
+        });
+        add(jTextFieldPlaceHolderDate);
 
-    jLabel6.setText("URL");
-    add(jLabel6);
+        jLabel6.setText("URL");
+        add(jLabel6);
 
-    jTextFieldPlaceHolderURL.setPlaceHolder("URL");
-    jTextFieldPlaceHolderURL.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jTextFieldPlaceHolderURLActionPerformed(evt);
-        }
-    });
-    add(jTextFieldPlaceHolderURL);
+        jTextFieldPlaceHolderURL.setPlaceHolder("URL");
+        jTextFieldPlaceHolderURL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPlaceHolderURLActionPerformed(evt);
+            }
+        });
+        add(jTextFieldPlaceHolderURL);
 
-    jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
-    jLabel4.setText("Description (write ** between each bullet point)");
-    add(jLabel4);
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
+        jLabel4.setText("Description (write ** between each bullet point)");
+        add(jLabel4);
 
-    jScrollPaneDescription.setMaximumSize(new java.awt.Dimension(400, 200));
-    jScrollPaneDescription.setPreferredSize(new java.awt.Dimension(100, 50));
+        jScrollPaneDescription.setMaximumSize(new java.awt.Dimension(400, 200));
+        jScrollPaneDescription.setPreferredSize(new java.awt.Dimension(100, 50));
 
-    jTextFieldPlaceHolderDescription.setMaximumSize(new java.awt.Dimension(100, 50));
-    jTextFieldPlaceHolderDescription.setPlaceHolder("Description");
-    jTextFieldPlaceHolderDescription.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jTextFieldPlaceHolderDescriptionActionPerformed(evt);
-        }
-    });
-    jScrollPaneDescription.setViewportView(jTextFieldPlaceHolderDescription);
+        jTextFieldPlaceHolderDescription.setMaximumSize(new java.awt.Dimension(100, 50));
+        jTextFieldPlaceHolderDescription.setPlaceHolder("Description");
+        jTextFieldPlaceHolderDescription.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPlaceHolderDescriptionActionPerformed(evt);
+            }
+        });
+        jScrollPaneDescription.setViewportView(jTextFieldPlaceHolderDescription);
 
-    add(jScrollPaneDescription);
-    add(emptyPlaceholder);
+        add(jScrollPaneDescription);
+        add(emptyPlaceholder);
 
-    deleteProject.setText("Delete project");
-    deleteProject.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            deleteProjectActionPerformed(evt);
-        }
-    });
-    add(deleteProject);
+        deleteProject.setText("Delete project");
+        deleteProject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteProjectActionPerformed(evt);
+            }
+        });
+        add(deleteProject);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldPlaceHolderProjectNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPlaceHolderProjectNameActionPerformed
@@ -136,20 +137,14 @@ public class ProjectEntryPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextFieldPlaceHolderDateActionPerformed
 
     private void deleteProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteProjectActionPerformed
+        numProject--;
 
-        if (numProject > 1) {
-            // Decrement the number of achievements when a panel is deleted
-            numProject--;
-
-            // Code to perform when the "Delete" button is clicked
-            Container parent = getParent();
-            parent.remove(this);
-            parent.revalidate();
-            parent.repaint();
-        } else {
-            // Show a message that deletion is not allowed if there is only one achievement
-            JOptionPane.showMessageDialog(this, "You cannot delete the last experience.");
-        }
+        Container parent = getParent();
+        parent.remove(this);
+        parent.revalidate();
+        parent.repaint();
+            
+        isEnabled = false;
     }//GEN-LAST:event_deleteProjectActionPerformed
 
     private void jTextFieldPlaceHolderDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPlaceHolderDescriptionActionPerformed
@@ -183,6 +178,9 @@ public class ProjectEntryPanel extends javax.swing.JPanel {
         return numProject;
     }
     
+    public boolean getIsEnabled() {
+        return isEnabled;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteProject;
     private javax.swing.JLabel emptyPlaceholder;
@@ -201,4 +199,5 @@ public class ProjectEntryPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private static int numProject = 0;
+    private boolean isEnabled;
 }
