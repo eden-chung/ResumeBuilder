@@ -67,7 +67,6 @@ public class ResumeBuilder implements MainJFrame.InputListener {
         mainFrame.pack();
         SwingUtilities.invokeLater(() -> mainFrame.setVisible(true));
         
-
     }
     
     

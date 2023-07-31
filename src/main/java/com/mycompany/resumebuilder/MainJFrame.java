@@ -5,6 +5,9 @@
 package com.mycompany.resumebuilder;
 
 import java.awt.Color;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.EventListener;
 import javax.swing.JLabel;
@@ -44,6 +47,12 @@ public class MainJFrame extends javax.swing.JFrame {
         ProjectsScrollPane.getVerticalScrollBar().setUnitIncrement(unitIncrement);
         ProjectsScrollPane.getVerticalScrollBar().setBlockIncrement(blockIncrement);
         
+        PDFViewerPanel pdfViewerPanel = new PDFViewerPanel();
+        PDFViewerScrollPane.add(pdfViewerPanel);
+        PDFViewerScrollPane.setVisible(true); // Ensure the scroll pane is visible
+        pdfViewerPanel.setVisible(true);
+        PDFViewerScrollPane.revalidate();
+        PDFViewerScrollPane.repaint();
     }
 
     /**
@@ -122,6 +131,7 @@ public class MainJFrame extends javax.swing.JFrame {
         AchievementsPanel = new javax.swing.JPanel();
         addAchievementButton = new javax.swing.JButton();
         submitButtonAchievements = new javax.swing.JButton();
+        PDFViewerScrollPane = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -474,6 +484,7 @@ public class MainJFrame extends javax.swing.JFrame {
         AchievementsScrollPane.setViewportView(AchievementsPanel);
 
         jTabbedPane.addTab("Achievements", AchievementsScrollPane);
+        jTabbedPane.addTab("PDF View", PDFViewerScrollPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -563,6 +574,20 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void submitButtonAchievementsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonAchievementsActionPerformed
         submitAchievements();
+        
+        try {
+            File file = new File("/Users/EdenChung/Desktop/Eden/Home/Coding/Java/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/latex_files/resume.pdf"); // Replace with the actual path to your generated PDF file
+            if (Desktop.isDesktopSupported()) {
+                Desktop desktop = Desktop.getDesktop();
+                if (desktop.isSupported(Desktop.Action.OPEN)) {
+                    desktop.open(file);
+                } else {
+                    desktop.edit(file);
+                }
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_submitButtonAchievementsActionPerformed
 
     private void addWorkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addWorkButtonActionPerformed
@@ -884,6 +909,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel GridContainerEducation;
     private javax.swing.JPanel GridContainerPersonal;
     private javax.swing.JPanel GridContainerSkills;
+    private javax.swing.JScrollPane PDFViewerScrollPane;
     private javax.swing.JPanel PersonalInformationPanel;
     private javax.swing.JPanel ProjectsPanel;
     private javax.swing.JScrollPane ProjectsScrollPane;
