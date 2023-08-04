@@ -65,34 +65,18 @@ public class ResumeBuilder implements MainJFrame.InputListener {
         ResumeBuilder builder = new ResumeBuilder();
         builder.latex.resetTemplate();
         
+        Authentication authenticationFrame = new Authentication();
+        authenticationFrame.pack();
+        authenticationFrame.setVisible(true);
+        
+        /*
         MainJFrame mainFrame = new MainJFrame();
         mainFrame.setInputListener(new ResumeBuilder());
         mainFrame.pack();
         SwingUtilities.invokeLater(() -> mainFrame.setVisible(true));
+    */
         
-        
-        
-        /*
-        Connection connection = null;
-        try {
-            connection = SQLiteConnector.connect();
-            System.out.println("success");
-
-            // Perform database operations here
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("error");
-        } finally {
-            try {
-                if (connection != null) {
-                    SQLiteConnector.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        */
+       
     }
         
     

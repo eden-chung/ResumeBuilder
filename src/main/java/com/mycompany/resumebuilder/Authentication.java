@@ -1,5 +1,8 @@
 package com.mycompany.resumebuilder;
 
+import com.mycompany.resumebuilder.Backend.DatabaseManager;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -33,7 +36,7 @@ public class Authentication extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPasswordFieldAuth = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        SignInButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -52,8 +55,13 @@ public class Authentication extends javax.swing.JFrame {
         AuthenticationGrid.add(jPasswordFieldAuth);
         AuthenticationGrid.add(jLabel2);
 
-        jButton2.setText("Sign in");
-        AuthenticationGrid.add(jButton2);
+        SignInButton.setText("Sign in");
+        SignInButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignInButtonActionPerformed(evt);
+            }
+        });
+        AuthenticationGrid.add(SignInButton);
         AuthenticationGrid.add(jLabel5);
 
         jButton1.setText("Create Account");
@@ -88,6 +96,33 @@ public class Authentication extends javax.swing.JFrame {
         NewAccount createAccountFrame = new NewAccount();
         createAccountFrame.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void SignInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonActionPerformed
+        String username = jTextFieldPlaceHolderUsername.getText();
+        String password = new String(jPasswordFieldAuth.getPassword());
+
+        // Check if the user exists in the database
+        boolean userExists = DatabaseManager.checkUserExists(username);
+
+        if (userExists) {
+            // User exists, now check the password
+            boolean passwordCorrect = DatabaseManager.checkPassword(username, password);
+
+            if (passwordCorrect) {
+                // Password is correct, log the user in
+                // Show the main application window or perform other actions
+                dispose(); // Close the authentication window
+                MainJFrame mainFrame = new MainJFrame();
+                mainFrame.setVisible(true);
+            } else {
+                // Password is incorrect
+                JOptionPane.showMessageDialog(this, "Incorrect password.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            // User does not exist
+            JOptionPane.showMessageDialog(this, "User does not exist.", "Error", JOptionPane.ERROR_MESSAGE);
+        } 
+    }//GEN-LAST:event_SignInButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,8 +161,8 @@ public class Authentication extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AuthenticationGrid;
+    private javax.swing.JButton SignInButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
