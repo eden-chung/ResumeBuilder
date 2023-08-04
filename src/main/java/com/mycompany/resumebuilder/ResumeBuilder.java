@@ -5,8 +5,11 @@
 
 package com.mycompany.resumebuilder;
 
+import com.mycompany.resumebuilder.Backend.SQLiteConnector;
 import javax.swing.*;
 import java.io.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 
         
 /**
@@ -67,7 +70,31 @@ public class ResumeBuilder implements MainJFrame.InputListener {
         mainFrame.pack();
         SwingUtilities.invokeLater(() -> mainFrame.setVisible(true));
         
+        
+        
+        /*
+        Connection connection = null;
+        try {
+            connection = SQLiteConnector.connect();
+            System.out.println("success");
+
+            // Perform database operations here
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("error");
+        } finally {
+            try {
+                if (connection != null) {
+                    SQLiteConnector.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        */
     }
+        
     
     
 }
