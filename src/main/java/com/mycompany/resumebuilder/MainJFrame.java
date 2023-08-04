@@ -28,7 +28,7 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         
         for (int i = 1; i < jTabbedPane.getTabCount(); i++) {
-            //jTabbedPane.setEnabledAt(i, false);
+            jTabbedPane.setEnabledAt(i, false);
             updateTabTitle(i);
         }
         
