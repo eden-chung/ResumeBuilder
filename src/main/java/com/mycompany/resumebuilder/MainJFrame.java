@@ -972,7 +972,6 @@ public class MainJFrame extends javax.swing.JFrame {
         String softwares = jTextFieldPlaceHolderSoftwares.getText();
         String certifications = jTextFieldPlaceHolderCertifications.getText();
         String languages = jTextFieldPlaceHolderLanguages.getText();
-        
 
                             
         DatabaseManager.addAll(name, location, phone, email, linkedin, github,

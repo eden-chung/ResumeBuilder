@@ -4,6 +4,17 @@
  */
 package com.mycompany.resumebuilder;
 
+import com.mycompany.resumebuilder.Backend.DatabaseManager;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
  *
  * @author EdenChung
@@ -33,12 +44,12 @@ public class HomePage extends javax.swing.JFrame {
         ViewCurrentResumes = new javax.swing.JButton();
         SignOut = new javax.swing.JButton();
         SavedResumes = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        resumesScrollPane = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTabbedPane1.setMaximumSize(new java.awt.Dimension(32767, 400));
+        jTabbedPane1.setMinimumSize(new java.awt.Dimension(156, 200));
 
         Home.setLayout(new java.awt.GridLayout(4, 0, 0, 20));
 
@@ -54,6 +65,11 @@ public class HomePage extends javax.swing.JFrame {
         Home.add(addNewResume);
 
         ViewCurrentResumes.setText("View current resumes");
+        ViewCurrentResumes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewCurrentResumesActionPerformed(evt);
+            }
+        });
         Home.add(ViewCurrentResumes);
 
         SignOut.setText("Sign out");
@@ -66,19 +82,10 @@ public class HomePage extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Home", Home);
 
-        SavedResumes.setLayout(new java.awt.GridLayout(4, 0));
+        SavedResumes.setLayout(new java.awt.GridLayout());
 
-        jLabel2.setText("Welcome!");
-        SavedResumes.add(jLabel2);
-
-        jButton4.setText("Add new resume");
-        SavedResumes.add(jButton4);
-
-        jButton5.setText("View current resumes");
-        SavedResumes.add(jButton5);
-
-        jButton6.setText("Sign out");
-        SavedResumes.add(jButton6);
+        resumesScrollPane.setMinimumSize(new java.awt.Dimension(16, 200));
+        SavedResumes.add(resumesScrollPane);
 
         jTabbedPane1.addTab("Saved resumes", SavedResumes);
 
@@ -86,11 +93,11 @@ public class HomePage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
         );
 
         pack();
@@ -107,6 +114,11 @@ public class HomePage extends javax.swing.JFrame {
         Authentication authPage = new Authentication();
         authPage.setVisible(true);
     }//GEN-LAST:event_SignOutActionPerformed
+
+    private void ViewCurrentResumesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewCurrentResumesActionPerformed
+        ViewCurrentResumesActionPerformed();
+        jTabbedPane1.setSelectedIndex(1);
+    }//GEN-LAST:event_ViewCurrentResumesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,6 +154,49 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+    private void ViewCurrentResumesActionPerformed() {
+        Authentication authentication = new Authentication();
+    int userId = authentication.userId;
+
+    ArrayList<Object[]> versions = DatabaseManager.retrievePreviousVersions(userId);
+
+    JPanel panel = new JPanel();
+    panel.setLayout(new GridLayout(versions.size(), 2, 10, 10));
+
+    // Iterate through versions in reverse
+    for (int i = versions.size() - 1; i >= 0; i--) {
+        Object[] version = versions.get(i);
+        String date = (String) version[0]; // Assuming the date is at index 0
+        JButton openResumeButton = new JButton("Open Resume");
+
+        JLabel dateLabel = new JLabel(date);
+
+        panel.add(dateLabel);
+        panel.add(openResumeButton);
+
+        openResumeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Implement the action you want to take when the button is clicked
+                // For example, open the resume associated with the selected date
+            }
+        });
+    }
+
+    resumesScrollPane.setViewportView(panel);
+}
+
+
+
+
+
+
+
+
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Home;
@@ -149,11 +204,8 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JButton SignOut;
     private javax.swing.JButton ViewCurrentResumes;
     private javax.swing.JButton addNewResume;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane resumesScrollPane;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 
 /**
@@ -309,6 +310,63 @@ public class DatabaseManager {
 
         return info;
     }
+    
+    /*
+    public static ArrayList<Object[]> retrievePreviousVersions(int userId) {
+        ArrayList<Object[]> versions = new ArrayList<>();
+
+        String query = "SELECT DISTINCT date_time FROM user_inputs WHERE user_id = ?";
+
+        try (Connection connection = DriverManager.getConnection(DATABASE_URL);
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int versionId = resultSet.getInt("id");
+                LocalDateTime versionDateTime = resultSet.getObject("date_time", LocalDateTime.class);
+
+                Object[] versionInfo = { versionId, versionDateTime };
+                versions.add(versionInfo);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return versions;
+    }
+*/
+    
+    public static ArrayList<Object[]> retrievePreviousVersions(int userId) {
+        ArrayList<Object[]> versions = new ArrayList<>();
+
+        String query = "SELECT DISTINCT date_time FROM user_inputs WHERE user_id = ?";
+
+        try (Connection connection = DriverManager.getConnection(DATABASE_URL);
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, userId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String timestamp = resultSet.getString("date_time");
+                Object[] versionInfo = new Object[1];
+                versionInfo[0] = timestamp;
+                versions.add(versionInfo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return versions;
+    }
+
+
+
+
 
     
 }
