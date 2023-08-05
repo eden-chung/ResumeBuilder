@@ -17,6 +17,10 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import java.time.LocalDateTime;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 
 /**
  *
@@ -763,7 +767,7 @@ public class MainJFrame extends javax.swing.JFrame {
                        
     }
         
-    private boolean submitWorkExperiences() {        
+    private boolean submitWorkExperiences() { 
         ArrayList<String[]> validWork = new ArrayList<>();
                 
         for (int i = 0; i < workPanelsList.size(); i++) {
@@ -800,10 +804,25 @@ public class MainJFrame extends javax.swing.JFrame {
         }
             
         if (inputListener != null) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            ArrayNode workArrayNode = objectMapper.createArrayNode();
+        
             String[][] workArray = new String[validWork.size()][5];
             for (int i = 0; i < validWork.size(); i++) {
-               workArray[i] = validWork.get(i);
-            }
+                workArray[i] = validWork.get(i);
+               
+                String[] workInfo = validWork.get(i);
+                ObjectNode workNode = objectMapper.createObjectNode();
+                workNode.put("employer", workInfo[0]);
+                workNode.put("role", workInfo[1]);
+                workNode.put("startDate", workInfo[2]);
+                workNode.put("endDate", workInfo[3]);
+                workNode.put("description", workInfo[4]);
+
+                workArrayNode.add(workNode);
+                         
+            } 
+            workJSON = workArrayNode.toString();         
                 
             inputListener.onInputSubmittedWork(workArray);
         }
@@ -845,12 +864,28 @@ public class MainJFrame extends javax.swing.JFrame {
 
             
         if (inputListener != null) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            ArrayNode projectsArray = objectMapper.createArrayNode();
+        
             String[][] projectArray = new String[projectPanelsList.size()][5];
             for (int i = 0; i < validProjects.size(); i++) {
                 projectArray[i] = validProjects.get(i);
                 System.out.println(projectArray[i][0]);
+                
+                String[] projectInfo = validProjects.get(i);
+            
+                ObjectNode projectNode = objectMapper.createObjectNode();
+                projectNode.put("name", projectInfo[0]);
+                projectNode.put("programmingLanguages", projectInfo[1]);
+                projectNode.put("date", projectInfo[2]);
+                projectNode.put("url", projectInfo[3]);
+                projectNode.put("description", projectInfo[4]);
+                
+                projectsArray.add(projectNode);
+                
             }
             
+            projectsJSON = projectsArray.toString();
             
             inputListener.onInputSubmittedProjects(projectArray);
         }
@@ -885,10 +920,23 @@ public class MainJFrame extends javax.swing.JFrame {
         }
         
         if (inputListener != null) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            ArrayNode achievementsArray = objectMapper.createArrayNode();
+        
             String[][] achievementInfoArray = new String[validAchievements.size()][3];
             for (int i = 0; i < validAchievements.size(); i++) {
                 achievementInfoArray[i] = validAchievements.get(i);
+                
+                String[] achievementInfo = validAchievements.get(i);
+            
+                ObjectNode achievementNode = objectMapper.createObjectNode();
+                achievementNode.put("achievement", achievementInfo[0]);
+                achievementNode.put("affiliation", achievementInfo[1]);
+                achievementNode.put("date", achievementInfo[2]);
+
+                achievementsArray.add(achievementNode);
             }
+            achievementsJSON = achievementsArray.toString();
             
             inputListener.onInputSubmittedAchievements(achievementInfoArray);
         }
@@ -901,10 +949,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private void updateDatabaseAll() {
         Authentication authentication = new Authentication();
         userId = authentication.userId;
-        System.out.println("user" + userId);
 
         currentDateTime = LocalDateTime.now();
-        System.out.println("date" + currentDateTime);
         
         String name = jTextFieldPlaceHolderName.getText();
         String location = jTextFieldPlaceHolderLocation.getText();
@@ -926,11 +972,13 @@ public class MainJFrame extends javax.swing.JFrame {
         String softwares = jTextFieldPlaceHolderSoftwares.getText();
         String certifications = jTextFieldPlaceHolderCertifications.getText();
         String languages = jTextFieldPlaceHolderLanguages.getText();
+        
 
                             
         DatabaseManager.addAll(name, location, phone, email, linkedin, github,
                 university, unidate, degree, fieldStudy, fieldStudy2, minor, gpa, coursework,
-                programming, softwares, certifications, languages, userId, currentDateTime);
+                programming, softwares, certifications, languages, 
+                workJSON, projectsJSON, achievementsJSON, userId, currentDateTime);
 
         PersonData info = new PersonData();
         info = DatabaseManager.getPersonalInfo(info, userId, currentDateTime);
@@ -1022,6 +1070,10 @@ public class MainJFrame extends javax.swing.JFrame {
     private ArrayList<AchievementEntryPanel> achievementPanelsList = new ArrayList<>();
     private ArrayList<WorkEntryPanel> workPanelsList = new ArrayList<>();
     private ArrayList<ProjectEntryPanel> projectPanelsList = new ArrayList<>();
+    
+    private String workJSON;
+    private String projectsJSON;
+    private String achievementsJSON;
     
     private int userId;
     private LocalDateTime currentDateTime;

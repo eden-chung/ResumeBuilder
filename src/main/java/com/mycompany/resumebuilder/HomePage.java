@@ -98,6 +98,7 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addNewResumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewResumeActionPerformed
         MainJFrame mainFrame = new MainJFrame();
+        mainFrame.setInputListener(new ResumeBuilder());
         mainFrame.setVisible(true);
     }//GEN-LAST:event_addNewResumeActionPerformed
 

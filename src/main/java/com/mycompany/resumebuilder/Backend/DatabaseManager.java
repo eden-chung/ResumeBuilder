@@ -81,63 +81,20 @@ public class DatabaseManager {
         return -1;
     }
     
-    public static void addPersonalInfoToDatabase(String name, String location, String phone, String email, String linkedin, String github, int userId, LocalDateTime currentDateTime) {
-        String insertQuery = "INSERT INTO user_inputs (name, location, phone_number, email, linkedin, github, user_id, date_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
-        try (Connection connection = DriverManager.getConnection(DATABASE_URL);
-            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
-            preparedStatement.setString(1, name);
-            preparedStatement.setString(2, location);
-            preparedStatement.setString(3, phone);
-            preparedStatement.setString(4, email);
-            preparedStatement.setString(5, linkedin);
-            preparedStatement.setString(6, github);
-            preparedStatement.setInt(7, userId);
-            preparedStatement.setObject(8, currentDateTime);
-
-            preparedStatement.executeUpdate();
-            System.out.println("success");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public static void addEducationInfoToDatabase(String university_name, String graduation_date, String degree_type, String field_of_study, String secondary_field_of_study, String minor, String gpa, String coursework, int userId, LocalDateTime currentDateTime) {
-        String insertQuery = "INSERT INTO user_inputs (university_name, graduation_date, degree_type, field_of_study, secondary_field_of_study, minor, gpa, coursework, user_id, date_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        
-        System.out.println("Current DateTime (Insert): " + currentDateTime);
-        
-        try (Connection connection = DriverManager.getConnection(DATABASE_URL);
-            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
-            preparedStatement.setString(1, university_name);
-            preparedStatement.setString(2, graduation_date);
-            preparedStatement.setString(3, degree_type);
-            preparedStatement.setString(4, field_of_study);
-            preparedStatement.setString(5, secondary_field_of_study);
-            preparedStatement.setString(6, minor);
-            preparedStatement.setString(7, gpa);
-            preparedStatement.setString(8, coursework);
-            preparedStatement.setInt(9, userId);
-            preparedStatement.setObject(10, currentDateTime);
-
-            preparedStatement.executeUpdate();
-            System.out.println("success");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
     
     public static void addAll(String name, String location, String phone, String email, String linkedin, String github,
                                      String university, String graduationDate, String degreeType, String fieldOfStudy,
                                      String secondaryFieldOfStudy, String minor, String gpa, String coursework, 
                                      String programming_languages, String softwares, String certifications, String languages,
+                                     String workJSON, String projectsJSON, String achievementsJSON,
                                      int userId, LocalDateTime currentDateTime) {
         String insertQuery = "INSERT INTO user_inputs (name, location, phone_number, email, linkedin, github, " +
                          "university_name, graduation_date, degree_type, field_of_study, secondary_field_of_study, " +
                          "minor, gpa, coursework, " +
                          "languages, programming_languages, softwares, certifications, " +
+                         "work_experience_json, projects_json, achievements_json, " +
                          "user_id, date_time)" +
-                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 
         try (Connection connection = DriverManager.getConnection(DATABASE_URL);
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
@@ -159,8 +116,11 @@ public class DatabaseManager {
             preparedStatement.setString(16, programming_languages);
             preparedStatement.setString(17, softwares);
             preparedStatement.setString(18, certifications);
-            preparedStatement.setInt(19, userId);
-            preparedStatement.setObject(20, currentDateTime);
+            preparedStatement.setString(19, workJSON);
+            preparedStatement.setString(20, projectsJSON);
+            preparedStatement.setString(21, achievementsJSON);
+            preparedStatement.setInt(22, userId);
+            preparedStatement.setObject(23, currentDateTime);
 
             preparedStatement.executeUpdate();
             System.out.println("success");
@@ -177,7 +137,6 @@ public class DatabaseManager {
         ResultSet resultSet = null;
 
         try {
-            System.out.println("test");
             connection = DriverManager.getConnection(DATABASE_URL);
             preparedStatement = connection.prepareStatement(query);
 
@@ -187,7 +146,6 @@ public class DatabaseManager {
             resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                System.out.println("test2");
                 info = new PersonData();
                 info.name = resultSet.getString("name");
                 info.location = resultSet.getString("location");
@@ -195,7 +153,6 @@ public class DatabaseManager {
                 info.email = resultSet.getString("email");
                 info.linkedin = resultSet.getString("linkedin");
                 info.github = resultSet.getString("github");
-                System.out.println(info.name);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -226,7 +183,6 @@ public class DatabaseManager {
         ResultSet resultSet = null;
 
         try {
-            System.out.println("test2123");
             connection = DriverManager.getConnection(DATABASE_URL);
             preparedStatement = connection.prepareStatement(query);
 
