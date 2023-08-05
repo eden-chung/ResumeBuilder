@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class DatabaseSetup {
     
     public static void main(String[] args) {
-        String url = "jdbc:sqlite:/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/Backend/database.db";
+        String url = "jdbc:sqlite:/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/database.db";
 
         try (Connection connection = DriverManager.getConnection(url)) {
             Statement statement = connection.createStatement();
@@ -27,15 +27,33 @@ public class DatabaseSetup {
                                       "username TEXT NOT NULL," +
                                       "password_hash TEXT NOT NULL);";
             statement.execute(createUsersTable);
-
-            String createTexFilesTable = "CREATE TABLE tex_files (" +
-                                         "id INTEGER PRIMARY KEY," +
-                                         "user_id INTEGER," +
-                                         "file_name TEXT NOT NULL," +
-                                         "content BLOB NOT NULL," +
-                                         "date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
-                                         "FOREIGN KEY (user_id) REFERENCES users(id));";
-            statement.execute(createTexFilesTable);
+            
+            String createUserInputsTable = "CREATE TABLE user_inputs (" +
+                    "id INTEGER PRIMARY KEY," +
+                    "user_id INTEGER," +
+                    "name TEXT," +
+                    "location TEXT," +
+                    "phone_number TEXT," +
+                    "email TEXT," +
+                    "linkedin TEXT," +
+                    "github TEXT," +
+                    "university_name TEXT," +
+                    "graduation_date TEXT," +
+                    "degree_type TEXT," +
+                    "field_of_study TEXT," +
+                    "secondary_field_of_study TEXT," +
+                    "minor TEXT," +
+                    "gpa REAL," +
+                    "coursework TEXT," +
+                    "languages TEXT," +
+                    "programming_languages TEXT," +
+                    "softwares TEXT," +
+                    "certifications TEXT," +
+                    "work_experience_json TEXT," +
+                    "projects_json TEXT," +
+                    "achievements_json TEXT," +
+                    "date_time DATETIME DEFAULT CURRENT_TIMESTAMP);";
+            statement.execute(createUserInputsTable);
 
             System.out.println("Tables created successfully.");
         } catch (SQLException e) {

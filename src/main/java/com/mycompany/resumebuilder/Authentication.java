@@ -107,6 +107,8 @@ public class Authentication extends javax.swing.JFrame {
             boolean passwordCorrect = DatabaseManager.checkPassword(username, password);
 
             if (passwordCorrect) {
+                userId = DatabaseManager.getUserId(username);
+                
                 dispose();
                 HomePage homepage = new HomePage();
                 homepage.setVisible(true);
@@ -167,4 +169,6 @@ public class Authentication extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordFieldAuth;
     private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderUsername;
     // End of variables declaration//GEN-END:variables
+    public int userId;
+
 }

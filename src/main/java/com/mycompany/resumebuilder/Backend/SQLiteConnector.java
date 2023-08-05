@@ -18,7 +18,7 @@ public class SQLiteConnector {
 
     public static Connection connect() throws SQLException {
         if (connection == null || connection.isClosed()) {
-            String url = "jdbc:sqlite:/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/Backend/database.db";
+            String url = "jdbc:sqlite:/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/database.db";
             connection = DriverManager.getConnection(url);
         }
         return connection;

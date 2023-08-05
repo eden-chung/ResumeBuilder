@@ -4,6 +4,8 @@
  */
 package com.mycompany.resumebuilder;
 
+import com.mycompany.resumebuilder.Backend.DatabaseManager;
+import com.mycompany.resumebuilder.Backend.UserInputs.PersonData;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
@@ -14,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -474,7 +477,7 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         AchievementsPanel.add(addAchievementButton);
 
-        submitButtonAchievements.setText("Submit");
+        submitButtonAchievements.setText("Submit Resume");
         submitButtonAchievements.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitButtonAchievementsActionPerformed(evt);
@@ -699,6 +702,7 @@ public class MainJFrame extends javax.swing.JFrame {
             if (inputListener != null) {
                 inputListener.onInputSubmittedPersonal(name, location, phone, email, linkedin, github);
             }
+            
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -722,6 +726,7 @@ public class MainJFrame extends javax.swing.JFrame {
             if (inputListener != null) {
                 inputListener.onInputSubmittedEducation(university, unidate, degree, fieldStudy, fieldStudy2, minor, gpa, coursework);
             }
+            
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -746,6 +751,8 @@ public class MainJFrame extends javax.swing.JFrame {
             if (inputListener != null) {
                 inputListener.onInputSubmittedSkills(languages, programming, softwares, certifications);
             }
+            updateDatabaseAll();
+            
             return true;
         } else {
         // Show an error message or handle the case where some fields are empty
@@ -886,7 +893,49 @@ public class MainJFrame extends javax.swing.JFrame {
             inputListener.onInputSubmittedAchievements(achievementInfoArray);
         }
         
+        updateDatabaseAll();
+        
         return true;
+    }
+    
+    private void updateDatabaseAll() {
+        Authentication authentication = new Authentication();
+        userId = authentication.userId;
+        System.out.println("user" + userId);
+
+        currentDateTime = LocalDateTime.now();
+        System.out.println("date" + currentDateTime);
+        
+        String name = jTextFieldPlaceHolderName.getText();
+        String location = jTextFieldPlaceHolderLocation.getText();
+        String phone = jTextFieldPlaceHolderPhone.getText();
+        String email = jTextFieldPlaceHolderEmail.getText();
+        String linkedin = jTextFieldPlaceHolderLinkedin.getText();
+        String github = jTextFieldPlaceHolderLinkedin.getText();
+                
+        String university = jTextFieldPlaceHolderUniversity.getText();
+        String unidate = jTextFieldPlaceHolderUnidate.getText();
+        String degree = jTextFieldPlaceHolderDegree.getText();
+        String fieldStudy = jTextFieldPlaceHolderFieldStudy.getText();
+        String fieldStudy2 = jTextFieldPlaceHolderFieldStudy2.getText();
+        String minor = jTextFieldPlaceHolderMinor.getText();
+        String gpa = jTextFieldPlaceHolderGPA.getText();
+        String coursework = jTextFieldPlaceHolderCoursework.getText();
+        
+        String programming = jTextFieldPlaceHolderProgramming.getText();
+        String softwares = jTextFieldPlaceHolderSoftwares.getText();
+        String certifications = jTextFieldPlaceHolderCertifications.getText();
+        String languages = jTextFieldPlaceHolderLanguages.getText();
+
+                            
+        DatabaseManager.addAll(name, location, phone, email, linkedin, github,
+                university, unidate, degree, fieldStudy, fieldStudy2, minor, gpa, coursework,
+                programming, softwares, certifications, languages, userId, currentDateTime);
+
+        PersonData info = new PersonData();
+        info = DatabaseManager.getPersonalInfo(info, userId, currentDateTime);
+        info = DatabaseManager.getEducationInfo(info, userId, currentDateTime);
+        System.out.println(info.name + info.location + info.phoneNumber + info.universityName + info.gpa);
     }
 
     
@@ -973,6 +1022,9 @@ public class MainJFrame extends javax.swing.JFrame {
     private ArrayList<AchievementEntryPanel> achievementPanelsList = new ArrayList<>();
     private ArrayList<WorkEntryPanel> workPanelsList = new ArrayList<>();
     private ArrayList<ProjectEntryPanel> projectPanelsList = new ArrayList<>();
+    
+    private int userId;
+    private LocalDateTime currentDateTime;
 
 
     
