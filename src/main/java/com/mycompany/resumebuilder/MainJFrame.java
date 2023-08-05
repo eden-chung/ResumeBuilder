@@ -983,7 +983,9 @@ public class MainJFrame extends javax.swing.JFrame {
         PersonData info = new PersonData();
         info = DatabaseManager.getPersonalInfo(info, userId, currentDateTime);
         info = DatabaseManager.getEducationInfo(info, userId, currentDateTime);
-        System.out.println(info.name + info.location + info.phoneNumber + info.universityName + info.gpa);
+        info = DatabaseManager.getSkillsInfo(info, userId, currentDateTime);
+        info = DatabaseManager.getJsonInfo(info, userId, currentDateTime);
+        System.out.println(info.languages + info.programmingLanguages + info.workJSON + info.projectsJSON + info.achievementsJSON);
     }
 
     

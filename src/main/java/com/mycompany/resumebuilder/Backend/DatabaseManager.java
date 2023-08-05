@@ -222,6 +222,93 @@ public class DatabaseManager {
 
         return info;
     }
+    
+    public static PersonData getSkillsInfo(PersonData info, int userId, LocalDateTime currentDateTime) {
+        String query = "SELECT languages, programming_languages, softwares, certifications FROM user_inputs WHERE user_id = ? AND date_time = ?";
+        
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(DATABASE_URL);
+            preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setObject(2, currentDateTime);
+
+
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                info.languages = resultSet.getString("languages");
+                info.programmingLanguages = resultSet.getString("programming_languages");
+                info.softwares = resultSet.getString("softwares");
+                info.certifications = resultSet.getString("certifications");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return info;
+    }
+    
+    public static PersonData getJsonInfo(PersonData info, int userId, LocalDateTime currentDateTime) {
+        String query = "SELECT work_experience_json, projects_json, achievements_json FROM user_inputs WHERE user_id = ? AND date_time = ?";
+        
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(DATABASE_URL);
+            preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setObject(2, currentDateTime);
+
+
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                info.workJSON = resultSet.getString("work_experience_json");
+                info.projectsJSON = resultSet.getString("projects_json");
+                info.achievementsJSON = resultSet.getString("achievements_json");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return info;
+    }
 
     
 }

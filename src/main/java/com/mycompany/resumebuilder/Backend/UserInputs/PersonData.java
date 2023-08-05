@@ -25,4 +25,13 @@ public class PersonData {
     public String gpa;
     public String coursework;
     
+    public String languages;
+    public String programmingLanguages;
+    public String softwares;
+    public String certifications;
+    
+    public String workJSON;
+    public String projectsJSON;
+    public String achievementsJSON;
+    
 }
