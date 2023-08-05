@@ -101,25 +101,22 @@ public class Authentication extends javax.swing.JFrame {
         String username = jTextFieldPlaceHolderUsername.getText();
         String password = new String(jPasswordFieldAuth.getPassword());
 
-        // Check if the user exists in the database
         boolean userExists = DatabaseManager.checkUserExists(username);
 
         if (userExists) {
-            // User exists, now check the password
             boolean passwordCorrect = DatabaseManager.checkPassword(username, password);
 
             if (passwordCorrect) {
-                // Password is correct, log the user in
-                // Show the main application window or perform other actions
-                dispose(); // Close the authentication window
-                MainJFrame mainFrame = new MainJFrame();
-                mainFrame.setVisible(true);
+                dispose();
+                HomePage homepage = new HomePage();
+                homepage.setVisible(true);
+                
+                //MainJFrame mainFrame = new MainJFrame();
+                //mainFrame.setVisible(true);
             } else {
-                // Password is incorrect
                 JOptionPane.showMessageDialog(this, "Incorrect password.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            // User does not exist
             JOptionPane.showMessageDialog(this, "User does not exist.", "Error", JOptionPane.ERROR_MESSAGE);
         } 
     }//GEN-LAST:event_SignInButtonActionPerformed
