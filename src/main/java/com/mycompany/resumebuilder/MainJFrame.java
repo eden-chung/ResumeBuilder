@@ -32,13 +32,20 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public MainJFrame() {
+    public MainJFrame(PersonData previnfo, boolean isUpdate) {
+        this.previnfo = previnfo;
+        this.isUpdate = this.isUpdate;
+        
         initComponents();
         
-        for (int i = 1; i < jTabbedPane.getTabCount(); i++) {
-            jTabbedPane.setEnabledAt(i, false);
-            updateTabTitle(i);
+        if (isUpdate == false) {
+            for (int i = 1; i < jTabbedPane.getTabCount(); i++) {
+                jTabbedPane.setEnabledAt(i, false);
+                updateTabTitle(i);
+            }
         }
+        
+        
         
         jTabbedPane.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
@@ -55,6 +62,7 @@ public class MainJFrame extends javax.swing.JFrame {
         ProjectsScrollPane.getVerticalScrollBar().setUnitIncrement(unitIncrement);
         ProjectsScrollPane.getVerticalScrollBar().setBlockIncrement(blockIncrement);
         
+        editFields();
         /*
         PDFViewerPanel pdfViewerPanel = new PDFViewerPanel();
         PDFViewerScrollPane.add(pdfViewerPanel);
@@ -676,7 +684,7 @@ public class MainJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainJFrame().setVisible(true);
+                new MainJFrame(previnfo, isUpdate).setVisible(true);
             }
         });
     }
@@ -998,6 +1006,79 @@ public class MainJFrame extends javax.swing.JFrame {
     public javax.swing.JPanel getWorkPanel() {
         return WorkPanel;
     }
+    
+    public void editFields() {
+        jTextFieldPlaceHolderName.setText(previnfo.name);
+        jTextFieldPlaceHolderLocation.setText(previnfo.location);
+        jTextFieldPlaceHolderPhone.setText(previnfo.phoneNumber);
+        jTextFieldPlaceHolderEmail.setText(previnfo.email);
+        jTextFieldPlaceHolderLinkedin.setText(previnfo.linkedin);
+        jTextFieldPlaceHolderGithub.setText(previnfo.github);
+        
+        jTextFieldPlaceHolderUniversity.setText(previnfo.universityName);
+        jTextFieldPlaceHolderUnidate.setText(previnfo.graduationDate);
+        jTextFieldPlaceHolderDegree.setText(previnfo.degreeType);
+        jTextFieldPlaceHolderFieldStudy.setText(previnfo.fieldOfStudy);
+        jTextFieldPlaceHolderFieldStudy2.setText(previnfo.secondaryFieldOfStudy);
+        jTextFieldPlaceHolderMinor.setText(previnfo.minor);
+        jTextFieldPlaceHolderGPA.setText(previnfo.gpa);
+        jTextFieldPlaceHolderCoursework.setText(previnfo.coursework);
+        
+        jTextFieldPlaceHolderLanguages.setText(previnfo.languages);
+        jTextFieldPlaceHolderProgramming.setText(previnfo.programmingLanguages);
+        jTextFieldPlaceHolderSoftwares.setText(previnfo.softwares);
+        jTextFieldPlaceHolderCertifications.setText(previnfo.certifications);
+        
+        String[][] filledWorkData = CompileLatex.convertWorkInfoFromJson(previnfo.workJSON);
+        for (String[] workInfo : filledWorkData) {
+            WorkEntryPanel workEntryPanel = new WorkEntryPanel();
+            workEntryPanel.jTextFieldPlaceHolderEmployer.setText(workInfo[0]);
+            workEntryPanel.jTextFieldPlaceHolderRole.setText(workInfo[1]);
+            workEntryPanel.jTextFieldPlaceHolderStartDate.setText(workInfo[2]);
+            
+            if (workInfo[3].equals("Present")) {
+                System.out.println("test");
+                workEntryPanel.jobCheckBox.setSelected(true);
+            } else {
+                workEntryPanel.jTextFieldPlaceHolderEndDate.setText(workInfo[3]);
+            }
+            workEntryPanel.jTextFieldPlaceHolderDescription.setText(workInfo[4]);
+
+            WorkPanel.add(workEntryPanel);
+        }
+        WorkPanel.revalidate();
+        WorkPanel.repaint();
+        
+        
+        String[][] filledProjectData = CompileLatex.convertProjectInfoFromJson(previnfo.projectsJSON);
+        for (String[] projectInfo : filledProjectData) {
+            ProjectEntryPanel projectEntryPanel = new ProjectEntryPanel();
+            projectEntryPanel.jTextFieldPlaceHolderProjectName.setText(projectInfo[0]);
+            projectEntryPanel.jTextFieldPlaceHolderProgrammingLanguages.setText(projectInfo[1]);
+            projectEntryPanel.jTextFieldPlaceHolderDate.setText(projectInfo[2]);
+            projectEntryPanel.jTextFieldPlaceHolderURL.setText(projectInfo[3]);
+            projectEntryPanel.jTextFieldPlaceHolderDescription.setText(projectInfo[4]);
+
+            ProjectsPanel.add(projectEntryPanel);
+        }
+        ProjectsPanel.revalidate();
+        ProjectsPanel.repaint();
+        
+        
+        String[][] filledAchievementData = CompileLatex.convertAchievementInfoFromJson(previnfo.achievementsJSON);
+        for (String[] achievementInfo : filledAchievementData) {
+            AchievementEntryPanel achievementEntryPanel = new AchievementEntryPanel();
+            achievementEntryPanel.jTextFieldPlaceHolderAchievement.setText(achievementInfo[0]);
+            achievementEntryPanel.jTextFieldPlaceHolderAffiliation.setText(achievementInfo[1]);
+            achievementEntryPanel.jTextFieldPlaceHolderDate.setText(achievementInfo[2]);
+
+            AchievementsPanel.add(achievementEntryPanel);
+        }
+        AchievementsPanel.revalidate();
+        AchievementsPanel.repaint();
+        
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AchievementsPanel;
@@ -1080,6 +1161,9 @@ public class MainJFrame extends javax.swing.JFrame {
     
     private int userId;
     private LocalDateTime currentDateTime;
+    
+    private static PersonData previnfo;
+    private static boolean isUpdate;
 
 
     

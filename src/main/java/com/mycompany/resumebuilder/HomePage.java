@@ -108,7 +108,8 @@ public class HomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addNewResumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewResumeActionPerformed
-        MainJFrame mainFrame = new MainJFrame();
+        PersonData info = new PersonData();
+        MainJFrame mainFrame = new MainJFrame(info, false);
         mainFrame.setInputListener(new ResumeBuilder());
         mainFrame.setVisible(true);
     }//GEN-LAST:event_addNewResumeActionPerformed
@@ -227,7 +228,14 @@ public class HomePage extends javax.swing.JFrame {
             editButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    // todo open mainjframe
+                    PersonData info = new PersonData();
+                    info = DatabaseManager.getPersonalInfo(info, userId, dateTime);
+                    info = DatabaseManager.getEducationInfo(info, userId, dateTime);
+                    info = DatabaseManager.getSkillsInfo(info, userId, dateTime);
+                    info = DatabaseManager.getJsonInfo(info, userId, dateTime);
+                    
+                    MainJFrame frame = new MainJFrame(info, true);
+                    frame.setVisible(true);
                 }
 });
         }

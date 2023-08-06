@@ -598,7 +598,7 @@ public class CompileLatex {
                 for (int i = 0; i < numEntries; i++) {
                     JsonNode entry = jsonNode.get(i);
 
-                    achievementInfoArray[i][0] = entry.hasNonNull("achievementName") ? entry.get("achievementName").asText() : "";
+                    achievementInfoArray[i][0] = entry.hasNonNull("achievement") ? entry.get("achievement").asText() : "";
                     achievementInfoArray[i][1] = entry.hasNonNull("affiliation") ? entry.get("affiliation").asText() : "";
                     achievementInfoArray[i][2] = entry.hasNonNull("date") ? entry.get("date").asText() : "";
                 }
