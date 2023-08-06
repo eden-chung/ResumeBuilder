@@ -20,6 +20,7 @@ import java.time.LocalDateTime;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import javax.swing.SwingUtilities;
 
 
 /**
@@ -595,6 +596,8 @@ public class MainJFrame extends javax.swing.JFrame {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        
+        dispose();
     }//GEN-LAST:event_submitButtonAchievementsActionPerformed
 
     private void addWorkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addWorkButtonActionPerformed

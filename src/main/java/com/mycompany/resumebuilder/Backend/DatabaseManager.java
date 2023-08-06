@@ -338,7 +338,7 @@ public class DatabaseManager {
         return versions;
     }
 */
-    
+    /*
     public static ArrayList<Object[]> retrievePreviousVersions(int userId) {
         ArrayList<Object[]> versions = new ArrayList<>();
 
@@ -362,6 +362,50 @@ public class DatabaseManager {
         }
 
         return versions;
+    }*/
+    
+    public static ArrayList<Object[]> retrievePreviousVersions(int userId) {
+        ArrayList<Object[]> versions = new ArrayList<>();
+
+        String query = "SELECT DISTINCT date_time, resume_name FROM user_inputs WHERE user_id = ?";
+
+        try (Connection connection = DriverManager.getConnection(DATABASE_URL);
+            PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, userId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String timestamp = resultSet.getString("date_time");
+                String resumeName = resultSet.getString("resume_name");
+                Object[] versionInfo = new Object[2];
+                versionInfo[0] = timestamp;
+                versionInfo[1] = resumeName;
+                versions.add(versionInfo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return versions;
+    }
+    
+    public static void changeResumeName(String newName, int userId, LocalDateTime currentDateTime) {
+        String updateQuery = "UPDATE user_inputs SET resume_name = ? WHERE user_id = ? AND date_time = ?";
+
+        try (Connection connection = DriverManager.getConnection(DATABASE_URL);
+            PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+
+            preparedStatement.setString(1, newName);
+            preparedStatement.setInt(2, userId);
+            preparedStatement.setObject(3, currentDateTime);
+
+            preparedStatement.executeUpdate();
+            System.out.println("Resume name updated successfully");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 

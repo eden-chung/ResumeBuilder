@@ -31,6 +31,7 @@ public class DatabaseSetup {
             String createUserInputsTable = "CREATE TABLE user_inputs (" +
                     "id INTEGER PRIMARY KEY," +
                     "user_id INTEGER," +
+                    "resume_name TEXT," +
                     "name TEXT," +
                     "location TEXT," +
                     "phone_number TEXT," +

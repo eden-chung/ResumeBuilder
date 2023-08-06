@@ -9,10 +9,13 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -155,38 +158,99 @@ public class HomePage extends javax.swing.JFrame {
         });
     }
     
-    
+    /*
     private void ViewCurrentResumesActionPerformed() {
         Authentication authentication = new Authentication();
+        int userId = authentication.userId;
+
+        ArrayList<Object[]> versions = DatabaseManager.retrievePreviousVersions(userId);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(versions.size(), 2, 10, 10));
+
+        for (int i = versions.size() - 1; i >= 0; i--) {
+            Object[] version = versions.get(i);
+            String date = (String) version[0];
+            JButton openResumeButton = new JButton("Open Resume");
+
+            JLabel dateLabel = new JLabel(date);
+
+            panel.add(dateLabel);
+            panel.add(openResumeButton);
+
+            //todo
+            openResumeButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            });
+        }
+    resumesScrollPane.setViewportView(panel);
+    }
+*/
+    
+    private void ViewCurrentResumesActionPerformed() {
+    Authentication authentication = new Authentication();
     int userId = authentication.userId;
 
     ArrayList<Object[]> versions = DatabaseManager.retrievePreviousVersions(userId);
 
     JPanel panel = new JPanel();
-    panel.setLayout(new GridLayout(versions.size(), 2, 10, 10));
+    panel.setLayout(new GridLayout(versions.size() + 1, 3, 10, 10));
 
-    // Iterate through versions in reverse
+    JLabel timestampLabel = new JLabel("Timestamp");
+    JLabel resumeNameLabel = new JLabel("Resume Name");
+    JLabel actionLabel = new JLabel("Actions");
+    panel.add(timestampLabel);
+    panel.add(resumeNameLabel);
+    panel.add(actionLabel);
+
     for (int i = versions.size() - 1; i >= 0; i--) {
         Object[] version = versions.get(i);
-        String date = (String) version[0]; // Assuming the date is at index 0
+        String dateString = (String) version[0];
+        String resumeName = (String) version[1];
         JButton openResumeButton = new JButton("Open Resume");
+        JButton changeNameButton = new JButton("Change Name");
 
-        JLabel dateLabel = new JLabel(date);
+        JLabel dateLabel = new JLabel(dateString);
+        JLabel resumeNameTextLabel = new JLabel(resumeName);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(changeNameButton);
+        buttonPanel.add(openResumeButton);
 
         panel.add(dateLabel);
-        panel.add(openResumeButton);
+        panel.add(resumeNameTextLabel);
+        panel.add(buttonPanel);
+
+        LocalDateTime dateTime = LocalDateTime.parse(dateString, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS"));
+
+        changeNameButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String newResumeName = JOptionPane.showInputDialog("Enter new resume name:");
+                if (newResumeName != null && !newResumeName.isEmpty()) {
+                    DatabaseManager.changeResumeName(newResumeName, userId, dateTime);
+                    ViewCurrentResumesActionPerformed();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid resume name");
+                }
+            }
+        });
 
         openResumeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Implement the action you want to take when the button is clicked
-                // For example, open the resume associated with the selected date
+                //todo open resume
             }
         });
     }
 
     resumesScrollPane.setViewportView(panel);
 }
+
+
 
 
 
