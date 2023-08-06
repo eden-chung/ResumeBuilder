@@ -758,7 +758,6 @@ public class MainJFrame extends javax.swing.JFrame {
             if (inputListener != null) {
                 inputListener.onInputSubmittedSkills(languages, programming, softwares, certifications);
             }
-            updateDatabaseAll();
             
             return true;
         } else {

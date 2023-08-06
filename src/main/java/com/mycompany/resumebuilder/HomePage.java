@@ -159,37 +159,6 @@ public class HomePage extends javax.swing.JFrame {
         });
     }
     
-    /*
-    private void ViewCurrentResumesActionPerformed() {
-        Authentication authentication = new Authentication();
-        int userId = authentication.userId;
-
-        ArrayList<Object[]> versions = DatabaseManager.retrievePreviousVersions(userId);
-
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(versions.size(), 2, 10, 10));
-
-        for (int i = versions.size() - 1; i >= 0; i--) {
-            Object[] version = versions.get(i);
-            String date = (String) version[0];
-            JButton openResumeButton = new JButton("Open Resume");
-
-            JLabel dateLabel = new JLabel(date);
-
-            panel.add(dateLabel);
-            panel.add(openResumeButton);
-
-            //todo
-            openResumeButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-
-                }
-            });
-        }
-    resumesScrollPane.setViewportView(panel);
-    }
-*/
     
     private void ViewCurrentResumesActionPerformed() {
         Authentication authentication = new Authentication();
@@ -212,6 +181,7 @@ public class HomePage extends javax.swing.JFrame {
             String dateString = (String) version[0];
             String resumeName = (String) version[1];
             JButton openResumeButton = new JButton("Open Resume");
+            JButton editButton = new JButton("Edit");
             JButton changeNameButton = new JButton("Change Name");
 
             JLabel dateLabel = new JLabel(dateString);
@@ -219,6 +189,7 @@ public class HomePage extends javax.swing.JFrame {
 
             JPanel buttonPanel = new JPanel();
             buttonPanel.add(changeNameButton);
+            buttonPanel.add(editButton);
             buttonPanel.add(openResumeButton);
 
             panel.add(dateLabel);
@@ -252,6 +223,13 @@ public class HomePage extends javax.swing.JFrame {
                     CompileLatex.compileAll(info);
                 }
             });
+            
+            editButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // todo open mainjframe
+                }
+});
         }
 
         resumesScrollPane.setViewportView(panel);
