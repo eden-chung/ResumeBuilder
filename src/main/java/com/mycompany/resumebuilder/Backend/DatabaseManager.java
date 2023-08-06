@@ -130,6 +130,53 @@ public class DatabaseManager {
         }
     }
     
+    public static void updateAll(String name, String location, String phone, String email, String linkedin, String github,
+                                     String university, String graduationDate, String degreeType, String fieldOfStudy,
+                                     String secondaryFieldOfStudy, String minor, String gpa, String coursework, 
+                                     String programming_languages, String softwares, String certifications, String languages,
+                                     String workJSON, String projectsJSON, String achievementsJSON,
+                                     int userId, LocalDateTime currentDateTime) {
+        String insertQuery = "UPDATE user_inputs SET " +
+                         "name = ?, location = ?, phone_number = ?, email = ?, linkedin = ?, github = ?, " +
+                         "university_name = ?, graduation_date = ?, degree_type = ?, field_of_study = ?, " +
+                         "secondary_field_of_study = ?, minor = ?, gpa = ?, coursework = ?, " +
+                         "languages = ?, programming_languages = ?, softwares = ?, certifications = ?, " +
+                         "work_experience_json = ?, projects_json = ?, achievements_json = ? " +
+                         "WHERE user_id = ? AND date_time = ?";
+                
+        try (Connection connection = DriverManager.getConnection(DATABASE_URL);
+            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, location);
+            preparedStatement.setString(3, phone);
+            preparedStatement.setString(4, email);
+            preparedStatement.setString(5, linkedin);
+            preparedStatement.setString(6, github);
+            preparedStatement.setString(7, university);
+            preparedStatement.setString(8, graduationDate);
+            preparedStatement.setString(9, degreeType);
+            preparedStatement.setString(10, fieldOfStudy);
+            preparedStatement.setString(11, secondaryFieldOfStudy);
+            preparedStatement.setString(12, minor);
+            preparedStatement.setString(13, gpa);
+            preparedStatement.setString(14, coursework);
+            preparedStatement.setString(15, languages);
+            preparedStatement.setString(16, programming_languages);
+            preparedStatement.setString(17, softwares);
+            preparedStatement.setString(18, certifications);
+            preparedStatement.setString(19, workJSON);
+            preparedStatement.setString(20, projectsJSON);
+            preparedStatement.setString(21, achievementsJSON);
+            preparedStatement.setInt(22, userId);
+            preparedStatement.setObject(23, currentDateTime);
+
+            preparedStatement.executeUpdate();
+            System.out.println("success");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public static PersonData getPersonalInfo(PersonData info, int userId, LocalDateTime currentDateTime) {
         String query = "SELECT name, location, phone_number, email, linkedin, github FROM user_inputs WHERE user_id = ? AND date_time = ?";
 

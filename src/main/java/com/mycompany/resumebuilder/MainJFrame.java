@@ -592,7 +592,7 @@ public class MainJFrame extends javax.swing.JFrame {
         submitAchievements();
         
         try {
-            File file = new File("/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/latex_files/resume.pdf"); // Replace with the actual path to your generated PDF file
+            File file = new File("/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/latex_files/resume.pdf");
             if (Desktop.isDesktopSupported()) {
                 Desktop desktop = Desktop.getDesktop();
                 if (desktop.isSupported(Desktop.Action.OPEN)) {
@@ -983,18 +983,18 @@ public class MainJFrame extends javax.swing.JFrame {
         String certifications = jTextFieldPlaceHolderCertifications.getText();
         String languages = jTextFieldPlaceHolderLanguages.getText();
 
-                            
-        DatabaseManager.addAll(name, location, phone, email, linkedin, github,
+        if (isUpdate == false) {
+            DatabaseManager.addAll(name, location, phone, email, linkedin, github,
                 university, unidate, degree, fieldStudy, fieldStudy2, minor, gpa, coursework,
                 programming, softwares, certifications, languages, 
                 workJSON, projectsJSON, achievementsJSON, userId, currentDateTime);
-
-        PersonData info = new PersonData();
-        info = DatabaseManager.getPersonalInfo(info, userId, currentDateTime);
-        info = DatabaseManager.getEducationInfo(info, userId, currentDateTime);
-        info = DatabaseManager.getSkillsInfo(info, userId, currentDateTime);
-        info = DatabaseManager.getJsonInfo(info, userId, currentDateTime);
-        System.out.println(info.languages + info.programmingLanguages + info.workJSON + info.projectsJSON + info.achievementsJSON);
+        } else {
+            DatabaseManager.updateAll(name, location, phone, email, linkedin, github,
+                university, unidate, degree, fieldStudy, fieldStudy2, minor, gpa, coursework,
+                programming, softwares, certifications, languages, 
+                workJSON, projectsJSON, achievementsJSON, userId, currentDateTime);
+        }                    
+        
     }
 
     
