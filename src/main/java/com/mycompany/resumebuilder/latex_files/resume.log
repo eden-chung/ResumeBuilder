@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.11.20)  8 AUG 2023 12:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.11.20)  8 AUG 2023 15:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -330,11 +330,6 @@ Overfull \hbox (30.0pt too wide) in paragraph at lines 26--27
 [] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 36--44
-
- []
-
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 101.
 [1
 
@@ -351,7 +346,7 @@ Package rerunfilecheck Info: File `resume.out' has not changed.
 Here is how much of TeX's memory you used:
  6212 strings out of 480608
  95276 string characters out of 5903629
- 364336 words of memory out of 5000000
+ 364328 words of memory out of 5000000
  22029 multiletter control sequences out of 15000+600000
  533252 words of font info for 27 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -362,7 +357,7 @@ Here is how much of TeX's memory you used:
 usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 Output written on /Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuil
 der/src/main/java/com/mycompany/resumebuilder/latex_files//resume.pdf (1 page, 
-46588 bytes).
+46795 bytes).
 PDF statistics:
  35 PDF objects out of 1000 (max. 8388607)
  23 compressed objects within 1 object stream

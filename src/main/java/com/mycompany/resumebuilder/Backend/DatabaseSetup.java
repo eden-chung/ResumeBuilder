@@ -17,7 +17,8 @@ import java.sql.SQLException;
 public class DatabaseSetup {
     
     public static void main(String[] args) {
-        String url = "jdbc:sqlite:/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/database.db";
+        String databasePath = System.getProperty("user.dir") + "/database.db";
+        String url = "jdbc:sqlite:" + databasePath;
 
         try (Connection connection = DriverManager.getConnection(url)) {
             Statement statement = connection.createStatement();

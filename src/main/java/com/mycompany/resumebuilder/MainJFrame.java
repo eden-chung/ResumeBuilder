@@ -590,9 +590,10 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void submitButtonAchievementsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonAchievementsActionPerformed
         submitAchievements();
+        String pdfFilePath = System.getProperty("user.dir") + "/src/main/java/com/mycompany/resumebuilder/latex_files/resume.pdf";
         
         try {
-            File file = new File("/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/latex_files/resume.pdf");
+            File file = new File(pdfFilePath);
             if (Desktop.isDesktopSupported()) {
                 Desktop desktop = Desktop.getDesktop();
                 if (desktop.isSupported(Desktop.Action.OPEN)) {

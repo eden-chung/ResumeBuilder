@@ -20,7 +20,8 @@ public class CreateNewDatabase {
         try {
             Class.forName("org.sqlite.JDBC");
 
-            connection = DriverManager.getConnection("jdbc:sqlite:/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/database.db");
+            String databasePath = System.getProperty("user.dir") + "/database.db";
+            connection = DriverManager.getConnection("jdbc:sqlite:" + databasePath);
             System.out.println("Database created successfully.");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
