@@ -219,12 +219,12 @@ public class WorkEntryPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPaneDescription;
-    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderDescription;
-    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderEmployer;
-    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderEndDate;
-    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderRole;
-    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderStartDate;
-    private javax.swing.JCheckBox jobCheckBox;
+    public com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderDescription;
+    public com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderEmployer;
+    public com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderEndDate;
+    public com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderRole;
+    public com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderStartDate;
+    public javax.swing.JCheckBox jobCheckBox;
     // End of variables declaration//GEN-END:variables
 
     private static int numExperiences = 0;

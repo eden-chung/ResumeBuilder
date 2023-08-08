@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.resumebuilder;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mycompany.resumebuilder.Backend.UserInputs.PersonData;
+import java.awt.Desktop;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -469,6 +473,145 @@ public class CompileLatex {
             e.printStackTrace();
         }
     }
+    
+    public static void compileAll(PersonData info) {
+        CompileLatex latex = new CompileLatex();
+        
+        latex.resetPersonal();
+        latex.addPersonalInfo(info.name, info.location, info.phoneNumber, info.email, info.linkedin, info.github);
+        
+        latex.resetEducation();
+        latex.addEducationInfo(info.universityName, info.graduationDate, info.degreeType, info.fieldOfStudy, info.secondaryFieldOfStudy, info.minor, info.gpa, info.coursework);
+        
+        latex.resetSkills();
+        latex.addSkillsInfo(info.languages, info.programmingLanguages, info.softwares, info.certifications);
+        
+        latex.resetWork();
+        String[][] workArray = convertWorkInfoFromJson(info.workJSON);
+        latex.addWorkInfo(workArray);
+        
+        latex.resetProjects();
+        String[][] projectArray = convertProjectInfoFromJson(info.projectsJSON);
+        latex.addWorkInfo(projectArray);
+        
+        latex.resetAchievements();
+        String[][] achievementArray = convertAchievementInfoFromJson(info.projectsJSON);
+        latex.addWorkInfo(achievementArray);
+        
+        latex.compileFile();
+        
+        try {
+            File file = new File("/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/latex_files/resume.pdf");
+            if (Desktop.isDesktopSupported()) {
+                Desktop desktop = Desktop.getDesktop();
+                if (desktop.isSupported(Desktop.Action.OPEN)) {
+                    desktop.open(file);
+                } else {
+                    desktop.edit(file);
+                }
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        
+        
+    }
+    
+    public static String[][] convertWorkInfoFromJson(String jsonInput) {
+        if (jsonInput == null) {
+            return new String[0][0];
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode jsonNode = objectMapper.readTree(jsonInput);
+
+            if (jsonNode.isArray()) {
+                int numEntries = jsonNode.size();
+                String[][] workArray = new String[numEntries][5];
+                
+                for (int i = 0; i < numEntries; i++) {
+                    JsonNode entry = jsonNode.get(i);
+
+                    workArray[i][0] = entry.hasNonNull("employer") ? entry.get("employer").asText() : "";
+                    workArray[i][1] = entry.hasNonNull("role") ? entry.get("role").asText() : "";
+                    workArray[i][2] = entry.hasNonNull("startDate") ? entry.get("startDate").asText() : "";
+                    workArray[i][3] = entry.hasNonNull("endDate") ? entry.get("endDate").asText() : "";
+                    workArray[i][4] = entry.hasNonNull("description") ? entry.get("description").asText() : "";
+                }
+
+                return workArray;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    
+    public static String[][] convertProjectInfoFromJson(String jsonInput) {
+        if (jsonInput == null) {
+            return new String[0][0];
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode jsonNode = objectMapper.readTree(jsonInput);
+
+            if (jsonNode.isArray()) {
+                int numEntries = jsonNode.size();
+                String[][] projectArray = new String[numEntries][5];
+
+                for (int i = 0; i < numEntries; i++) {
+                    JsonNode entry = jsonNode.get(i);
+
+                    projectArray[i][0] = entry.hasNonNull("name") ? entry.get("name").asText() : "";
+                    projectArray[i][1] = entry.hasNonNull("programmingLanguages") ? entry.get("programmingLanguages").asText() : "";
+                    projectArray[i][2] = entry.hasNonNull("date") ? entry.get("date").asText() : "";
+                    projectArray[i][3] = entry.hasNonNull("url") ? entry.get("url").asText() : "";
+                    projectArray[i][4] = entry.hasNonNull("description") ? entry.get("description").asText() : "";
+
+                }
+
+                return projectArray;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    
+    public static String[][] convertAchievementInfoFromJson(String jsonInput) {
+        if (jsonInput == null) {
+            return new String[0][0];
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode jsonNode = objectMapper.readTree(jsonInput);
+
+            if (jsonNode.isArray()) {
+                int numEntries = jsonNode.size();
+                String[][] achievementInfoArray = new String[numEntries][3];
+
+                for (int i = 0; i < numEntries; i++) {
+                    JsonNode entry = jsonNode.get(i);
+
+                    achievementInfoArray[i][0] = entry.hasNonNull("achievement") ? entry.get("achievement").asText() : "";
+                    achievementInfoArray[i][1] = entry.hasNonNull("affiliation") ? entry.get("affiliation").asText() : "";
+                    achievementInfoArray[i][2] = entry.hasNonNull("date") ? entry.get("date").asText() : "";
+                }
+
+                return achievementInfoArray;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
  
 }
 

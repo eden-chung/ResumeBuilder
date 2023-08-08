@@ -191,11 +191,11 @@ public class ProjectEntryPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPaneDescription;
-    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderDate;
-    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderDescription;
-    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderProgrammingLanguages;
-    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderProjectName;
-    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderURL;
+    public com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderDate;
+    public com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderDescription;
+    public com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderProgrammingLanguages;
+    public com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderProjectName;
+    public com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderURL;
     // End of variables declaration//GEN-END:variables
 
     private static int numProject = 0;

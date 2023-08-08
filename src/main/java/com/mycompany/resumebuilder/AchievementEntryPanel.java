@@ -139,9 +139,9 @@ public class AchievementEntryPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderAchievement;
-    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderAffiliation;
-    private com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderDate;
+    public com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderAchievement;
+    public com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderAffiliation;
+    public com.mycompany.resumebuilder.JTextFieldPlaceHolder jTextFieldPlaceHolderDate;
     // End of variables declaration//GEN-END:variables
 
     private static int numAchievements = 0;

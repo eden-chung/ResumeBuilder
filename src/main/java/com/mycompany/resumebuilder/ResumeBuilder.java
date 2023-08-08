@@ -5,8 +5,11 @@
 
 package com.mycompany.resumebuilder;
 
+import com.mycompany.resumebuilder.Backend.SQLiteConnector;
 import javax.swing.*;
 import java.io.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 
         
 /**
@@ -62,12 +65,14 @@ public class ResumeBuilder implements MainJFrame.InputListener {
         ResumeBuilder builder = new ResumeBuilder();
         builder.latex.resetTemplate();
         
-        MainJFrame mainFrame = new MainJFrame();
-        mainFrame.setInputListener(new ResumeBuilder());
-        mainFrame.pack();
-        SwingUtilities.invokeLater(() -> mainFrame.setVisible(true));
+        Authentication authenticationFrame = new Authentication();
+        authenticationFrame.pack();
+        authenticationFrame.setVisible(true);
+
         
+       
     }
+        
     
     
 }

@@ -4,6 +4,8 @@
  */
 package com.mycompany.resumebuilder;
 
+import com.mycompany.resumebuilder.Backend.DatabaseManager;
+import com.mycompany.resumebuilder.Backend.UserInputs.PersonData;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
@@ -14,6 +16,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import java.time.LocalDateTime;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import javax.swing.SwingUtilities;
+
 
 /**
  *
@@ -24,13 +32,20 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public MainJFrame() {
+    public MainJFrame(PersonData previnfo, boolean isUpdate) {
+        this.previnfo = previnfo;
+        this.isUpdate = this.isUpdate;
+        
         initComponents();
         
-        for (int i = 1; i < jTabbedPane.getTabCount(); i++) {
-            jTabbedPane.setEnabledAt(i, false);
-            updateTabTitle(i);
+        if (isUpdate == false) {
+            for (int i = 1; i < jTabbedPane.getTabCount(); i++) {
+                jTabbedPane.setEnabledAt(i, false);
+                updateTabTitle(i);
+            }
         }
+        
+        
         
         jTabbedPane.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
@@ -47,6 +62,7 @@ public class MainJFrame extends javax.swing.JFrame {
         ProjectsScrollPane.getVerticalScrollBar().setUnitIncrement(unitIncrement);
         ProjectsScrollPane.getVerticalScrollBar().setBlockIncrement(blockIncrement);
         
+        editFields();
         /*
         PDFViewerPanel pdfViewerPanel = new PDFViewerPanel();
         PDFViewerScrollPane.add(pdfViewerPanel);
@@ -134,7 +150,7 @@ public class MainJFrame extends javax.swing.JFrame {
         addAchievementButton = new javax.swing.JButton();
         submitButtonAchievements = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         PersonalInformationPanel.setMaximumSize(new java.awt.Dimension(563, 32767));
         PersonalInformationPanel.setLayout(new javax.swing.BoxLayout(PersonalInformationPanel, javax.swing.BoxLayout.Y_AXIS));
@@ -474,7 +490,7 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         AchievementsPanel.add(addAchievementButton);
 
-        submitButtonAchievements.setText("Submit");
+        submitButtonAchievements.setText("Submit Resume");
         submitButtonAchievements.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitButtonAchievementsActionPerformed(evt);
@@ -576,7 +592,7 @@ public class MainJFrame extends javax.swing.JFrame {
         submitAchievements();
         
         try {
-            File file = new File("/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/latex_files/resume.pdf"); // Replace with the actual path to your generated PDF file
+            File file = new File("/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/latex_files/resume.pdf");
             if (Desktop.isDesktopSupported()) {
                 Desktop desktop = Desktop.getDesktop();
                 if (desktop.isSupported(Desktop.Action.OPEN)) {
@@ -588,6 +604,8 @@ public class MainJFrame extends javax.swing.JFrame {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        
+        dispose();
     }//GEN-LAST:event_submitButtonAchievementsActionPerformed
 
     private void addWorkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addWorkButtonActionPerformed
@@ -666,7 +684,7 @@ public class MainJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainJFrame().setVisible(true);
+                new MainJFrame(previnfo, isUpdate).setVisible(true);
             }
         });
     }
@@ -699,6 +717,7 @@ public class MainJFrame extends javax.swing.JFrame {
             if (inputListener != null) {
                 inputListener.onInputSubmittedPersonal(name, location, phone, email, linkedin, github);
             }
+            
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -722,6 +741,7 @@ public class MainJFrame extends javax.swing.JFrame {
             if (inputListener != null) {
                 inputListener.onInputSubmittedEducation(university, unidate, degree, fieldStudy, fieldStudy2, minor, gpa, coursework);
             }
+            
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -746,6 +766,7 @@ public class MainJFrame extends javax.swing.JFrame {
             if (inputListener != null) {
                 inputListener.onInputSubmittedSkills(languages, programming, softwares, certifications);
             }
+            
             return true;
         } else {
         // Show an error message or handle the case where some fields are empty
@@ -756,7 +777,7 @@ public class MainJFrame extends javax.swing.JFrame {
                        
     }
         
-    private boolean submitWorkExperiences() {        
+    private boolean submitWorkExperiences() { 
         ArrayList<String[]> validWork = new ArrayList<>();
                 
         for (int i = 0; i < workPanelsList.size(); i++) {
@@ -793,10 +814,25 @@ public class MainJFrame extends javax.swing.JFrame {
         }
             
         if (inputListener != null) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            ArrayNode workArrayNode = objectMapper.createArrayNode();
+        
             String[][] workArray = new String[validWork.size()][5];
             for (int i = 0; i < validWork.size(); i++) {
-               workArray[i] = validWork.get(i);
-            }
+                workArray[i] = validWork.get(i);
+               
+                String[] workInfo = validWork.get(i);
+                ObjectNode workNode = objectMapper.createObjectNode();
+                workNode.put("employer", workInfo[0]);
+                workNode.put("role", workInfo[1]);
+                workNode.put("startDate", workInfo[2]);
+                workNode.put("endDate", workInfo[3]);
+                workNode.put("description", workInfo[4]);
+
+                workArrayNode.add(workNode);
+                         
+            } 
+            workJSON = workArrayNode.toString();         
                 
             inputListener.onInputSubmittedWork(workArray);
         }
@@ -838,12 +874,28 @@ public class MainJFrame extends javax.swing.JFrame {
 
             
         if (inputListener != null) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            ArrayNode projectsArray = objectMapper.createArrayNode();
+        
             String[][] projectArray = new String[projectPanelsList.size()][5];
             for (int i = 0; i < validProjects.size(); i++) {
                 projectArray[i] = validProjects.get(i);
                 System.out.println(projectArray[i][0]);
+                
+                String[] projectInfo = validProjects.get(i);
+            
+                ObjectNode projectNode = objectMapper.createObjectNode();
+                projectNode.put("name", projectInfo[0]);
+                projectNode.put("programmingLanguages", projectInfo[1]);
+                projectNode.put("date", projectInfo[2]);
+                projectNode.put("url", projectInfo[3]);
+                projectNode.put("description", projectInfo[4]);
+                
+                projectsArray.add(projectNode);
+                
             }
             
+            projectsJSON = projectsArray.toString();
             
             inputListener.onInputSubmittedProjects(projectArray);
         }
@@ -878,15 +930,71 @@ public class MainJFrame extends javax.swing.JFrame {
         }
         
         if (inputListener != null) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            ArrayNode achievementsArray = objectMapper.createArrayNode();
+        
             String[][] achievementInfoArray = new String[validAchievements.size()][3];
             for (int i = 0; i < validAchievements.size(); i++) {
                 achievementInfoArray[i] = validAchievements.get(i);
+                
+                String[] achievementInfo = validAchievements.get(i);
+            
+                ObjectNode achievementNode = objectMapper.createObjectNode();
+                achievementNode.put("achievement", achievementInfo[0]);
+                achievementNode.put("affiliation", achievementInfo[1]);
+                achievementNode.put("date", achievementInfo[2]);
+
+                achievementsArray.add(achievementNode);
             }
+            achievementsJSON = achievementsArray.toString();
             
             inputListener.onInputSubmittedAchievements(achievementInfoArray);
         }
         
+        updateDatabaseAll();
+        
         return true;
+    }
+    
+    private void updateDatabaseAll() {
+        Authentication authentication = new Authentication();
+        userId = authentication.userId;
+
+        currentDateTime = LocalDateTime.now();
+        
+        String name = jTextFieldPlaceHolderName.getText();
+        String location = jTextFieldPlaceHolderLocation.getText();
+        String phone = jTextFieldPlaceHolderPhone.getText();
+        String email = jTextFieldPlaceHolderEmail.getText();
+        String linkedin = jTextFieldPlaceHolderLinkedin.getText();
+        String github = jTextFieldPlaceHolderLinkedin.getText();
+                
+        String university = jTextFieldPlaceHolderUniversity.getText();
+        String unidate = jTextFieldPlaceHolderUnidate.getText();
+        String degree = jTextFieldPlaceHolderDegree.getText();
+        String fieldStudy = jTextFieldPlaceHolderFieldStudy.getText();
+        String fieldStudy2 = jTextFieldPlaceHolderFieldStudy2.getText();
+        String minor = jTextFieldPlaceHolderMinor.getText();
+        String gpa = jTextFieldPlaceHolderGPA.getText();
+        String coursework = jTextFieldPlaceHolderCoursework.getText();
+        
+        String programming = jTextFieldPlaceHolderProgramming.getText();
+        String softwares = jTextFieldPlaceHolderSoftwares.getText();
+        String certifications = jTextFieldPlaceHolderCertifications.getText();
+        String languages = jTextFieldPlaceHolderLanguages.getText();
+
+        if (isUpdate == false) {
+            DatabaseManager.addAll(name, location, phone, email, linkedin, github,
+                university, unidate, degree, fieldStudy, fieldStudy2, minor, gpa, coursework,
+                programming, softwares, certifications, languages, 
+                workJSON, projectsJSON, achievementsJSON, userId, currentDateTime);
+        } else {
+            DatabaseManager.updateAll(name, location, phone, email, linkedin, github,
+                university, unidate, degree, fieldStudy, fieldStudy2, minor, gpa, coursework,
+                programming, softwares, certifications, languages, 
+                workJSON, projectsJSON, achievementsJSON, userId, currentDateTime);
+        }                    
+        
     }
 
     
@@ -897,6 +1005,79 @@ public class MainJFrame extends javax.swing.JFrame {
     
     public javax.swing.JPanel getWorkPanel() {
         return WorkPanel;
+    }
+    
+    public void editFields() {
+        jTextFieldPlaceHolderName.setText(previnfo.name);
+        jTextFieldPlaceHolderLocation.setText(previnfo.location);
+        jTextFieldPlaceHolderPhone.setText(previnfo.phoneNumber);
+        jTextFieldPlaceHolderEmail.setText(previnfo.email);
+        jTextFieldPlaceHolderLinkedin.setText(previnfo.linkedin);
+        jTextFieldPlaceHolderGithub.setText(previnfo.github);
+        
+        jTextFieldPlaceHolderUniversity.setText(previnfo.universityName);
+        jTextFieldPlaceHolderUnidate.setText(previnfo.graduationDate);
+        jTextFieldPlaceHolderDegree.setText(previnfo.degreeType);
+        jTextFieldPlaceHolderFieldStudy.setText(previnfo.fieldOfStudy);
+        jTextFieldPlaceHolderFieldStudy2.setText(previnfo.secondaryFieldOfStudy);
+        jTextFieldPlaceHolderMinor.setText(previnfo.minor);
+        jTextFieldPlaceHolderGPA.setText(previnfo.gpa);
+        jTextFieldPlaceHolderCoursework.setText(previnfo.coursework);
+        
+        jTextFieldPlaceHolderLanguages.setText(previnfo.languages);
+        jTextFieldPlaceHolderProgramming.setText(previnfo.programmingLanguages);
+        jTextFieldPlaceHolderSoftwares.setText(previnfo.softwares);
+        jTextFieldPlaceHolderCertifications.setText(previnfo.certifications);
+        
+        String[][] filledWorkData = CompileLatex.convertWorkInfoFromJson(previnfo.workJSON);
+        for (String[] workInfo : filledWorkData) {
+            WorkEntryPanel workEntryPanel = new WorkEntryPanel();
+            workEntryPanel.jTextFieldPlaceHolderEmployer.setText(workInfo[0]);
+            workEntryPanel.jTextFieldPlaceHolderRole.setText(workInfo[1]);
+            workEntryPanel.jTextFieldPlaceHolderStartDate.setText(workInfo[2]);
+            
+            if (workInfo[3].equals("Present")) {
+                System.out.println("test");
+                workEntryPanel.jobCheckBox.setSelected(true);
+            } else {
+                workEntryPanel.jTextFieldPlaceHolderEndDate.setText(workInfo[3]);
+            }
+            workEntryPanel.jTextFieldPlaceHolderDescription.setText(workInfo[4]);
+
+            WorkPanel.add(workEntryPanel);
+        }
+        WorkPanel.revalidate();
+        WorkPanel.repaint();
+        
+        
+        String[][] filledProjectData = CompileLatex.convertProjectInfoFromJson(previnfo.projectsJSON);
+        for (String[] projectInfo : filledProjectData) {
+            ProjectEntryPanel projectEntryPanel = new ProjectEntryPanel();
+            projectEntryPanel.jTextFieldPlaceHolderProjectName.setText(projectInfo[0]);
+            projectEntryPanel.jTextFieldPlaceHolderProgrammingLanguages.setText(projectInfo[1]);
+            projectEntryPanel.jTextFieldPlaceHolderDate.setText(projectInfo[2]);
+            projectEntryPanel.jTextFieldPlaceHolderURL.setText(projectInfo[3]);
+            projectEntryPanel.jTextFieldPlaceHolderDescription.setText(projectInfo[4]);
+
+            ProjectsPanel.add(projectEntryPanel);
+        }
+        ProjectsPanel.revalidate();
+        ProjectsPanel.repaint();
+        
+        
+        String[][] filledAchievementData = CompileLatex.convertAchievementInfoFromJson(previnfo.achievementsJSON);
+        for (String[] achievementInfo : filledAchievementData) {
+            AchievementEntryPanel achievementEntryPanel = new AchievementEntryPanel();
+            achievementEntryPanel.jTextFieldPlaceHolderAchievement.setText(achievementInfo[0]);
+            achievementEntryPanel.jTextFieldPlaceHolderAffiliation.setText(achievementInfo[1]);
+            achievementEntryPanel.jTextFieldPlaceHolderDate.setText(achievementInfo[2]);
+
+            AchievementsPanel.add(achievementEntryPanel);
+        }
+        AchievementsPanel.revalidate();
+        AchievementsPanel.repaint();
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -973,6 +1154,16 @@ public class MainJFrame extends javax.swing.JFrame {
     private ArrayList<AchievementEntryPanel> achievementPanelsList = new ArrayList<>();
     private ArrayList<WorkEntryPanel> workPanelsList = new ArrayList<>();
     private ArrayList<ProjectEntryPanel> projectPanelsList = new ArrayList<>();
+    
+    private String workJSON;
+    private String projectsJSON;
+    private String achievementsJSON;
+    
+    private int userId;
+    private LocalDateTime currentDateTime;
+    
+    private static PersonData previnfo;
+    private static boolean isUpdate;
 
 
     
