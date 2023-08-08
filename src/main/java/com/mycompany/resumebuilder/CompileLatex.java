@@ -19,9 +19,9 @@ import java.nio.file.StandardCopyOption;
  */
 public class CompileLatex {
     
-    private static final String RESUME_PATH = "/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/latex_files/resume.tex";
-    private static final String RESUME_BACKUP_PATH = "/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/latex_files/resume_orig.tex";
-
+    
+    private static final String RESUME_PATH = System.getProperty("user.dir") + "/src/main/java/com/mycompany/resumebuilder/latex_files/resume.tex";
+    private static final String RESUME_BACKUP_PATH = System.getProperty("user.dir") + "/src/main/java/com/mycompany/resumebuilder/latex_files/resume_orig.tex";
     
     public void resetTemplate() {
         String pathToBackupFile = RESUME_BACKUP_PATH;
@@ -452,7 +452,8 @@ public class CompileLatex {
             String pathToFile = RESUME_PATH;
             String pdflatexPath = "/Library/TeX/texbin/pdflatex";
             
-            String outputDirectory = "/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/latex_files/";
+            String outputDirectory = System.getProperty("user.dir") + "/src/main/java/com/mycompany/resumebuilder/latex_files/";
+
                     
             String[] command = {pdflatexPath, "-interaction=nonstopmode", "-output-directory=" + outputDirectory, pathToFile};
             
@@ -501,7 +502,7 @@ public class CompileLatex {
         latex.compileFile();
         
         try {
-            File file = new File("/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/src/main/java/com/mycompany/resumebuilder/latex_files/resume.pdf");
+            File file = new File(System.getProperty("user.dir") + "/src/main/java/com/mycompany/resumebuilder/latex_files/resume.pdf");
             if (Desktop.isDesktopSupported()) {
                 Desktop desktop = Desktop.getDesktop();
                 if (desktop.isSupported(Desktop.Action.OPEN)) {

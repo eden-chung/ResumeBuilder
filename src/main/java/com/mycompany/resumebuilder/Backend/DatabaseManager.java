@@ -19,7 +19,8 @@ import java.util.ArrayList;
  * @author EdenChung
  */
 public class DatabaseManager {
-    private static final String DATABASE_URL = "jdbc:sqlite:/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/database.db";
+    private static final String DATABASE_URL = "jdbc:sqlite:" + System.getProperty("user.dir") + "/database.db";
+
 
     public static boolean createUser(String username, String password) {
         if (checkUserExists(username)) {

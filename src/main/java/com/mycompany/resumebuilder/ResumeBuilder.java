@@ -5,7 +5,6 @@
 
 package com.mycompany.resumebuilder;
 
-import com.mycompany.resumebuilder.Backend.SQLiteConnector;
 import javax.swing.*;
 import java.io.*;
 import java.sql.Connection;
@@ -69,7 +68,7 @@ public class ResumeBuilder implements MainJFrame.InputListener {
         authenticationFrame.pack();
         authenticationFrame.setVisible(true);
 
-        
+
        
     }
         
