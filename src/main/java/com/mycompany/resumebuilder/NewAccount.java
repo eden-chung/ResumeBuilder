@@ -103,7 +103,7 @@ public class NewAccount extends javax.swing.JFrame {
             dispose();
             JOptionPane.showMessageDialog(null, "Account created successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "Failed to create account. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Failed to create account. Username may already be taken or you did not fill in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_createAccountActionPerformed
 

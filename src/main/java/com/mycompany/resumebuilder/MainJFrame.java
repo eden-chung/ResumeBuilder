@@ -150,7 +150,7 @@ public class MainJFrame extends javax.swing.JFrame {
         addAchievementButton = new javax.swing.JButton();
         submitButtonAchievements = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         PersonalInformationPanel.setMaximumSize(new java.awt.Dimension(563, 32767));
         PersonalInformationPanel.setLayout(new javax.swing.BoxLayout(PersonalInformationPanel, javax.swing.BoxLayout.Y_AXIS));

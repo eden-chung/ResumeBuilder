@@ -22,6 +22,10 @@ public class DatabaseManager {
     private static final String DATABASE_URL = "jdbc:sqlite:/Users/EdenChung/Desktop/Eden/Home/Coding/Projects/ResumeBuilder/database.db";
 
     public static boolean createUser(String username, String password) {
+        if (checkUserExists(username)) {
+            return false;
+        }
+        
         String hashedPassword = PasswordHashing.hashPassword(password);
 
         String insertQuery = "INSERT INTO users (username, password_hash) VALUES (?, ?)";

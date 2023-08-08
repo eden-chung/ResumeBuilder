@@ -30,6 +30,14 @@ public class HomePage extends javax.swing.JFrame {
      */
     public HomePage() {
         initComponents();
+        
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                if (jTabbedPane1.getSelectedIndex() == 1) {
+                    ViewCurrentResumesActionPerformed();
+                }
+            }
+        });
     }
 
     /**
@@ -68,7 +76,7 @@ public class HomePage extends javax.swing.JFrame {
         });
         Home.add(addNewResume);
 
-        ViewCurrentResumes.setText("View current resumes");
+        ViewCurrentResumes.setText("View saved resumes");
         ViewCurrentResumes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ViewCurrentResumesActionPerformed(evt);
@@ -86,9 +94,9 @@ public class HomePage extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Home", Home);
 
-        SavedResumes.setLayout(new java.awt.GridLayout());
+        SavedResumes.setLayout(new java.awt.GridLayout(1, 0));
 
-        resumesScrollPane.setMinimumSize(new java.awt.Dimension(16, 200));
+        resumesScrollPane.setMinimumSize(new java.awt.Dimension(16, 700));
         SavedResumes.add(resumesScrollPane);
 
         jTabbedPane1.addTab("Saved resumes", SavedResumes);
@@ -97,11 +105,11 @@ public class HomePage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
         );
 
         pack();
@@ -110,6 +118,14 @@ public class HomePage extends javax.swing.JFrame {
     private void addNewResumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewResumeActionPerformed
         PersonData info = new PersonData();
         MainJFrame mainFrame = new MainJFrame(info, false);
+        
+        mainFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                mainFrame.dispose();
+            }
+        });
+
         mainFrame.setInputListener(new ResumeBuilder());
         mainFrame.setVisible(true);
     }//GEN-LAST:event_addNewResumeActionPerformed

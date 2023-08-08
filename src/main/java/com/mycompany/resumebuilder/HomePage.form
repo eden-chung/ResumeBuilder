@@ -23,12 +23,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="0" pref="725" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="0" pref="320" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="0" pref="312" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -75,7 +75,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="ViewCurrentResumes">
               <Properties>
-                <Property name="text" type="java.lang.String" value="View current resumes"/>
+                <Property name="text" type="java.lang.String" value="View saved resumes"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ViewCurrentResumesActionPerformed"/>
@@ -108,7 +108,7 @@
             <Container class="javax.swing.JScrollPane" name="resumesScrollPane">
               <Properties>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[16, 200]"/>
+                  <Dimension value="[16, 700]"/>
                 </Property>
               </Properties>
 
